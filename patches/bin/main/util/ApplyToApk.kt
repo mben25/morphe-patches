@@ -23,6 +23,7 @@ import app.morphe.patcher.PatcherConfig
 import app.masareef.patches.ads.removeAdsPatch
 import app.masareef.patches.branding.amoledDarkThemePatch
 import app.masareef.patches.branding.fillAdaptiveIconPatch
+import app.masareef.patches.integrity.bypassLicenseCheckPatch
 import app.masareef.patches.subscription.unlockProPatch as masareefUnlockProPatch
 import app.masareef.patches.telemetry.deactivateFirebaseAnalyticsPatch
 import app.masareef.patches.telemetry.deactivateFirebaseCrashlyticsPatch
@@ -78,6 +79,7 @@ fun main(args: Array<String>) {
             )
 
             "masareef" -> setOf(
+                bypassLicenseCheckPatch,
                 removeAdsPatch,
                 amoledDarkThemePatch,
                 fillAdaptiveIconPatch,
