@@ -1,0 +1,14 @@
+[versions]
+morphe-patcher = "1.11.0"
+# 1.6.0 is the newest extensions-library that still ships app.morphe.extension.shared.ui.CustomDialog,
+# which GmsCoreSupportPatch depends on (dropped in 1.5.2 and 1.6.2).
+morphe-extensions-library = "1.6.0"
+#noinspection GradleDependency
+smali = "d92701d947"
+gson = "2.14.0"
+annotation = "1.10.0"
+
+[libraries]
+gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
+morphe-extensions-library = { module = "app.morphe:morphe-extensions-library", version.ref = "morphe-extensions-library" }
+annotation = { module = "androidx.annotation:annotation", version.ref = "annotation" }
