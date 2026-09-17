@@ -3,7 +3,7 @@
  * it only applies the patches in this project to an APK on disk and prints the result,
  * so fingerprint regressions are caught without going through Manager or the CLI.
  *
- * Usage: ./gradlew :patches:applyToApk --args "<apk> [outputDexDir] [--patches=mtcapsule|brave|masareef]"
+ * Usage: ./gradlew :patches:applyToApk --args "<apk> [outputDexDir] [--patches=mtcapsule|brave|masareef|deviceinfo]"
  */
 
 package util
@@ -20,6 +20,13 @@ import app.brave.patches.brave.bravePerformanceOptimizationPatch
 import app.brave.patches.brave.braveSkipFirstRunPatch
 import app.morphe.patcher.Patcher
 import app.morphe.patcher.PatcherConfig
+import app.deviceinfo.patches.ads.removeAllAdsPatch
+import app.deviceinfo.patches.ads.removeFacebookAudienceNetworkInitPatch
+import app.deviceinfo.patches.settings.hideSupportUsSectionPatch
+import app.deviceinfo.patches.telemetry.disableAllTelemetryPatch as deviceinfoDisableAllTelemetryPatch
+import app.deviceinfo.patches.telemetry.removeAdServicesAttributionPatch
+import app.deviceinfo.patches.telemetry.removeAdvertisingIdPatch as deviceinfoRemoveAdvertisingIdPatch
+import app.deviceinfo.patches.telemetry.removeFirebaseComponentDiscoveryPatch
 import app.masareef.patches.ads.removeAdsPatch
 import app.masareef.patches.branding.amoledDarkThemePatch
 import app.masareef.patches.branding.fillAdaptiveIconPatch
@@ -40,6 +47,7 @@ import app.masareef.patches.telemetry.removeAppMeasurementPatch
 import app.masareef.patches.telemetry.removeCrashlyticsServicesPatch
 import app.masareef.patches.telemetry.removeFacebookServicesPatch
 import app.masareef.patches.telemetry.removeGoogleAnalyticsPatch
+import app.mtcapsule.patches.mtisland.exportImportSettingsPatch
 import app.mtcapsule.patches.mtisland.unlockProPatch
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.runBlocking
@@ -92,7 +100,17 @@ fun main(args: Array<String>) {
                 removeAdsServicesPatch,
             )
 
-            else -> setOf(unlockProPatch)
+            "deviceinfo" -> setOf(
+                removeAllAdsPatch,
+                removeFacebookAudienceNetworkInitPatch,
+                hideSupportUsSectionPatch,
+                deviceinfoDisableAllTelemetryPatch,
+                deviceinfoRemoveAdvertisingIdPatch,
+                removeAdServicesAttributionPatch,
+                removeFirebaseComponentDiscoveryPatch,
+            )
+
+            else -> setOf(unlockProPatch, exportImportSettingsPatch)
         }
 
         runBlocking {
