@@ -1,7 +1,7 @@
 {
-  "created_at": "",
-  "description": "",
-  "download_url": "",
+  "created_at": "2026-09-17T21:32:44",
+  "description": "## 1.0.0-dev.1 (2026-09-17)\n\n### 🐛 Bug Fixes\n\n* remove machine-specific JBR path from gradle.properties ([fb8a72a](https://github.com/mben25/morphe-patches/commit/fb8a72a250debaf0755074ddbff9af2e32f9671e))\n\n### ✨ New Features\n\n* add masareef bypass license check patch ([7169f4a](https://github.com/mben25/morphe-patches/commit/7169f4a0562d7939f2f31fac4e58a2324927ed15))\n* **patches:** add deviceinfo patches and mtcapsule export/import settings ([dc93934](https://github.com/mben25/morphe-patches/commit/dc939341bfbb601e1ddaa9bd9a485893cb945c44))",
+  "download_url": "https://github.com/mben25/morphe-patches/releases/download/v1.0.0-dev.1/patches-1.0.0-dev.1.mpp",
   "signature_download_url": "",
-  "version": ""
+  "version": "1.0.0-dev.1"
 }

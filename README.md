@@ -28,71 +28,128 @@ Any app not listed above is **not** supported by this bundle.
 
 ### How to use these patches
 
-Click here to add these patches to Morphe: https://morphe.software/add-source?github=xyz-user/xyz-patches
+Click here to add these patches to Morphe: https://morphe.software/add-source?github=mben25/morphe-patches
 
 ## 🩹 Patches list
 
 <!-- PATCHES_START EXPANDED -->
+> **[v1.0.0-dev.1](https://github.com/mben25/morphe-patches/releases/tag/v1.0.0-dev.1)**&nbsp;&nbsp;•&nbsp;&nbsp;`dev`&nbsp;&nbsp;•&nbsp;&nbsp;37 patches total
+<details open>
+<summary>📦 Masareef&nbsp;&nbsp;•&nbsp;&nbsp;14 patches</summary>
+<br>
 
-<!-- Do not modify this section by hand. The patch list is generated when release.yml creates a new release.
-     
-     If you wish for the patches list to be collapsed, then remove the word 'EXPANDED' from the comment tag above.
+**🎯 Supported versions:**
 
-     If you wish to manually keep this list updated then remove the PATCHES_START and PATCHES_END 
-     comment blocks entirely. -->
+| 2.6.1 |
+| :---: |
 
-#### A list of your patches will automatically be shown here after your first patches release is created.
+| 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
+|----------|----------------|-----------|
+| [AMOLED Dark Theme](#amoled-dark-theme) | Flattens dark theme backgrounds (window, cards, dialogs, toolbar, navigation bar, search, calendar) to pure black instead of the stock dark-gray shades. |  |
+| [Bypass License Check](#bypass-license-check) | Stubs the Google Play Automatic Integrity Protection (pairip) signature and license checks, which otherwise detect the re-signed APK on launch and send the user to the app's Play Store page instead of opening the app. |  |
+| [Deactivate Firebase Analytics](#deactivate-firebase-analytics) | Deactivates Firebase Analytics and removes its associated broadcast receivers and services. |  |
+| [Deactivate Firebase Crashlytics](#deactivate-firebase-crashlytics) | Deactivates Firebase Crashlytics crash reporting and removes associated services. |  |
+| [Deactivate Firebase Performance Monitoring](#deactivate-firebase-performance-monitoring) | Deactivates the collection of performance data on app startup time, network requests, and other related metrics. |  |
+| [Disable All Telemetry](#disable-all-telemetry) | Disables all analytics and telemetry including Firebase, Google Analytics, Facebook, and Google Ads tracking. This is a comprehensive privacy patch that removes all data collection. |  |
+| [Disable Facebook Ads Tracking](#disable-facebook-ads-tracking) | Disables Facebook Audience Network ad tracking and telemetry. |  |
+| [Disable Facebook Analytics](#disable-facebook-analytics) | Disables Facebook App Events tracking and analytics. |  |
+| [Disable Firebase Messaging Analytics](#disable-firebase-messaging-analytics) | Disables Firebase Cloud Messaging analytics and notification tracking. |  |
+| [Disable Firebase Sessions](#disable-firebase-sessions) | Disables Firebase Sessions tracking and telemetry. |  |
+| [Disable Google Ads Tracking](#disable-google-ads-tracking) | Disables Google AdMob tracking and impression reporting. |  |
+| [Fill Adaptive Icon](#fill-adaptive-icon) | Scales the launcher adaptive icon foreground to fill the whole icon shape, removing the empty padding around it. |  |
+| [Remove Ads](#remove-ads) | Stubs out AdsManager so no banner/native ads or consent dialogs are ever loaded, requested, or shown, and the Mobile Ads SDK is never initialized. |  |
+| [Unlock Pro (Masareef)](#unlock-pro-masareef) | Makes UserDataManager.isSubscribed() always return true, unlocking all Pro features. |  |
 
-&nbsp;
+</details>
 
-## 🚀 Getting development started
+<details open>
+<summary>📦 Brave Private Web Browser, VPN&nbsp;&nbsp;•&nbsp;&nbsp;10 patches</summary>
+<br>
 
-To start using this template, follow these steps:
+**🎯 Supported versions:**
 
-1. [Setup](https://github.com/MorpheApp/morphe-documentation/blob/main/docs/morphe-development/README.md) your development environment including adding a GitHub PAT as described [here](https://github.com/MorpheApp/morphe-patcher/blob/main/docs/2_1_setup.md#-prepare-the-environment).
-2. [Create a new repository using this template](https://github.com/new?template_name=morphe-patches-template&template_owner=MorpheApp). Select create a new repository, and **enable 'Include all branches'** 
-3. Enable "Allow GitHub Actions to create and approve pull requests" in your repo Settings > Actions > General > Workflow permissions
-4. Update the [build.gradle.kts](patches/build.gradle.kts) file (Specifically, the 
-   [group of the project](patches/build.gradle.kts#L1), and the [About](patches/build.gradle.kts#L6-L11))
-5. Update the [README.md](README.md) file to be specific of your repo, and update the links in the [issue templates](.github/ISSUE_TEMPLATE).
-6. Choose a name for your patches project. Keep in mind you must use a name that does not 
-   imply authorship by the Morphe open source project. If unsure, then simply name these
-   patches after yourself ("UserXYZ Morphe patches"). See the [NOTICE](NOTICE) for details. 
-7. (Optional): Add `patches-bundle.png` to the project if you want a custom icon to show in
-   Morphe Manager instead of your GitHub profile avatar.
+| 1.94.117 |
+| :---: |
 
-🎉 You are now ready to start creating patches!
+| 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
+|----------|----------------|-----------|
+| [Block Brave Telemetry](#block-brave-telemetry) | Blocks P3A product analytics, Brave Stats usage pings, crash dump uploads, WDP, and Variations seed fetching. |  |
+| [Brave In-Product & Commercial Notification Optimizer](#brave-in-product-commercial-notification-optimizer) | Eliminates background wakeups and notifications from Chromium tips scheduler (Job ID 105), Brave Rewards onboarding promo, and retention marketing campaigns. |  |
+| [Brave Origin](#brave-origin) | Unlocks Brave Origin and enables local feature toggle controls. |  |
+| [Brave Startup Performance Optimization](#brave-startup-performance-optimization) | Optimizes startup time and eliminates background CPU/disk overhead by disabling unused OEM carrier partner customizations. |  |
+| [Disable Background Sync & Periodic Sync](#disable-background-sync-periodic-sync) | Eliminates background wakeups, radio modem activity, and battery drain by forcing GooglePlayServicesChecker.shouldDisableBackgroundSync() -> true and neutralizing wakeup tasks. |  |
+| [Disable Battery Status API & OS Listener](#disable-battery-status-api-os-listener) | Neutralizes the Android BatteryStatusManager broadcast listener to prevent continuous OS battery wakeups. |  |
+| [Disable Pull To Refresh](#disable-pull-to-refresh) | Completely disables the pull-to-refresh overscroll gesture and animation to prevent accidental page reloads. |  |
+| [Locale PAK Slimmer](#locale-pak-slimmer) | Strips unselected language resource PAKs from assets/locales/. | • Locales to keep |
+| [Native Bloat Slimmer](#native-bloat-slimmer) | Strips unused native companion binaries (Impress Vision AI, WireGuard VPN, and Android XR) to significantly reduce APK size. |  |
+| [Skip First Run](#skip-first-run) | Skips the welcome screen, search engine selection, and onboarding First Run Experience (FRE) on clean installs. |  |
 
-## 🧑‍💻 Dev usage
+</details>
 
-To develop and release your Patches using this template:
+<details open>
+<summary>📦 DeviceInfo&nbsp;&nbsp;•&nbsp;&nbsp;7 patches</summary>
+<br>
 
-- **Make all changes to the `dev` branch.**
-- For local development work build your patches using the gradle task `./gradlew buildAndroid` to generate the mpp file found in `patches/build/libs/patches-*.mpp`. Apply your patches locally using Morphe Desktop tool like any other patch bundle.
-- Always use [Semantic commit](https://kapeli.com/cheat_sheets/Semantic_Commits.docset/Contents/Resources/Documents/index) messages for commits. To keep it simple use only 3 commit message types: 
-  - `feat: Added a new feature`
-  - `fix: Some problem now fixed`
-  - `chore: Random change you do not want in the user facing changelog`
-- Commits of `fix:` and `feat:` will automatically generate new pre-releases and `chore:` will not create a new release.
-- Users can apply your dev branch releases by enabling `pre-release` in Morphe Manager patch sources.
-- When your dev branch is ready, and you want a stable release, merge dev branch to main (do not squash, and only merge).
-- **Always use semantic release (release.yml)**. Do not manually upload or create releases by hand
-  because many files must be updated and release.yml handles everything.
+**🎯 Supported versions:**
 
-## 🤓 Tips
-- See the [patcher documentation](https://github.com/MorpheApp/morphe-patcher/blob/main/docs/1_patcher_intro.md) for more examples of creating patches and fingerprints.
-- Do not use AI to create new release scripts. The `release.yml` here already handles everything.
-  If you need omething custom with your releases then modify the existing `release.yml`
-  and `.releaserc` instead of writing everything new from scratch.
-- Do not manually edit or manually commit any generated files such as: `patches-list.json`,
-  `patches-bundle.json`, `CHANGELOG.md`.  These files will be automatically updated by `release.yml`.
-- Do not force push any semantic release commits as that will break all future releases.
-  If you need to fix a broken release, it's always easiest to create a new release instead of 
-  fixing an existing release.
+| 3.4.3.4 |
+| :---: |
 
+| 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
+|----------|----------------|-----------|
+| [Disable All Telemetry](#disable-all-telemetry) | Disables all analytics and telemetry: Firebase Analytics, Crashlytics, Sessions, Installations and Transport auto-registration, and the AdServices / Advertising ID attribution surface. |  |
+| [Hide Support Us Section](#hide-support-us-section) | Removes the "Support Us" preference category (Rate Us, Donate / Remove Ads) from the Settings screen. |  |
+| [Remove AdServices Attribution](#remove-adservices-attribution) | Removes the ACCESS_ADSERVICES_ATTRIBUTION / ACCESS_ADSERVICES_AD_ID permissions and the android.ext.adservices uses-library entry, so the Privacy Sandbox AdServices APIs are never touched. |  |
+| [Remove Advertising ID](#remove-advertising-id) | Removes the Google Play Services Advertising ID permission. |  |
+| [Remove All Ads](#remove-all-ads) | Stubs the app's single native-ad load trigger so no banner, native, or interstitial ad is ever requested or shown on any screen (dashboard, Wi-Fi/app analyzer, sensors, battery, memory, tools, or automatic tests), and removes the Facebook Audience Network mediation SDK's auto-initializing ContentProvider so it never starts. |  |
+| [Remove Facebook Audience Network Initialization](#remove-facebook-audience-network-initialization) | Removes the manifest-declared ContentProvider that auto-initializes the Facebook Audience Network mediation SDK on every app start. |  |
+| [Remove Firebase Component Discovery](#remove-firebase-component-discovery) | Removes the Firebase ComponentDiscoveryService, which is how Analytics, Crashlytics, Sessions, Installations, and Transport auto-register themselves on startup. |  |
 
-<!-- The patches end tag is intentionally placed here so the first release will clean up 
-     this readme of all developer instructions above. -->
+</details>
+
+<details open>
+<summary>📦 MT Capsule&nbsp;&nbsp;•&nbsp;&nbsp;2 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 15.9 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
+|----------|----------------|-----------|
+| [Export/Import Settings](#export-import-settings) | Adds long-press app shortcuts ("Export Settings" / "Import Settings") that back up MT Capsule's App Settings to a JSON file in the app's external files directory and restore them from it. |  |
+| [Unlock Pro](#unlock-pro) | Unlocks all pro features without a purchase. |  |
+
+</details>
+
+<details open>
+<summary>📦 Google Maps&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 26.32.06.958047303 | 26.33.02.961351034 |
+| :---: | :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
+|----------|----------------|-----------|
+| [Google Maps for ReVanced GmsCore](#google-maps-for-revanced-gmscore) | Routes supported Google Maps builds through ReVanced GmsCore using the patched Maps package and known Google Maps certificate spoof metadata. |  |
+
+</details>
+
+<details open>
+<summary>🌐 Universal&nbsp;&nbsp;•&nbsp;&nbsp;3 patches</summary>
+<br>
+
+| 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
+|----------|----------------|-----------|
+| [Force hasSystemFeature true (narrow)](#force-hassystemfeature-true-narrow) | Return true from public static boolean methods calling PackageManager.hasSystemFeature with a String arg. Narrow-scoped to avoid lifecycle callbacks. |  |
+| [Spoof Pixel model check (narrow)](#spoof-pixel-model-check-narrow) | In-APK utility methods checking Pixel model return true. Narrow-scoped to avoid lifecycle callbacks. |  |
+| [Strip root detection (narrow)](#strip-root-detection-narrow) | Force public static boolean methods referencing "Magisk" to return false. Narrow-scoped. |  |
+
+</details>
+
 <!-- PATCHES_END -->
 
 ### 🛠️ Building locally
