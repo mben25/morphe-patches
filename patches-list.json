@@ -17,7 +17,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "2.6.0",
+              "version": "2.6.1",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
@@ -138,6 +138,32 @@
       "options": []
     },
     {
+      "name": "Bypass License Check",
+      "description": "Stubs the Google Play Automatic Integrity Protection (pairip) signature and license checks, which otherwise detect the re-signed APK on launch and send the user to the app's Play Store page instead of opening the app.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.appsqueue.masareef",
+          "name": "Masareef",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#2E7D32",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "2.6.1",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
       "name": "Deactivate Firebase Analytics",
       "description": "Deactivates Firebase Analytics and removes its associated broadcast receivers and services.",
       "default": false,
@@ -157,7 +183,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "2.6.0",
+              "version": "2.6.1",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
@@ -185,7 +211,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "2.6.0",
+              "version": "2.6.1",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
@@ -211,7 +237,37 @@
           "signatures": null,
           "targets": [
             {
-              "version": "2.6.0",
+              "version": "2.6.1",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Disable All Telemetry",
+      "description": "Disables all analytics and telemetry: Firebase Analytics, Crashlytics, Sessions, Installations and Transport auto-registration, and the AdServices / Advertising ID attribution surface.",
+      "default": false,
+      "dependencies": [
+        "ResourcePatch",
+        "ResourcePatch",
+        "ResourcePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "com.ytheekshana.deviceinfo",
+          "name": "DeviceInfo",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#1976D2",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "3.4.3.4",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
@@ -247,7 +303,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "2.6.0",
+              "version": "2.6.1",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
@@ -325,7 +381,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "2.6.0",
+              "version": "2.6.1",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
@@ -351,7 +407,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "2.6.0",
+              "version": "2.6.1",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
@@ -377,7 +433,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "2.6.0",
+              "version": "2.6.1",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
@@ -403,7 +459,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "2.6.0",
+              "version": "2.6.1",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
@@ -429,7 +485,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "2.6.0",
+              "version": "2.6.1",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
@@ -467,6 +523,39 @@
       "options": []
     },
     {
+      "name": "Export/Import Settings",
+      "description": "Adds long-press app shortcuts (\"Export Settings\" / \"Import Settings\") that back up MT Capsule's App Settings to a JSON file in the app's external files directory and restore them from it.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.pryshedko.mtisland",
+          "name": "MT Capsule",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#FF0045",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "15.9",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 32,
+              "description": null
+            },
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 32,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
       "name": "Fill Adaptive Icon",
       "description": "Scales the launcher adaptive icon foreground to fill the whole icon shape, removing the empty padding around it.",
       "default": false,
@@ -481,7 +570,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "2.6.0",
+              "version": "2.6.1",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
@@ -531,6 +620,32 @@
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": 28,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Hide Support Us Section",
+      "description": "Removes the \"Support Us\" preference category (Rate Us, Donate / Remove Ads) from the Settings screen.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.ytheekshana.deviceinfo",
+          "name": "DeviceInfo",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#1976D2",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "3.4.3.4",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
               "description": null
             }
           ]
@@ -601,6 +716,32 @@
       "options": []
     },
     {
+      "name": "Remove AdServices Attribution",
+      "description": "Removes the ACCESS_ADSERVICES_ATTRIBUTION / ACCESS_ADSERVICES_AD_ID permissions and the android.ext.adservices uses-library entry, so the Privacy Sandbox AdServices APIs are never touched.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.ytheekshana.deviceinfo",
+          "name": "DeviceInfo",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#1976D2",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "3.4.3.4",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
       "name": "Remove Ads",
       "description": "Stubs out AdsManager so no banner/native ads or consent dialogs are ever loaded, requested, or shown, and the Mobile Ads SDK is never initialized.",
       "default": false,
@@ -615,7 +756,113 @@
           "signatures": null,
           "targets": [
             {
-              "version": "2.6.0",
+              "version": "2.6.1",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Remove Advertising ID",
+      "description": "Removes the Google Play Services Advertising ID permission.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.ytheekshana.deviceinfo",
+          "name": "DeviceInfo",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#1976D2",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "3.4.3.4",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Remove All Ads",
+      "description": "Stubs the app's single native-ad load trigger so no banner, native, or interstitial ad is ever requested or shown on any screen (dashboard, Wi-Fi/app analyzer, sensors, battery, memory, tools, or automatic tests), and removes the Facebook Audience Network mediation SDK's auto-initializing ContentProvider so it never starts.",
+      "default": false,
+      "dependencies": [
+        "ResourcePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "com.ytheekshana.deviceinfo",
+          "name": "DeviceInfo",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#1976D2",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "3.4.3.4",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Remove Facebook Audience Network Initialization",
+      "description": "Removes the manifest-declared ContentProvider that auto-initializes the Facebook Audience Network mediation SDK on every app start.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.ytheekshana.deviceinfo",
+          "name": "DeviceInfo",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#1976D2",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "3.4.3.4",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Remove Firebase Component Discovery",
+      "description": "Removes the Firebase ComponentDiscoveryService, which is how Analytics, Crashlytics, Sessions, Installations, and Transport auto-register themselves on startup.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.ytheekshana.deviceinfo",
+          "name": "DeviceInfo",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#1976D2",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "3.4.3.4",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
@@ -683,7 +930,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "15.7",
+              "version": "15.9",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": 32,
@@ -716,7 +963,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "2.6.0",
+              "version": "2.6.1",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
