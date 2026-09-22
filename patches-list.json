@@ -523,39 +523,6 @@
       "options": []
     },
     {
-      "name": "Export/Import Settings",
-      "description": "Adds long-press app shortcuts (\"Export Settings\" / \"Import Settings\") that back up MT Capsule's App Settings to a JSON file in the app's external files directory and restore them from it.",
-      "default": true,
-      "dependencies": [],
-      "compatiblePackages": [
-        {
-          "packageName": "com.pryshedko.mtisland",
-          "name": "MT Capsule",
-          "description": null,
-          "apkFileType": "APK",
-          "appIconColor": "#FF0045",
-          "signatures": null,
-          "targets": [
-            {
-              "version": "15.9",
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": 32,
-              "description": null
-            },
-            {
-              "version": null,
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 32,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
       "name": "Fill Adaptive Icon",
       "description": "Scales the launcher adaptive icon foreground to fill the whole icon shape, removing the empty padding around it.",
       "default": false,

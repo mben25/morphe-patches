@@ -47,7 +47,6 @@ import app.masareef.patches.telemetry.removeAppMeasurementPatch
 import app.masareef.patches.telemetry.removeCrashlyticsServicesPatch
 import app.masareef.patches.telemetry.removeFacebookServicesPatch
 import app.masareef.patches.telemetry.removeGoogleAnalyticsPatch
-import app.mtcapsule.patches.mtisland.exportImportSettingsPatch
 import app.mtcapsule.patches.mtisland.unlockProPatch
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.runBlocking
@@ -110,7 +109,7 @@ fun main(args: Array<String>) {
                 removeFirebaseComponentDiscoveryPatch,
             )
 
-            else -> setOf(unlockProPatch, exportImportSettingsPatch)
+            else -> setOf(unlockProPatch)
         }
 
         runBlocking {
