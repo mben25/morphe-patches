@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.0.0",
+  "version": "1.0.0-dev.1",
   "patches": [
     {
       "name": "AMOLED Dark Theme",
@@ -515,39 +515,6 @@
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Export/Import Settings",
-      "description": "Adds long-press app shortcuts (\"Export Settings\" / \"Import Settings\") that back up MT Capsule's App Settings to a JSON file in the app's external files directory and restore them from it.",
-      "default": true,
-      "dependencies": [],
-      "compatiblePackages": [
-        {
-          "packageName": "com.pryshedko.mtisland",
-          "name": "MT Capsule",
-          "description": null,
-          "apkFileType": "APK",
-          "appIconColor": "#FF0045",
-          "signatures": null,
-          "targets": [
-            {
-              "version": "15.9",
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": 32,
-              "description": null
-            },
-            {
-              "version": null,
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 32,
               "description": null
             }
           ]
