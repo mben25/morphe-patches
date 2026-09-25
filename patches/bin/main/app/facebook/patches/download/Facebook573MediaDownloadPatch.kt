@@ -1775,23 +1775,36 @@ val downloadFacebookMedia573Patch = bytecodePatch(
 ) {
     compatibleWith(COMPATIBILITY_FACEBOOK_573)
 
+    // Both values are MediaStore RELATIVE_PATH prefixes, not filesystem paths: the creator
+    // name is concatenated straight onto them, so they must end in "/" (plain sub-folder) or
+    // "@" (folder named @creator). Absolute paths such as /storage/emulated/0/... are rejected
+    // because MediaStore only accepts a relative path under a standard collection directory.
     val imageFolderOption = stringOption(
         key = "facebookImageFolder",
-        default = "Pictures/FroggoPatches/Facebook/@",
-        values = mapOf("Pictures/FroggoPatches/Facebook/@" to "Pictures/FroggoPatches/Facebook/@"),
+        default = "Pictures/Facebook/",
+        values = mapOf(
+            "Pictures/Facebook/" to "Pictures/Facebook/",
+            "Pictures/FroggoPatches/Facebook/@" to "Pictures/FroggoPatches/Facebook/@",
+        ),
         title = "Facebook image folder",
-        description = "Relative MediaStore folder prefix. The creator name is appended after @.",
+        description = "Relative MediaStore folder prefix below Pictures. The creator name is appended to it.",
         required = true,
-    ) { it != null && it.startsWith("Pictures/") && it.endsWith("@") && ".." !in it }
+    ) { it != null && it.startsWith("Pictures/") && (it.endsWith("/") || it.endsWith("@")) && ".." !in it }
 
+    // Stored without the "Movies/" root, which execute() prepends. MediaStore's video collection
+    // only allows DCIM/, Movies/ and Pictures/ as the primary directory, so /storage/emulated/0/Videos/
+    // maps to Movies/Videos/ here.
     val videoFolderOption = stringOption(
         key = "facebookVideoFolder",
-        default = "FroggoPatches/Facebook/@",
-        values = mapOf("Movies/FroggoPatches/Facebook/@" to "FroggoPatches/Facebook/@"),
+        default = "Videos/",
+        values = mapOf(
+            "Movies/Videos/" to "Videos/",
+            "Movies/FroggoPatches/Facebook/@" to "FroggoPatches/Facebook/@",
+        ),
         title = "Facebook video folder",
-        description = "Folder below Movies. The creator name is appended after @.",
+        description = "Folder below Movies. The creator name is appended to it.",
         required = true,
-    ) { it != null && !it.startsWith("/") && it.endsWith("@") && ".." !in it }
+    ) { it != null && !it.startsWith("/") && (it.endsWith("/") || it.endsWith("@")) && ".." !in it }
 
     execute {
         val imagePathPrefix = imageFolderOption.value!!
