@@ -1,3 +1,9 @@
+## [1.2.2](https://github.com/mben25/morphe-patches/compare/v1.2.1...v1.2.2) (2026-09-25)
+
+### 🐛 Bug Fixes
+
+* use wide move-object variants to avoid register overflow in v10+ registers ([2b543a1](https://github.com/mben25/morphe-patches/commit/2b543a1efd2c27caf706648c81a2cd429c84cc0e))
+
 ## [1.2.1](https://github.com/mben25/morphe-patches/compare/v1.2.0...v1.2.1) (2026-09-25)
 
 ### 🐛 Bug Fixes

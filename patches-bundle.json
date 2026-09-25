@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-09-25T11:38:26",
-  "description": "## [1.2.1](https://github.com/mben25/morphe-patches/compare/v1.2.0...v1.2.1) (2026-09-25)\n\n### 🐛 Bug Fixes\n\n* **facebook:** update media download folder options and validation ([bda6d17](https://github.com/mben25/morphe-patches/commit/bda6d17b3a074b31981f22cea338ebf09270e1f3))\n* use addInstructionsWithLabels to prevent VerifyError on reinjection ([5687fb2](https://github.com/mben25/morphe-patches/commit/5687fb235cb2762362bb9ef66bf3764d90ea0a8b))",
-  "download_url": "https://github.com/mben25/morphe-patches/releases/download/v1.2.1/patches-1.2.1.mpp",
+  "created_at": "2026-09-25T14:12:02",
+  "description": "## [1.2.2](https://github.com/mben25/morphe-patches/compare/v1.2.1...v1.2.2) (2026-09-25)\n\n### 🐛 Bug Fixes\n\n* use wide move-object variants to avoid register overflow in v10+ registers ([2b543a1](https://github.com/mben25/morphe-patches/commit/2b543a1efd2c27caf706648c81a2cd429c84cc0e))",
+  "download_url": "https://github.com/mben25/morphe-patches/releases/download/v1.2.2/patches-1.2.2.mpp",
   "signature_download_url": "",
-  "version": "1.2.1"
+  "version": "1.2.2"
 }
