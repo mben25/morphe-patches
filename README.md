@@ -33,7 +33,7 @@ Click here to add these patches to Morphe: https://morphe.software/add-source?gi
 ## 🩹 Patches list
 
 <!-- PATCHES_START EXPANDED -->
-> **[v1.2.4](https://github.com/mben25/morphe-patches/releases/tag/v1.2.4)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;47 patches total
+> **[v1.2.5](https://github.com/mben25/morphe-patches/releases/tag/v1.2.5)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;48 patches total
 <details open>
 <summary>📦 Masareef&nbsp;&nbsp;•&nbsp;&nbsp;14 patches</summary>
 <br>
@@ -87,7 +87,7 @@ Click here to add these patches to Morphe: https://morphe.software/add-source?gi
 </details>
 
 <details open>
-<summary>📦 Facebook&nbsp;&nbsp;•&nbsp;&nbsp;11 patches</summary>
+<summary>📦 Facebook&nbsp;&nbsp;•&nbsp;&nbsp;12 patches</summary>
 <br>
 
 **🎯 Supported versions:**
@@ -106,6 +106,7 @@ Click here to add these patches to Morphe: https://morphe.software/add-source?gi
 | [Facebook 573 AI content diagnostics](#facebook-573-ai-content-diagnostics) | Logs Facebook GenAI structural flags for Feed stories without filtering them. |  |
 | [Facebook 573 AI filter + recommendation diagnostics](#facebook-573-ai-filter-recommendation-diagnostics) | Filters detected AI Feed stories and logs structural metadata for DiscoverFeedUnit recommendation candidates in one bytecode injection. |  |
 | [Facebook 573 Feed recommendation diagnostics](#facebook-573-feed-recommendation-diagnostics) | Logs structural metadata for injected Feed stories without filtering them. |  |
+| [Fix Facebook settings links (573)](#fix-facebook-settings-links-573) | Lets re-signed Facebook open its own screens, such as the Media, Dark mode and Tab bar settings. |  |
 | [Hide Facebook AI content (573)](#hide-facebook-ai-content-573) | Filters Feed posts carrying Facebook's GenAI transparency metadata (Contenido de IA). |  |
 | [Stop Facebook Story auto-advance (573)](#stop-facebook-story-auto-advance-573) | Leaves photo and video Stories on their completed frame until the viewer navigates manually. | • Loop Stories |
 

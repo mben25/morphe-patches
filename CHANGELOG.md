@@ -1,3 +1,9 @@
+## [1.2.5](https://github.com/mben25/morphe-patches/compare/v1.2.4...v1.2.5) (2026-09-25)
+
+### 🐛 Bug Fixes
+
+* trust own package in Facebook FamilyIntentScope ([4b5ce29](https://github.com/mben25/morphe-patches/commit/4b5ce29fdbabc7417ed5f4c2108cdf24692896b0))
+
 ## [1.2.4](https://github.com/mben25/morphe-patches/compare/v1.2.3...v1.2.4) (2026-09-25)
 
 ### 🐛 Bug Fixes
