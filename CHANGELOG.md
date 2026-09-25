@@ -1,3 +1,9 @@
+## [1.2.3](https://github.com/mben25/morphe-patches/compare/v1.2.2...v1.2.3) (2026-09-25)
+
+### 🐛 Bug Fixes
+
+* reuse existing onClick/run/invoke methods in LX/WKI to avoid dex verify crash ([28274fd](https://github.com/mben25/morphe-patches/commit/28274fd0b4081858386d455c737aa8a55c2b4c69))
+
 ## [1.2.2](https://github.com/mben25/morphe-patches/compare/v1.2.1...v1.2.2) (2026-09-25)
 
 ### 🐛 Bug Fixes
