@@ -29,6 +29,7 @@ import app.facebook.patches.feed.facebook573AiContentDiagnosticsPatch
 import app.facebook.patches.feed.facebook573AiFilterSuggestedDiagnosticsPatch
 import app.facebook.patches.feed.hideFacebookAiContent573Patch
 import app.facebook.patches.feed.hideFacebookSuggestedForYou573Patch
+import app.facebook.patches.intents.fixFacebookOwnAppIntentScope573Patch
 import app.facebook.patches.refresh.blockFacebookAutomaticRefresh573Patch
 import app.facebook.patches.stories.stopFacebookStoryAutoAdvance573Patch
 import app.facebook.patches.theme.changeFacebookTheme573Patch
@@ -117,6 +118,7 @@ fun main(args: Array<String>) {
                 blockFacebookAutomaticRefresh573Patch,
                 changeFacebookTheme573Patch,
                 downloadFacebookMedia573Patch,
+                fixFacebookOwnAppIntentScope573Patch,
                 facebook573AiContentDiagnosticsPatch,
                 facebook573AiFilterSuggestedDiagnosticsPatch,
                 hideFacebookAiContent573Patch,
