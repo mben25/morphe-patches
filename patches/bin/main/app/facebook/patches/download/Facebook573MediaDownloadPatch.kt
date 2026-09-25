@@ -2602,22 +2602,12 @@ val downloadFacebookMedia573Patch = bytecodePatch(
         }
         callbackClass.methods.add(fullscreenStoryChoiceHelper)
 
-        val storyChoiceClickMethod = ImmutableMethod(
-            callbackClass.type,
-            "onClick",
-            listOf(
-                ImmutableMethodParameter("Landroid/content/DialogInterface;", null, null),
-                ImmutableMethodParameter("I", null, null),
-            ),
-            "V",
-            AccessFlags.PUBLIC.value,
-            null,
-            null,
-            MutableMethodImplementation(8),
-        ).toMutable().apply {
-            addInstructionsWithLabels(
-                0,
-                """
+        val existingStoryChoiceClick = callbackClass.methods.firstOrNull {
+            it.name == "onClick" &&
+                it.parameterTypes == listOf("Landroid/content/DialogInterface;", "I") &&
+                it.returnType == "V"
+        }
+        val froggoStoryChoiceClickBody = """
                     iget v0, p0, LX/WKI;->${'$'}t:I
                     const/16 v1, 0x8a
                     if-ne v0, v1, :froggo_story_choice_click_header
@@ -2644,7 +2634,7 @@ val downloadFacebookMedia573Patch = bytecodePatch(
                     return-void
                     :froggo_story_choice_click_header
                     const/16 v1, 0x87
-                    if-ne v0, v1, :froggo_story_choice_click_done
+                    if-ne v0, v1, :froggo_story_choice_click_unmatched
                     iget-object v0, p0, LX/WKI;->A01:Ljava/lang/Object;
                     invoke-static {v0}, LX/WKI;->froggoShowDownloadFeedbackStart(Ljava/lang/Object;)V
                     iget-object v0, p0, LX/WKI;->A00:Ljava/lang/Object;
@@ -2662,10 +2652,41 @@ val downloadFacebookMedia573Patch = bytecodePatch(
                     invoke-virtual {v0}, Ljava/lang/Thread;->start()V
                     :froggo_story_choice_click_done
                     return-void
+        """.trimIndent()
+        if (existingStoryChoiceClick != null) {
+            existingStoryChoiceClick.addInstructionsWithLabels(
+                0,
+                """
+                    $froggoStoryChoiceClickBody
+                    :froggo_story_choice_click_unmatched
                 """.trimIndent(),
+                ExternalLabel("froggo_story_choice_click_unmatched", existingStoryChoiceClick.getInstruction(0)),
             )
+        } else {
+            val storyChoiceClickMethod = ImmutableMethod(
+                callbackClass.type,
+                "onClick",
+                listOf(
+                    ImmutableMethodParameter("Landroid/content/DialogInterface;", null, null),
+                    ImmutableMethodParameter("I", null, null),
+                ),
+                "V",
+                AccessFlags.PUBLIC.value,
+                null,
+                null,
+                MutableMethodImplementation(8),
+            ).toMutable().apply {
+                addInstructionsWithLabels(
+                    0,
+                    """
+                        $froggoStoryChoiceClickBody
+                        :froggo_story_choice_click_unmatched
+                        return-void
+                    """.trimIndent(),
+                )
+            }
+            callbackClass.methods.add(storyChoiceClickMethod)
         }
-        callbackClass.methods.add(storyChoiceClickMethod)
 
         val storyWorkerMethod = ImmutableMethod(
             callbackClass.type,
@@ -2723,19 +2744,10 @@ val downloadFacebookMedia573Patch = bytecodePatch(
         }
         callbackClass.methods.add(reelWorkerMethod)
 
-        val workerMethod = ImmutableMethod(
-            callbackClass.type,
-            "run",
-            emptyList(),
-            "V",
-            AccessFlags.PUBLIC.value,
-            null,
-            null,
-            MutableMethodImplementation(16),
-        ).toMutable().apply {
-            addInstructionsWithLabels(
-                0,
-                """
+        val existingRun = callbackClass.methods.firstOrNull {
+            it.name == "run" && it.parameterTypes.isEmpty() && it.returnType == "V"
+        }
+        val froggoRunDispatchHeader = """
                     :froggo_download_dispatch_try_start
                     iget v0, p0, LX/WKI;->${'$'}t:I
                     const/16 v1, 0x84
@@ -2752,8 +2764,18 @@ val downloadFacebookMedia573Patch = bytecodePatch(
                     if-eq v0, v1, :froggo_story_first_frame_worker
                     const/16 v1, 0x89
                     if-eq v0, v1, :froggo_story_first_frame_worker
+        """.trimIndent()
+        val froggoRunDispatchUnmatched = if (existingRun != null) {
+            "goto :froggo_download_dispatch_unmatched"
+        } else {
+            """
                     invoke-static {p0}, LX/WKI;->froggoRunReelDownload(LX/WKI;)V
                     goto :froggo_download_dispatch_end
+            """.trimIndent()
+        }
+        val froggoRunBody = """
+                    $froggoRunDispatchHeader
+                    $froggoRunDispatchUnmatched
                     :froggo_fullscreen_story_worker
                     invoke-static {p0}, LX/WKI;->froggoRunFullscreenStoryDownload(LX/WKI;)V
                     goto :froggo_download_dispatch_end
@@ -2887,59 +2909,110 @@ val downloadFacebookMedia573Patch = bytecodePatch(
                     const-string v2, "dispatch exception"
                     invoke-static {v1, v2, v0}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
                     return-void
-                """.trimIndent(),
+                    :froggo_download_dispatch_unmatched
+        """.trimIndent()
+        if (existingRun != null) {
+            existingRun.addInstructionsWithLabels(
+                0,
+                froggoRunBody,
+                ExternalLabel("froggo_download_dispatch_unmatched", existingRun.getInstruction(0)),
             )
+        } else {
+            val workerMethod = ImmutableMethod(
+                callbackClass.type,
+                "run",
+                emptyList(),
+                "V",
+                AccessFlags.PUBLIC.value,
+                null,
+                null,
+                MutableMethodImplementation(16),
+            ).toMutable().apply {
+                addInstructionsWithLabels(0, froggoRunBody)
+            }
+            callbackClass.methods.add(workerMethod)
         }
-        callbackClass.methods.add(workerMethod)
 
-        val callbackInvokeMethod = ImmutableMethod(
-            callbackClass.type,
-            "invoke",
-            listOf(ImmutableMethodParameter("Ljava/lang/Object;", null, null)),
-            "Ljava/lang/Object;",
-            AccessFlags.PUBLIC.value,
-            null,
-            null,
-            MutableMethodImplementation(8),
-        ).toMutable().apply {
-            addInstructionsWithLabels(
+        // LX/WKI is R8's shared lambda-merge class (the `$t` field is its synthetic
+        // discriminator), reused across unrelated Facebook features that happen to share
+        // the same interface shape. Blindly declaring run()/invoke()/onClick() with
+        // .methods.add() would duplicate a method the stock class may already define for
+        // one of its many other $t cases, which is invalid dex and gets the whole class
+        // rejected by ART at verify time -- breaking every unrelated feature that touches
+        // a LX/WKI instance (e.g. Settings screen rows becoming unresponsive), not just
+        // this patch. So each dispatcher below checks for an existing stock body first and
+        // falls through to it for any $t it doesn't own, instead of overwriting it.
+        val existingInvoke = callbackClass.methods.firstOrNull {
+            it.name == "invoke" &&
+                it.parameterTypes == listOf("Ljava/lang/Object;") &&
+                it.returnType == "Ljava/lang/Object;"
+        }
+        val froggoInvokeDispatch = """
+            iget v0, p0, LX/WKI;->${'$'}t:I
+            const/16 v1, 0x80
+            if-eq v0, v1, :froggo_download_invoke_capture_button
+            const/16 v1, 0x81
+            if-ne v0, v1, :froggo_download_invoke_check_fullscreen
+            const-string v1, "FroggoPatches"
+            const-string v2, "invoke-start"
+            invoke-static {v1, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+            invoke-static {p1}, LX/WKI;->froggoShowDownloadFeedbackStart(Ljava/lang/Object;)V
+            new-instance v0, Ljava/lang/Thread;
+            invoke-direct {v0, p0}, Ljava/lang/Thread;-><init>(Ljava/lang/Runnable;)V
+            invoke-virtual {v0}, Ljava/lang/Thread;->start()V
+            goto :froggo_download_invoke_done
+            :froggo_download_invoke_check_fullscreen
+            const/16 v1, 0x83
+            if-ne v0, v1, :froggo_download_invoke_check_story
+            invoke-static {p0, p1}, LX/WKI;->froggoChooseFullscreenStoryDownload(LX/WKI;Ljava/lang/Object;)V
+            goto :froggo_download_invoke_done
+            :froggo_download_invoke_check_story
+            const/16 v1, 0x7f
+            if-ne v0, v1, :froggo_download_invoke_unmatched
+            invoke-static {p1}, LX/WKI;->froggoShowDownloadFeedbackStart(Ljava/lang/Object;)V
+            new-instance v0, Ljava/lang/Thread;
+            invoke-direct {v0, p0}, Ljava/lang/Thread;-><init>(Ljava/lang/Runnable;)V
+            invoke-virtual {v0}, Ljava/lang/Thread;->start()V
+            goto :froggo_download_invoke_done
+            :froggo_download_invoke_capture_button
+            invoke-static {p1}, LX/WKI;->froggoCaptureDownloadButton(Ljava/lang/Object;)V
+        """.trimIndent()
+        if (existingInvoke != null) {
+            existingInvoke.addInstructionsWithLabels(
                 0,
                 """
-                    iget v0, p0, LX/WKI;->${'$'}t:I
-                    const/16 v1, 0x80
-                    if-eq v0, v1, :froggo_download_invoke_capture_button
-                    const/16 v1, 0x81
-                    if-ne v0, v1, :froggo_download_invoke_check_fullscreen
-                    const-string v1, "FroggoPatches"
-                    const-string v2, "invoke-start"
-                    invoke-static {v1, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
-                    invoke-static {p1}, LX/WKI;->froggoShowDownloadFeedbackStart(Ljava/lang/Object;)V
-                    new-instance v0, Ljava/lang/Thread;
-                    invoke-direct {v0, p0}, Ljava/lang/Thread;-><init>(Ljava/lang/Runnable;)V
-                    invoke-virtual {v0}, Ljava/lang/Thread;->start()V
-                    goto :froggo_download_invoke_done
-                    :froggo_download_invoke_check_fullscreen
-                    const/16 v1, 0x83
-                    if-ne v0, v1, :froggo_download_invoke_check_story
-                    invoke-static {p0, p1}, LX/WKI;->froggoChooseFullscreenStoryDownload(LX/WKI;Ljava/lang/Object;)V
-                    goto :froggo_download_invoke_done
-                    :froggo_download_invoke_check_story
-                    const/16 v1, 0x7f
-                    if-ne v0, v1, :froggo_download_invoke_done
-                    invoke-static {p1}, LX/WKI;->froggoShowDownloadFeedbackStart(Ljava/lang/Object;)V
-                    new-instance v0, Ljava/lang/Thread;
-                    invoke-direct {v0, p0}, Ljava/lang/Thread;-><init>(Ljava/lang/Runnable;)V
-                    invoke-virtual {v0}, Ljava/lang/Thread;->start()V
-                    goto :froggo_download_invoke_done
-                    :froggo_download_invoke_capture_button
-                    invoke-static {p1}, LX/WKI;->froggoCaptureDownloadButton(Ljava/lang/Object;)V
+                    $froggoInvokeDispatch
                     :froggo_download_invoke_done
                     sget-object v0, LX/0FI;->A00:LX/0FI;
                     return-object v0
+                    :froggo_download_invoke_unmatched
                 """.trimIndent(),
+                ExternalLabel("froggo_download_invoke_unmatched", existingInvoke.getInstruction(0)),
             )
+        } else {
+            val callbackInvokeMethod = ImmutableMethod(
+                callbackClass.type,
+                "invoke",
+                listOf(ImmutableMethodParameter("Ljava/lang/Object;", null, null)),
+                "Ljava/lang/Object;",
+                AccessFlags.PUBLIC.value,
+                null,
+                null,
+                MutableMethodImplementation(8),
+            ).toMutable().apply {
+                addInstructionsWithLabels(
+                    0,
+                    """
+                        $froggoInvokeDispatch
+                        :froggo_download_invoke_unmatched
+                        :froggo_download_invoke_done
+                        sget-object v0, LX/0FI;->A00:LX/0FI;
+                        return-object v0
+                    """.trimIndent(),
+                )
+            }
+            callbackClass.methods.add(callbackInvokeMethod)
         }
-        callbackClass.methods.add(callbackInvokeMethod)
 
         val videoCallbackClass = videoSaveCallback.classDef
         videoCallbackClass.interfaces.removeAll { it == "Ljava/lang/Runnable;" }
