@@ -1,3 +1,9 @@
+## [1.2.0](https://github.com/mben25/morphe-patches/compare/v1.1.0...v1.2.0) (2026-09-25)
+
+### ✨ New Features
+
+* add remaining Facebook 573 theme, AI diagnostics, and story patches ([bff9e06](https://github.com/mben25/morphe-patches/commit/bff9e06898726cb905b74135c84e13afb6e3fce9))
+
 ## [1.1.0](https://github.com/mben25/morphe-patches/compare/v1.0.1...v1.1.0) (2026-09-25)
 
 ### ✨ New Features
