@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-09-25T15:17:07",
-  "description": "## [1.2.3](https://github.com/mben25/morphe-patches/compare/v1.2.2...v1.2.3) (2026-09-25)\n\n### 🐛 Bug Fixes\n\n* reuse existing onClick/run/invoke methods in LX/WKI to avoid dex verify crash ([28274fd](https://github.com/mben25/morphe-patches/commit/28274fd0b4081858386d455c737aa8a55c2b4c69))",
-  "download_url": "https://github.com/mben25/morphe-patches/releases/download/v1.2.3/patches-1.2.3.mpp",
+  "created_at": "2026-09-25T15:37:11",
+  "description": "## [1.2.4](https://github.com/mben25/morphe-patches/compare/v1.2.3...v1.2.4) (2026-09-25)\n\n### 🐛 Bug Fixes\n\n* reuse existing run() on video callback class instead of duplicating ([5323b8a](https://github.com/mben25/morphe-patches/commit/5323b8a03667dcf9b18f7fb88153f85c2a0fb3b1))",
+  "download_url": "https://github.com/mben25/morphe-patches/releases/download/v1.2.4/patches-1.2.4.mpp",
   "signature_download_url": "",
-  "version": "1.2.3"
+  "version": "1.2.4"
 }
