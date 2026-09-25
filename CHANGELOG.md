@@ -1,3 +1,9 @@
+## [1.1.0](https://github.com/mben25/morphe-patches/compare/v1.0.1...v1.1.0) (2026-09-25)
+
+### ✨ New Features
+
+* add Facebook 573 feed, reels, and story ads blocking patches ([7c16439](https://github.com/mben25/morphe-patches/commit/7c1643920ef2cfb7a111c31c06b9561797f67b27))
+
 ## [1.0.1](https://github.com/mben25/morphe-patches/compare/v1.0.0...v1.0.1) (2026-09-22)
 
 ### 🐛 Bug Fixes
