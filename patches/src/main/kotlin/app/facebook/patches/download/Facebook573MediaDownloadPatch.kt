@@ -3017,19 +3017,33 @@ val downloadFacebookMedia573Patch = bytecodePatch(
         val videoCallbackClass = videoSaveCallback.classDef
         videoCallbackClass.interfaces.removeAll { it == "Ljava/lang/Runnable;" }
         videoCallbackClass.interfaces.add("Ljava/lang/Runnable;")
-        val videoWorkerMethod = ImmutableMethod(
-            videoCallbackClass.type,
-            "run",
-            emptyList(),
-            "V",
-            AccessFlags.PUBLIC.value,
-            null,
-            null,
-            MutableMethodImplementation(17),
-        ).toMutable().apply {
-            addInstructionsWithLabels(0, compactVideoDownloadWorkerInstructions)
+        // LX/bq4; can be another R8 lambda-merge class shared with unrelated closures
+        // (same risk as LX/WKI; above). A blind run() declared here would duplicate
+        // whatever stock case already owns that signature, so check first and fall
+        // through to the original body for anything this patch does not own.
+        val existingVideoRun = videoCallbackClass.methods.firstOrNull {
+            it.name == "run" && it.parameterTypes.isEmpty() && it.returnType == "V"
         }
-        videoCallbackClass.methods.add(videoWorkerMethod)
+        if (existingVideoRun != null) {
+            existingVideoRun.addInstructionsWithLabels(
+                0,
+                compactVideoDownloadWorkerInstructions,
+            )
+        } else {
+            val videoWorkerMethod = ImmutableMethod(
+                videoCallbackClass.type,
+                "run",
+                emptyList(),
+                "V",
+                AccessFlags.PUBLIC.value,
+                null,
+                null,
+                MutableMethodImplementation(17),
+            ).toMutable().apply {
+                addInstructionsWithLabels(0, compactVideoDownloadWorkerInstructions)
+            }
+            videoCallbackClass.methods.add(videoWorkerMethod)
+        }
         videoSaveCallback.method.addInstructionsWithLabels(
             0,
             """
