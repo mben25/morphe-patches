@@ -732,7 +732,7 @@ private fun compactStoryDownloadWorkerInstructions(
     imagePathPrefix: String,
     videoPathPrefix: String,
 ) = """
-    move-object v10, p0
+    move-object/from16 v10, p0
     iget-object v10, v10, LX/WKI;->A02:Ljava/lang/Object;
     check-cast v10, Lcom/facebook/stories/viewer/ui/buckets/regular/topbar/menu/StoryViewerMoreButtonCallback;
     iget-object v0, v10, Lcom/facebook/stories/viewer/ui/buckets/regular/topbar/menu/StoryViewerMoreButtonCallback;->A09:Landroid/content/Context;
@@ -935,7 +935,7 @@ private fun compactStoryDownloadWorkerInstructions(
     const-string v13, ".jpg"
 
     :froggo_story_download_extension_ready
-    move-object p0, v13
+    move-object/16 p0, v13
     new-instance v10, Ljava/text/SimpleDateFormat;
     const-string v11, "yyyyMMdd_HHmmss"
     sget-object v5, Ljava/util/Locale;->US:Ljava/util/Locale;
@@ -1084,7 +1084,7 @@ private fun fullscreenStoryDownloadWorkerInstructions(
     videoPathPrefix: String,
 ) = run {
     val callbackHeader = """
-        move-object v10, p0
+        move-object/from16 v10, p0
         iget-object v10, v10, LX/WKI;->A02:Ljava/lang/Object;
         check-cast v10, Lcom/facebook/stories/viewer/ui/buckets/regular/topbar/menu/StoryViewerMoreButtonCallback;
         iget-object v0, v10, Lcom/facebook/stories/viewer/ui/buckets/regular/topbar/menu/StoryViewerMoreButtonCallback;->A09:Landroid/content/Context;
@@ -1094,10 +1094,10 @@ private fun fullscreenStoryDownloadWorkerInstructions(
         .replace(
             callbackHeader,
             """
-                move-object v0, p0
+                move-object/from16 v0, p0
                 iget-object v0, v0, LX/WKI;->A00:Ljava/lang/Object;
                 check-cast v0, Landroid/content/Context;
-                move-object v1, p0
+                move-object/from16 v1, p0
                 iget-object v1, v1, LX/WKI;->A01:Ljava/lang/Object;
                 check-cast v1, Lcom/facebook/stories/model/StoryCard;
             """.trimIndent(),
@@ -1237,7 +1237,7 @@ private fun storyFirstFrameWorkerInstructions(imagePathPrefix: String) = """
 """.trimIndent()
 
 private val compactVideoDownloadWorkerInstructions = """
-    move-object v1, p0
+    move-object/from16 v1, p0
     iget-object v1, v1, LX/bq4;->A01:LX/b1P;
     invoke-virtual {v1}, Landroid/view/View;->getContext()Landroid/content/Context;
     move-result-object v0
@@ -1430,7 +1430,7 @@ private val compactVideoDownloadWorkerInstructions = """
     invoke-virtual {v11, v10}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
     invoke-virtual {v11}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
     move-result-object v13
-    move-object p0, v13
+    move-object/16 p0, v13
 
     invoke-virtual {v4}, Landroid/net/Uri;->getPath()Ljava/lang/String;
     move-result-object v10
@@ -1517,7 +1517,8 @@ private val compactVideoDownloadWorkerInstructions = """
     const-string v10, "mime_type"
     invoke-virtual {v7, v10, v3}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/String;)V
     const-string v10, "relative_path"
-    invoke-virtual {v7, v10, p0}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/String;)V
+    move-object/from16 v11, p0
+    invoke-virtual {v7, v10, v11}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/String;)V
     const-string v10, "is_pending"
     const/4 v8, 0x1
     invoke-static {v8}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
