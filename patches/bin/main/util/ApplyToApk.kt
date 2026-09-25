@@ -21,6 +21,11 @@ import app.brave.patches.brave.braveSkipFirstRunPatch
 import app.morphe.patcher.Patcher
 import app.morphe.patcher.PatcherConfig
 import app.deviceinfo.patches.ads.removeAllAdsPatch
+import app.facebook.patches.ads.blockFacebookFeedAds573Patch
+import app.facebook.patches.ads.blockFacebookReelsAds573Patch
+import app.facebook.patches.ads.blockFacebookStoryAds573Patch
+import app.facebook.patches.download.downloadFacebookMedia573Patch
+import app.facebook.patches.refresh.blockFacebookAutomaticRefresh573Patch
 import app.deviceinfo.patches.ads.removeFacebookAudienceNetworkInitPatch
 import app.deviceinfo.patches.settings.hideSupportUsSectionPatch
 import app.deviceinfo.patches.telemetry.disableAllTelemetryPatch as deviceinfoDisableAllTelemetryPatch
@@ -97,6 +102,14 @@ fun main(args: Array<String>) {
                 removeGoogleAnalyticsPatch,
                 removeCrashlyticsServicesPatch,
                 removeAdsServicesPatch,
+            )
+
+            "facebook" -> setOf(
+                blockFacebookFeedAds573Patch,
+                blockFacebookReelsAds573Patch,
+                blockFacebookStoryAds573Patch,
+                blockFacebookAutomaticRefresh573Patch,
+                downloadFacebookMedia573Patch,
             )
 
             "deviceinfo" -> setOf(
