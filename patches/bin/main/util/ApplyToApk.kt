@@ -150,10 +150,15 @@ fun main(args: Array<String>) {
             }
         }
 
-        if (!failed) {
-            val patched = patcher.get()
-            println("Patched dex files: ${patched.dexFiles.map { it.name }}")
+        // The dex is written out even when a patch failed, so a run where one fingerprint no
+        // longer resolves can still be inspected for what the patches that did apply produced.
+        // Disassembling that dex is the only way to catch a bad injection that the patcher
+        // itself accepts, e.g. stale branch offsets that only surface as a VerifyError on device.
+        val dexOutput = File(temporaryFiles, "patched-dex").apply { mkdirs() }
+        patcher.get().dexFiles.forEach { dex ->
+            File(dexOutput, dex.name).outputStream().use { dex.stream.copyTo(it) }
         }
+        println("Patched dex files written to $dexOutput")
     }
 
     if (failed) exitProcess(1)

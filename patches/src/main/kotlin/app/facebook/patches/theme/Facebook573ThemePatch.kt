@@ -1,8 +1,21 @@
+/*
+ * Every labelled injection here goes through addInstructionsWithLabels, and every block that
+ * ends on a label keeps a trailing nop so the label has an instruction to bind to.
+ *
+ * Plain addInstructions freezes the offsets the inline smali compiler produced. They stay
+ * correct only while the block sits where it was inserted, and several methods in this patch
+ * are injected into more than once, so the earlier blocks get relocated and their branches end
+ * up pointing into the middle of other instructions. That passes patching and only fails on
+ * device, as
+ *   java.lang.VerifyError: Verifier rejected class ...: target dex pc 0x… is not at instruction start
+ * addInstructionsWithLabels rebinds each branch to a real dexlib2 Label, which follows the
+ * instruction across later insertions.
+ */
 package app.facebook.patches.theme
 
 import app.facebook.patches.shared.Constants.COMPATIBILITY_FACEBOOK_573
 import app.morphe.patcher.Fingerprint
-import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
+import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patcher.patch.stringOption
@@ -263,7 +276,7 @@ val changeFacebookTheme573Patch = resourcePatch(
                     AccessFlags.PUBLIC.value or AccessFlags.STATIC.value,
                     null, null, MutableMethodImplementation(2),
                 ).toMutable().apply {
-                    addInstructions(0, """
+                    addInstructionsWithLabels(0, """
                         invoke-static {p0}, LX/1yy;->A06(Landroid/content/Context;)Z
                         move-result v0
                         if-nez v0, :froggo_dark_body
@@ -286,7 +299,7 @@ val changeFacebookTheme573Patch = resourcePatch(
                     AccessFlags.PUBLIC.value or AccessFlags.STATIC.value,
                     null, null, MutableMethodImplementation(6),
                 ).toMutable().apply {
-                    addInstructions(0, """
+                    addInstructionsWithLabels(0, """
                         if-eqz p0, :froggo_cta_variant_none
                         iget-object v0, p0, LX/3Q5;->A01:LX/9Br;
                         const/16 v3, 0x80
@@ -346,7 +359,7 @@ val changeFacebookTheme573Patch = resourcePatch(
                     AccessFlags.PUBLIC.value or AccessFlags.STATIC.value,
                     null, null, MutableMethodImplementation(8),
                 ).toMutable().apply {
-                    addInstructions(0, """
+                    addInstructionsWithLabels(0, """
                         if-eqz p0, :froggo_cta_color_original
                         if-eqz p1, :froggo_cta_color_original
                         invoke-interface {p1}, LX/a5T;->CVE()Z
@@ -467,7 +480,7 @@ val changeFacebookTheme573Patch = resourcePatch(
                 }.map { it.index }.toList()
                 require(themedColorCalls.size == 2)
                 themedColorCalls.asReversed().forEach { callIndex ->
-                    themedColorMethod.addInstructions(callIndex + 2, """
+                    themedColorMethod.addInstructionsWithLabels(callIndex + 2, """
                         invoke-static {p0, p1, v0}, ${postBodyText.classDef.type}->froggoNotificationCtaBloksColor(LX/3Q5;LX/a5T;I)I
                         move-result v0
                     """.trimIndent())
@@ -480,7 +493,7 @@ val changeFacebookTheme573Patch = resourcePatch(
                     (instruction as? ReferenceInstruction)?.reference.toString() == "LX/313;->A23(I)V"
                 }.single().index
                 val postDone = postMethod.implementation!!.newLabelForIndex(postAnchor)
-                postMethod.addInstructions(postAnchor, """
+                postMethod.addInstructionsWithLabels(postAnchor, """
                     iget-object v1, v3, LX/3QZ;->A0C:Landroid/content/Context;
                     invoke-static {v1}, LX/30L;->froggoBodyColor(Landroid/content/Context;)I
                     move-result v1
@@ -509,7 +522,7 @@ val changeFacebookTheme573Patch = resourcePatch(
                         else -> "system_neutral2_800"
                     }
                     require(fingerprint.method.implementation!!.registerCount >= 3)
-                    fingerprint.method.addInstructions(0, """
+                    fingerprint.method.addInstructionsWithLabels(0, """
                         iget-object v0, p0, LX/25J;->A00:Landroid/content/Context;
                         invoke-static {v0}, LX/1yy;->A06(Landroid/content/Context;)Z
                         move-result v1
@@ -519,6 +532,7 @@ val changeFacebookTheme573Patch = resourcePatch(
                         move-result v0
                         return v0
                         :froggo_original_navigation
+                        nop
                     """.trimIndent())
                 }
 
@@ -528,7 +542,7 @@ val changeFacebookTheme573Patch = resourcePatch(
                 // reintroduce Facebook blue. Media/color variants keep Facebook contrast.
                 val contextualFdsColorMethod = contextualFdsColor.method
                 require(contextualFdsColorMethod.implementation!!.registerCount >= 4)
-                contextualFdsColorMethod.addInstructions(0, """
+                contextualFdsColorMethod.addInstructionsWithLabels(0, """
                     iget-object v0, p0, LX/1yu;->A00:Landroid/content/Context;
                     invoke-static {v0}, LX/1yy;->A06(Landroid/content/Context;)Z
                     move-result v1
@@ -583,6 +597,7 @@ val changeFacebookTheme573Patch = resourcePatch(
                     move-result v0
                     return v0
                     :froggo_original_contextual_fds_color
+                    nop
                 """.trimIndent())
 
                 // LX/1z0.A03 is the central FDS resolver. It may return a cached value or
@@ -591,7 +606,7 @@ val changeFacebookTheme573Patch = resourcePatch(
                 // on-color, badge and reaction tokens remain on Facebook's original path.
                 val baseFdsColorMethod = baseFdsColor.method
                 require(baseFdsColorMethod.implementation!!.registerCount >= 5)
-                baseFdsColorMethod.addInstructions(0, """
+                baseFdsColorMethod.addInstructionsWithLabels(0, """
                     if-eqz p1, :froggo_original_base_fds_color
                     invoke-static {p1}, LX/1yy;->A06(Landroid/content/Context;)Z
                     move-result v0
@@ -687,6 +702,7 @@ val changeFacebookTheme573Patch = resourcePatch(
                     return v0
 
                     :froggo_original_base_fds_color
+                    nop
                 """.trimIndent())
 
                 // FDSButton resolves normal PRIMARY/SECONDARY variants through contextual
@@ -694,7 +710,7 @@ val changeFacebookTheme573Patch = resourcePatch(
                 // mode; disabled, *_ON_MEDIA and *_ON_COLOR continue through Facebook.
                 val fdsButtonTextIconMethod = fdsButtonTextIconColor.method
                 require(fdsButtonTextIconMethod.implementation!!.registerCount == 7)
-                fdsButtonTextIconMethod.addInstructions(0, """
+                fdsButtonTextIconMethod.addInstructionsWithLabels(0, """
                     if-eqz p3, :froggo_original_fds_button_foreground
                     iget-object v0, p2, LX/276;->A05:LX/3QZ;
                     iget-object v0, v0, LX/3QZ;->A0C:Landroid/content/Context;
@@ -714,11 +730,12 @@ val changeFacebookTheme573Patch = resourcePatch(
                     move-result v0
                     return v0
                     :froggo_original_fds_button_foreground
+                    nop
                 """.trimIndent())
 
                 val fdsButtonBackgroundMethod = fdsButtonBackgroundDrawable.method
                 require(fdsButtonBackgroundMethod.implementation!!.registerCount == 6)
-                fdsButtonBackgroundMethod.addInstructions(0, """
+                fdsButtonBackgroundMethod.addInstructionsWithLabels(0, """
                     iget-boolean v0, p0, LX/5Rs;->A0B:Z
                     if-eqz v0, :froggo_original_fds_button_background
                     iget-object v0, p1, LX/276;->A05:LX/3QZ;
@@ -739,6 +756,7 @@ val changeFacebookTheme573Patch = resourcePatch(
                     invoke-virtual {v0, v2}, Landroid/content/Context;->getColor(I)I
                     move-result p2
                     :froggo_original_fds_button_background
+                    nop
                 """.trimIndent())
 
                 // CDS buttons use a separate semantic resolver on other Facebook surfaces.
@@ -754,7 +772,7 @@ val changeFacebookTheme573Patch = resourcePatch(
                     "Expected exactly two CDS color resolver calls in ZQi.ETY"
                 }
                 val cdsButtonBackgroundResult = cdsButtonColorResolvers.first().index + 2
-                cdsButtonMethod.addInstructions(cdsButtonBackgroundResult, """
+                cdsButtonMethod.addInstructionsWithLabels(cdsButtonBackgroundResult, """
                     move-object/from16 v14, p1
                     invoke-static {v14}, LX/1yy;->A06(Landroid/content/Context;)Z
                     move-result v14
@@ -769,6 +787,7 @@ val changeFacebookTheme573Patch = resourcePatch(
                     invoke-virtual {v14, v15}, Landroid/content/Context;->getColor(I)I
                     move-result v15
                     :froggo_original_cds_button_background
+                    nop
                 """.trimIndent())
 
                 val cdsButtonTextMethod = cdsButtonTextStyle.method
@@ -776,7 +795,7 @@ val changeFacebookTheme573Patch = resourcePatch(
                 val cdsButtonTextResolver = cdsButtonTextMethod.implementation!!.instructions.withIndex().filter { (_, instruction) ->
                     (instruction as? ReferenceInstruction)?.reference.toString() == "LX/Ytn;->A00(LX/YL0;LX/a0p;)I"
                 }.single().index + 2
-                cdsButtonTextMethod.addInstructions(cdsButtonTextResolver, """
+                cdsButtonTextMethod.addInstructionsWithLabels(cdsButtonTextResolver, """
                     invoke-static {p1}, LX/1yy;->A06(Landroid/content/Context;)Z
                     move-result v0
                     if-eqz v0, :froggo_original_cds_button_text
@@ -793,6 +812,7 @@ val changeFacebookTheme573Patch = resourcePatch(
                     invoke-virtual {p1, v0}, Landroid/content/Context;->getColor(I)I
                     move-result v6
                     :froggo_original_cds_button_text
+                    nop
                 """.trimIndent())
 
                 val splitCardInstructions = addToStorySplitCard.method.implementation!!.instructions
@@ -806,7 +826,7 @@ val changeFacebookTheme573Patch = resourcePatch(
                 require(splitCardLiterals.size == 1) {
                     "Expected exactly one #333334 dark card literal in UHO.A00"
                 }
-                addToStorySplitCard.method.addInstructions(
+                addToStorySplitCard.method.addInstructionsWithLabels(
                     splitCardLiterals.single() + 1,
                     """
                         iget-object v6, v14, LX/3QZ;->A0C:Landroid/content/Context;
@@ -827,7 +847,7 @@ val changeFacebookTheme573Patch = resourcePatch(
                 require(plusButtonLiterals.size == 1) {
                     "Expected exactly one #333334 dark card literal in 2t3.render"
                 }
-                addToStoryPlusButton.method.addInstructions(
+                addToStoryPlusButton.method.addInstructionsWithLabels(
                     plusButtonLiterals.single() + 1,
                     """
                         iget-object v8, v1, LX/3QZ;->A0C:Landroid/content/Context;
@@ -850,9 +870,10 @@ val changeFacebookTheme573Patch = resourcePatch(
                     const/4 p0, 0x0
                     return-object p0
                     :froggo_material_you_card_done
+                    nop
                 """.trimIndent()
-                darkerDarkModeColors.method.addInstructions(0, disableHardcodedDarkCardColors)
-                darkestDarkModeColors.method.addInstructions(0, disableHardcodedDarkCardColors)
+                darkerDarkModeColors.method.addInstructionsWithLabels(0, disableHardcodedDarkCardColors)
+                darkestDarkModeColors.method.addInstructionsWithLabels(0, disableHardcodedDarkCardColors)
 
             }
         }

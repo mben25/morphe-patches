@@ -2,9 +2,24 @@ package app.facebook.patches.feed
 
 import app.facebook.patches.shared.Constants.COMPATIBILITY_FACEBOOK_573
 import app.morphe.patcher.Fingerprint
-import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
+import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.patch.bytecodePatch
 
+/*
+ * Every patch in this file injects at index 0 of the same method,
+ * X.1vv.addNewEdgeToCollection, and so does blockFacebookFeedAds573Patch. Each injection
+ * relocates the blocks injected before it.
+ *
+ * That is why these must use addInstructionsWithLabels even though none of them needs an
+ * ExternalLabel: plain addInstructions keeps the offsets the inline smali compiler produced,
+ * which are only correct while the block stays where it was inserted. Once a later patch
+ * prepends its own block, those frozen offsets point into the middle of other instructions and
+ * the app dies at startup with
+ *   java.lang.VerifyError: Verifier rejected class X.1vv: ...
+ *   target dex pc 0x6f is not at instruction start
+ * addInstructionsWithLabels rebinds every branch to a real dexlib2 Label, which tracks the
+ * instruction across later insertions.
+ */
 private val feedEdgeInsertion = Fingerprint(
     parameters = listOf(
         "Lcom/google/common/collect/ImmutableList\$Builder;",
@@ -34,7 +49,7 @@ val hideFacebookAiContent573Patch = bytecodePatch(
     compatibleWith(COMPATIBILITY_FACEBOOK_573)
 
     execute {
-        feedEdgeInsertion.method.addInstructions(
+        feedEdgeInsertion.method.addInstructionsWithLabels(
             0,
             """
                 move-object/from16 v0, p2
@@ -71,7 +86,7 @@ val facebook573AiContentDiagnosticsPatch = bytecodePatch(
     compatibleWith(COMPATIBILITY_FACEBOOK_573)
 
     execute {
-        feedEdgeInsertion.method.addInstructions(
+        feedEdgeInsertion.method.addInstructionsWithLabels(
             0,
             """
                 move-object/from16 v0, p2
@@ -135,7 +150,7 @@ val facebook573AiFilterSuggestedDiagnosticsPatch = bytecodePatch(
     compatibleWith(COMPATIBILITY_FACEBOOK_573)
 
     execute {
-        feedUnitActorClassifier.method.addInstructions(
+        feedUnitActorClassifier.method.addInstructionsWithLabels(
             0,
             """
                 invoke-interface {p0}, LX/3yh;->BO4()LX/3S1;
@@ -194,7 +209,7 @@ val hideFacebookSuggestedForYou573Patch = bytecodePatch(
     compatibleWith(COMPATIBILITY_FACEBOOK_573)
 
     execute {
-        feedEdgeInsertion.method.addInstructions(
+        feedEdgeInsertion.method.addInstructionsWithLabels(
             0,
             """
                 move-object/from16 v0, p2

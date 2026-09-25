@@ -1823,7 +1823,7 @@ val downloadFacebookMedia573Patch = bytecodePatch(
             null,
             MutableMethodImplementation(16),
         ).toMutable().apply {
-            addInstructions(
+            addInstructionsWithLabels(
                 0,
                 """
                     invoke-static {p0}, LX/4hG;->A00(LX/3QZ;)LX/4hH;
@@ -1998,7 +1998,7 @@ val downloadFacebookMedia573Patch = bytecodePatch(
         require(storyAlternateHeaderAnchors.size == 1) {
             "Expected one alternate Story header child collection anchor"
         }
-        storyAlternateHeader.method.addInstructions(
+        storyAlternateHeader.method.addInstructionsWithLabels(
             storyAlternateHeaderAnchors.single(),
             """
                 invoke-static {v6}, LX/4hG;->A00(LX/3QZ;)LX/4hH;
@@ -2046,7 +2046,7 @@ val downloadFacebookMedia573Patch = bytecodePatch(
             null,
             MutableMethodImplementation(16),
         ).toMutable().apply {
-            addInstructions(
+            addInstructionsWithLabels(
                 0,
                 """
                     invoke-static {p1}, LX/9Di;->A0o(LX/3QZ;)Ljava/lang/Object;
@@ -2120,7 +2120,7 @@ val downloadFacebookMedia573Patch = bytecodePatch(
         requireNotNull(storyTrayAddIndex) {
             "Expected the fullscreen Story tray entrypoint to be added to its topbar collection"
         }
-        fullscreenStoryTopbar.method.addInstructions(
+        fullscreenStoryTopbar.method.addInstructionsWithLabels(
             storyTrayAddIndex + 1,
             """
                 move-object/from16 v66, p0
@@ -2198,7 +2198,7 @@ val downloadFacebookMedia573Patch = bytecodePatch(
             null,
             MutableMethodImplementation(8),
         ).toMutable().apply {
-            addInstructions(
+            addInstructionsWithLabels(
                 0,
                 """
                     new-instance v0, Landroid/os/Handler;
@@ -2231,7 +2231,7 @@ val downloadFacebookMedia573Patch = bytecodePatch(
             null,
             MutableMethodImplementation(6),
         ).toMutable().apply {
-            addInstructions(
+            addInstructionsWithLabels(
                 0,
                 """
                     invoke-static {}, Ljava/util/Locale;->getDefault()Ljava/util/Locale;
@@ -2272,7 +2272,7 @@ val downloadFacebookMedia573Patch = bytecodePatch(
             null,
             MutableMethodImplementation(8),
         ).toMutable().apply {
-            addInstructions(
+            addInstructionsWithLabels(
                 0,
                 """
                     :froggo_capture_button_try
@@ -2345,7 +2345,7 @@ val downloadFacebookMedia573Patch = bytecodePatch(
             null,
             MutableMethodImplementation(10),
         ).toMutable().apply {
-            addInstructions(
+            addInstructionsWithLabels(
                 0,
                 """
                     :froggo_feedback_start_try
@@ -2421,7 +2421,7 @@ val downloadFacebookMedia573Patch = bytecodePatch(
             null,
             MutableMethodImplementation(8),
         ).toMutable().apply {
-            addInstructions(
+            addInstructionsWithLabels(
                 0,
                 """
                     new-instance v0, Landroid/os/Handler;
@@ -2455,7 +2455,7 @@ val downloadFacebookMedia573Patch = bytecodePatch(
             null,
             MutableMethodImplementation(12),
         ).toMutable().apply {
-            addInstructions(
+            addInstructionsWithLabels(
                 0,
                 """
                     iget-object v0, p0, Lcom/facebook/stories/viewer/ui/buckets/regular/topbar/menu/StoryViewerMoreButtonCallback;->A02:Lcom/facebook/stories/model/StoryCard;
@@ -2531,7 +2531,7 @@ val downloadFacebookMedia573Patch = bytecodePatch(
             null,
             MutableMethodImplementation(12),
         ).toMutable().apply {
-            addInstructions(
+            addInstructionsWithLabels(
                 0,
                 """
                     iget-object v0, p0, LX/WKI;->A01:Ljava/lang/Object;
@@ -2614,7 +2614,7 @@ val downloadFacebookMedia573Patch = bytecodePatch(
             null,
             MutableMethodImplementation(8),
         ).toMutable().apply {
-            addInstructions(
+            addInstructionsWithLabels(
                 0,
                 """
                     iget v0, p0, LX/WKI;->${'$'}t:I
@@ -2676,7 +2676,7 @@ val downloadFacebookMedia573Patch = bytecodePatch(
             null,
             MutableMethodImplementation(17),
         ).toMutable().apply {
-            addInstructions(0, compactStoryDownloadWorkerInstructions(imagePathPrefix, videoPathPrefix))
+            addInstructionsWithLabels(0, compactStoryDownloadWorkerInstructions(imagePathPrefix, videoPathPrefix))
         }
         callbackClass.methods.add(storyWorkerMethod)
 
@@ -2690,7 +2690,7 @@ val downloadFacebookMedia573Patch = bytecodePatch(
             null,
             MutableMethodImplementation(16),
         ).toMutable().apply {
-            addInstructions(0, storyFirstFrameWorkerInstructions(imagePathPrefix))
+            addInstructionsWithLabels(0, storyFirstFrameWorkerInstructions(imagePathPrefix))
         }
         callbackClass.methods.add(storyFirstFrameWorkerMethod)
 
@@ -2704,7 +2704,7 @@ val downloadFacebookMedia573Patch = bytecodePatch(
             null,
             MutableMethodImplementation(17),
         ).toMutable().apply {
-            addInstructions(0, fullscreenStoryDownloadWorkerInstructions(imagePathPrefix, videoPathPrefix))
+            addInstructionsWithLabels(0, fullscreenStoryDownloadWorkerInstructions(imagePathPrefix, videoPathPrefix))
         }
         callbackClass.methods.add(fullscreenStoryWorkerMethod)
 
@@ -2718,7 +2718,7 @@ val downloadFacebookMedia573Patch = bytecodePatch(
             null,
             MutableMethodImplementation(16),
         ).toMutable().apply {
-            addInstructions(0, compactReelDownloadWorkerInstructions(videoFolderOption.value!!))
+            addInstructionsWithLabels(0, compactReelDownloadWorkerInstructions(videoFolderOption.value!!))
         }
         callbackClass.methods.add(reelWorkerMethod)
 
@@ -2732,7 +2732,7 @@ val downloadFacebookMedia573Patch = bytecodePatch(
             null,
             MutableMethodImplementation(16),
         ).toMutable().apply {
-            addInstructions(
+            addInstructionsWithLabels(
                 0,
                 """
                     :froggo_download_dispatch_try_start
@@ -2901,7 +2901,7 @@ val downloadFacebookMedia573Patch = bytecodePatch(
             null,
             MutableMethodImplementation(8),
         ).toMutable().apply {
-            addInstructions(
+            addInstructionsWithLabels(
                 0,
                 """
                     iget v0, p0, LX/WKI;->${'$'}t:I
@@ -2953,10 +2953,10 @@ val downloadFacebookMedia573Patch = bytecodePatch(
             null,
             MutableMethodImplementation(17),
         ).toMutable().apply {
-            addInstructions(0, compactVideoDownloadWorkerInstructions)
+            addInstructionsWithLabels(0, compactVideoDownloadWorkerInstructions)
         }
         videoCallbackClass.methods.add(videoWorkerMethod)
-        videoSaveCallback.method.addInstructions(
+        videoSaveCallback.method.addInstructionsWithLabels(
             0,
             """
                 move-object/from16 v1, p1
@@ -2983,7 +2983,7 @@ val downloadFacebookMedia573Patch = bytecodePatch(
             null,
             MutableMethodImplementation(32),
         ).toMutable().apply {
-            addInstructions(
+            addInstructionsWithLabels(
                 0,
                 """
                     new-instance v0, LX/WKI;
@@ -3057,7 +3057,7 @@ val downloadFacebookMedia573Patch = bytecodePatch(
         require(reelSidebarBuildCalls.size == 1) {
             "Expected one UDD sidebar builder finalization in A1K"
         }
-        reelSidebar.method.addInstructions(
+        reelSidebar.method.addInstructionsWithLabels(
             reelSidebarBuildCalls.single(),
             """
                 move-object/from16 v0, p1
@@ -3133,7 +3133,7 @@ val downloadFacebookMedia573Patch = bytecodePatch(
             null,
             MutableMethodImplementation(8),
         ).toMutable().apply {
-            addInstructions(
+            addInstructionsWithLabels(
                 0,
                 """
                     new-instance v0, Landroid/os/Handler;
@@ -3163,7 +3163,7 @@ val downloadFacebookMedia573Patch = bytecodePatch(
             null,
             MutableMethodImplementation(16),
         ).toMutable().apply {
-            addInstructions(
+            addInstructionsWithLabels(
                 0,
                 """
                     iget v0, p0, LX/WKI;->${'$'}t:I
@@ -3199,7 +3199,7 @@ val downloadFacebookMedia573Patch = bytecodePatch(
             null,
             MutableMethodImplementation(5),
         ).toMutable().apply {
-            addInstructions(
+            addInstructionsWithLabels(
                 0,
                 """
                     iget v0, p0, LX/WKI;->${'$'}t:I
@@ -3240,10 +3240,10 @@ val downloadFacebookMedia573Patch = bytecodePatch(
             null,
             MutableMethodImplementation(25),
         ).toMutable().apply {
-            addInstructions(0, compactVideoDownloadWorkerInstructions)
+            addInstructionsWithLabels(0, compactVideoDownloadWorkerInstructions)
         }
         videoCallbackClass.methods.add(videoWorkerMethod)
-        videoSaveCallback.method.addInstructions(
+        videoSaveCallback.method.addInstructionsWithLabels(
             0,
             """
                 new-instance v0, Ljava/lang/Thread;
@@ -3269,7 +3269,7 @@ val downloadFacebookMedia573Patch = bytecodePatch(
             null,
             MutableMethodImplementation(32),
         ).toMutable().apply {
-            addInstructions(
+            addInstructionsWithLabels(
                 0,
                 """
                     new-instance v0, LX/WKI;
@@ -3347,7 +3347,7 @@ val downloadFacebookMedia573Patch = bytecodePatch(
         require(reelSidebarBuildCalls.size == 1) {
             "Expected one UDD sidebar builder finalization in A1K"
         }
-        reelSidebar.method.addInstructions(
+        reelSidebar.method.addInstructionsWithLabels(
             reelSidebarBuildCalls.single(),
             """
                 move-object/from16 v0, p1
