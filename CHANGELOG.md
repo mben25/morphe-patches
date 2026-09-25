@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/mben25/morphe-patches/compare/v1.2.0...v1.2.1) (2026-09-25)
+
+### 🐛 Bug Fixes
+
+* **facebook:** update media download folder options and validation ([bda6d17](https://github.com/mben25/morphe-patches/commit/bda6d17b3a074b31981f22cea338ebf09270e1f3))
+* use addInstructionsWithLabels to prevent VerifyError on reinjection ([5687fb2](https://github.com/mben25/morphe-patches/commit/5687fb235cb2762362bb9ef66bf3764d90ea0a8b))
+
 ## [1.2.0](https://github.com/mben25/morphe-patches/compare/v1.1.0...v1.2.0) (2026-09-25)
 
 ### ✨ New Features
