@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-09-25T10:14:14",
-  "description": "## [1.2.0](https://github.com/mben25/morphe-patches/compare/v1.1.0...v1.2.0) (2026-09-25)\n\n### ✨ New Features\n\n* add remaining Facebook 573 theme, AI diagnostics, and story patches ([bff9e06](https://github.com/mben25/morphe-patches/commit/bff9e06898726cb905b74135c84e13afb6e3fce9))",
-  "download_url": "https://github.com/mben25/morphe-patches/releases/download/v1.2.0/patches-1.2.0.mpp",
+  "created_at": "2026-09-25T11:38:26",
+  "description": "## [1.2.1](https://github.com/mben25/morphe-patches/compare/v1.2.0...v1.2.1) (2026-09-25)\n\n### 🐛 Bug Fixes\n\n* **facebook:** update media download folder options and validation ([bda6d17](https://github.com/mben25/morphe-patches/commit/bda6d17b3a074b31981f22cea338ebf09270e1f3))\n* use addInstructionsWithLabels to prevent VerifyError on reinjection ([5687fb2](https://github.com/mben25/morphe-patches/commit/5687fb235cb2762362bb9ef66bf3764d90ea0a8b))",
+  "download_url": "https://github.com/mben25/morphe-patches/releases/download/v1.2.1/patches-1.2.1.mpp",
   "signature_download_url": "",
-  "version": "1.2.0"
+  "version": "1.2.1"
 }

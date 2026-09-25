@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "patches": [
     {
       "name": "AMOLED Dark Theme",
@@ -707,22 +707,24 @@
         {
           "key": "facebookImageFolder",
           "title": "Facebook image folder",
-          "description": "Relative MediaStore folder prefix. The creator name is appended after @.",
+          "description": "Relative MediaStore folder prefix below Pictures. The creator name is appended to it.",
           "required": true,
           "type": "kotlin.String",
-          "default": "Pictures/FroggoPatches/Facebook/@",
+          "default": "Pictures/Facebook/",
           "values": {
+            "Pictures/Facebook/": "Pictures/Facebook/",
             "Pictures/FroggoPatches/Facebook/@": "Pictures/FroggoPatches/Facebook/@"
           }
         },
         {
           "key": "facebookVideoFolder",
           "title": "Facebook video folder",
-          "description": "Folder below Movies. The creator name is appended after @.",
+          "description": "Folder below Movies. The creator name is appended to it.",
           "required": true,
           "type": "kotlin.String",
-          "default": "FroggoPatches/Facebook/@",
+          "default": "Videos/",
           "values": {
+            "Movies/Videos/": "Videos/",
             "Movies/FroggoPatches/Facebook/@": "FroggoPatches/Facebook/@"
           }
         }
