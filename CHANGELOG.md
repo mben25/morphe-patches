@@ -1,3 +1,9 @@
+## [1.2.4](https://github.com/mben25/morphe-patches/compare/v1.2.3...v1.2.4) (2026-09-25)
+
+### 🐛 Bug Fixes
+
+* reuse existing run() on video callback class instead of duplicating ([5323b8a](https://github.com/mben25/morphe-patches/commit/5323b8a03667dcf9b18f7fb88153f85c2a0fb3b1))
+
 ## [1.2.3](https://github.com/mben25/morphe-patches/compare/v1.2.2...v1.2.3) (2026-09-25)
 
 ### 🐛 Bug Fixes
