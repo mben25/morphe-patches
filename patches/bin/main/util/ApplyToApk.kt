@@ -25,7 +25,13 @@ import app.facebook.patches.ads.blockFacebookFeedAds573Patch
 import app.facebook.patches.ads.blockFacebookReelsAds573Patch
 import app.facebook.patches.ads.blockFacebookStoryAds573Patch
 import app.facebook.patches.download.downloadFacebookMedia573Patch
+import app.facebook.patches.feed.facebook573AiContentDiagnosticsPatch
+import app.facebook.patches.feed.facebook573AiFilterSuggestedDiagnosticsPatch
+import app.facebook.patches.feed.hideFacebookAiContent573Patch
+import app.facebook.patches.feed.hideFacebookSuggestedForYou573Patch
 import app.facebook.patches.refresh.blockFacebookAutomaticRefresh573Patch
+import app.facebook.patches.stories.stopFacebookStoryAutoAdvance573Patch
+import app.facebook.patches.theme.changeFacebookTheme573Patch
 import app.deviceinfo.patches.ads.removeFacebookAudienceNetworkInitPatch
 import app.deviceinfo.patches.settings.hideSupportUsSectionPatch
 import app.deviceinfo.patches.telemetry.disableAllTelemetryPatch as deviceinfoDisableAllTelemetryPatch
@@ -109,7 +115,13 @@ fun main(args: Array<String>) {
                 blockFacebookReelsAds573Patch,
                 blockFacebookStoryAds573Patch,
                 blockFacebookAutomaticRefresh573Patch,
+                changeFacebookTheme573Patch,
                 downloadFacebookMedia573Patch,
+                facebook573AiContentDiagnosticsPatch,
+                facebook573AiFilterSuggestedDiagnosticsPatch,
+                hideFacebookAiContent573Patch,
+                hideFacebookSuggestedForYou573Patch,
+                stopFacebookStoryAutoAdvance573Patch,
             )
 
             "deviceinfo" -> setOf(
