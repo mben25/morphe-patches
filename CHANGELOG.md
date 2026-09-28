@@ -1,3 +1,9 @@
+## [1.2.10](https://github.com/mben25/morphe-patches/compare/v1.2.9...v1.2.10) (2026-09-28)
+
+### 🐛 Bug Fixes
+
+* remove brave and maps patches, update applyToApk patch options ([2c8fbb4](https://github.com/mben25/morphe-patches/commit/2c8fbb49dd70638fc6a22884bb75e1204e60cd60))
+
 ## [1.2.9](https://github.com/mben25/morphe-patches/compare/v1.2.8...v1.2.9) (2026-09-28)
 
 ### 🐛 Bug Fixes
