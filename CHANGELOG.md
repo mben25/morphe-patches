@@ -1,3 +1,9 @@
+## [1.2.11](https://github.com/mben25/morphe-patches/compare/v1.2.10...v1.2.11) (2026-09-28)
+
+### 🐛 Bug Fixes
+
+* Change Masareef target 2.6.1 -> 2.6.0 ([e1503a8](https://github.com/mben25/morphe-patches/commit/e1503a89422eb9c04b00439c793adb04fcd14495))
+
 ## [1.2.10](https://github.com/mben25/morphe-patches/compare/v1.2.9...v1.2.10) (2026-09-28)
 
 ### 🐛 Bug Fixes
