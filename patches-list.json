@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.2.5",
+  "version": "1.2.6",
   "patches": [
     {
       "name": "AMOLED Dark Theme",
@@ -162,50 +162,6 @@
         }
       ],
       "options": []
-    },
-    {
-      "name": "Custom app icon",
-      "description": "Sets Facebook's launcher icon to one of its alternate app icons, including the ones the in-app App icon screen keeps locked.",
-      "default": false,
-      "dependencies": [],
-      "compatiblePackages": [
-        {
-          "packageName": "com.facebook.katana",
-          "name": "Facebook",
-          "description": null,
-          "apkFileType": "APKM",
-          "appIconColor": "#0866FF",
-          "signatures": null,
-          "targets": [
-            {
-              "version": "580.0.0.51.74",
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": [
-        {
-          "key": "icon",
-          "title": "Icon",
-          "description": "Which of Facebook's alternate icons the launcher shows.",
-          "required": true,
-          "type": "kotlin.String",
-          "default": "fab_ic",
-          "values": {
-            "Fab": "fab_ic",
-            "Vaporwave": "vaporwave_ic",
-            "Fierce": "fierce_ic",
-            "Loved": "loved_ic",
-            "Dreamy": "dreamy_ic",
-            "Quiet cool": "quiet_cool",
-            "World Cup": "worldcup_ic"
-          }
-        }
-      ]
     },
     {
       "name": "Deactivate Firebase Analytics",

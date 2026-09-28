@@ -1,3 +1,9 @@
+## [1.2.6](https://github.com/mben25/morphe-patches/compare/v1.2.5...v1.2.6) (2026-09-28)
+
+### 🚀 Updated App Support
+
+* Masareef 2.6.4 ([a3152bf](https://github.com/mben25/morphe-patches/commit/a3152bfc4b204f92e1ed165918d596d46f8cee13))
+
 ## [1.2.5](https://github.com/mben25/morphe-patches/compare/v1.2.4...v1.2.5) (2026-09-25)
 
 ### 🐛 Bug Fixes
