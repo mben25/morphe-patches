@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-09-28T22:33:18",
-  "description": "## [1.2.8](https://github.com/mben25/morphe-patches/compare/v1.2.7...v1.2.8) (2026-09-28)\n\n### 🐛 Bug Fixes\n\n* Revert Masareef target 2.6.3 -> 2.6.4 ([b5c06ef](https://github.com/mben25/morphe-patches/commit/b5c06ef857635c635751fe0e11fe096df5d0b3df))",
-  "download_url": "https://github.com/mben25/morphe-patches/releases/download/v1.2.8/patches-1.2.8.mpp",
+  "created_at": "2026-09-28T22:46:59",
+  "description": "## [1.2.9](https://github.com/mben25/morphe-patches/compare/v1.2.8...v1.2.9) (2026-09-28)\n\n### 🐛 Bug Fixes\n\n* Change Masareef target 2.6.4 -> 2.6.1 ([8588d4a](https://github.com/mben25/morphe-patches/commit/8588d4acccccb805794c6a56bfed6793d78c0b28))",
+  "download_url": "https://github.com/mben25/morphe-patches/releases/download/v1.2.9/patches-1.2.9.mpp",
   "signature_download_url": "",
-  "version": "1.2.8"
+  "version": "1.2.9"
 }
