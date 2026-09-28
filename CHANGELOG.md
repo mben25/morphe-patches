@@ -1,3 +1,9 @@
+## [1.2.12](https://github.com/mben25/morphe-patches/compare/v1.2.11...v1.2.12) (2026-09-28)
+
+### 🐛 Bug Fixes
+
+* **masareef:** downgrade target version to 2.6.0 ([01df582](https://github.com/mben25/morphe-patches/commit/01df5822e1041c81a86c9e30005571e32c8b9531))
+
 ## [1.2.11](https://github.com/mben25/morphe-patches/compare/v1.2.10...v1.2.11) (2026-09-28)
 
 ### 🐛 Bug Fixes
