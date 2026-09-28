@@ -3,21 +3,21 @@ package app.facebook.patches.shared
 import app.morphe.patcher.patch.ApkFileType
 import app.morphe.patcher.patch.AppTarget
 import app.morphe.patcher.patch.Compatibility
-import app.morphe.patcher.patch.SupportedAbi
 
 object Constants {
-    val COMPATIBILITY_FACEBOOK_573 = Compatibility(
+    const val PACKAGE_NAME = "com.facebook.katana"
+
+    /**
+     * Verified against the decoded manifest of `facebook_580.0.0.51.74.apkm`
+     * (arm64-v8a, 480dpi, Android 9.0+, versionCode 475019269).
+     */
+    val COMPATIBILITY_FACEBOOK = Compatibility(
         name = "Facebook",
-        packageName = "com.facebook.katana",
-        apkFileType = ApkFileType.APK,
-        appIconColor = 0x1877F2,
+        packageName = PACKAGE_NAME,
+        apkFileType = ApkFileType.APKM,
+        appIconColor = 0x0866FF,
         targets = listOf(
-            AppTarget(
-                version = "573.0.0.37.74",
-                versionCodes = mapOf(
-                    SupportedAbi.ARM64_V8A to 473623755,
-                ),
-            ),
+            AppTarget(version = "580.0.0.51.74"),
         ),
     )
 }
