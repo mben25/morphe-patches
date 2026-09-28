@@ -26,9 +26,8 @@ settings {
         defaultNamespace = "app.morphe.extension"
 
         // Keep the extension class names intact (must resolve to an absolute path).
-        // googleMapsMicroGPatch references extension classes by their exact names
-        // (e.g. Lapp/morphe/extension/shared/patches/GmsCoreSupportPatch;), so R8
-        // must not obfuscate them.
+        // Patches reference extension classes by their exact names, so R8 must not
+        // obfuscate them.
         proguardFiles(rootProject.projectDir.resolve("extensions/proguard-rules.pro").toString())
     }
 }

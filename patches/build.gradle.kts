@@ -3,7 +3,7 @@ group = "app.mtcapsule"
 patches {
     about {
         name = "Mben Morphe Patches"
-        description = "Patches for MT Capsule, Google Maps (ReVanced GmsCore + universal spoof/strip patches) and Masareef (ads, telemetry, branding, pro unlock)"
+        description = "Patches for MT Capsule (incl. universal spoof/strip patches), Device Info and Masareef (ads, telemetry, branding, pro unlock)"
         source = "git@github.com:MorpheApp/morphe-patches-template.git"
         author = "na"
         contact = "na"

@@ -14,7 +14,7 @@ verified against 15.7, minSdk 32).
 ```bash
 ./gradlew buildAndroid                 # build the bundle -> patches/build/libs/patches-*.mpp
 ./gradlew :patches:buildAndroid clean  # what CI runs to verify compilation
-./gradlew :patches:applyToApk --args "<path-to.apk> [outputDexDir] [--patches=mtcapsule|brave|brave-slim]"
+./gradlew :patches:applyToApk --args "<path-to.apk> [outputDexDir] [--patches=mtcapsule|masareef|deviceinfo]"
 ./gradlew :patches:generatePatchesList # regenerates patches-list.json (release only)
 ```
 
@@ -48,34 +48,6 @@ If the new app appears to need a change in existing code, do not make it: prefer
 duplicating the small piece into the new package, and if the shared code genuinely has to
 change, stop and ask first. Silent edits to a working app's patches are how a bundle
 regresses on an app nobody was testing.
-
-## Brave (`app/brave/patches/`)
-
-Ported from the `kveld` bundle (`app.morphe.patches.brave`) and verified against
-**BraveMonoarm64.apk 1.94.117** (versionCode 429411704).
-
-**The APK matters.** Brave ships as an app bundle with isolated splits: the base split has
-only ~4.6k classes (stubs plus `org.chromium.base`), while everything these patches
-fingerprint — `PrefService`, `MinidumpUploadServiceImpl`, `BraveOriginPreferences`,
-`NotificationSchedulerTask` — lives in the chrome split. Feeding Manager a base-split APK
-fails on the first fingerprint (`Failed to match the fingerprint … BraveBlockTelemetryPatch`).
-Use the standalone `BraveMonoarm64.apk` from
-`github.com/brave/brave-browser/releases/tag/v<version>`; that is what `COMPATIBILITY_BRAVE`
-(`ApkFileType.APK`) documents.
-
-Verify with:
-
-```bash
-./gradlew :patches:applyToApk --args "<BraveMonoarm64.apk> build/apply-brave --patches=brave"
-./gradlew :patches:applyToApk --args "<BraveMonoarm64.apk> build/apply-slim --patches=brave-slim"
-```
-
-`braveHostsBlockerPatch` rewrites telemetry hosts inside `lib/arm64-v8a/libchrome.so`. It
-**scans** for the host strings instead of using dumped file offsets (the upstream version
-did, and threw on any binary those offsets did not match). Hosts occur both standalone
-(`\0host\0`) and as URL authorities (`\0https://host/path\0`); both are overwritten with
-`0.0.0.0` plus NUL padding, so a URL collapses to `https://0.0.0.0`. 1.94.117 yields 12
-rewrites across 10 host names.
 
 ## How the patches work
 

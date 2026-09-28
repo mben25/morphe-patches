@@ -3,21 +3,11 @@
  * it only applies the patches in this project to an APK on disk and prints the result,
  * so fingerprint regressions are caught without going through Manager or the CLI.
  *
- * Usage: ./gradlew :patches:applyToApk --args "<apk> [outputDexDir] [--patches=mtcapsule|brave|masareef|deviceinfo]"
+ * Usage: ./gradlew :patches:applyToApk --args "<apk> [outputDexDir] [--patches=mtcapsule|masareef|deviceinfo]"
  */
 
 package util
 
-import app.brave.patches.brave.braveBackgroundSyncPatch
-import app.brave.patches.brave.braveBatteryOptimizationPatch
-import app.brave.patches.brave.braveBlockTelemetryPatch
-import app.brave.patches.brave.braveDisablePullToRefreshPatch
-import app.brave.patches.brave.braveLocaleSlimmerPatch
-import app.brave.patches.brave.braveNativeBloatSlimmerPatch
-import app.brave.patches.brave.braveNotificationSchedulerOptimizationPatch
-import app.brave.patches.brave.braveOriginPatch
-import app.brave.patches.brave.bravePerformanceOptimizationPatch
-import app.brave.patches.brave.braveSkipFirstRunPatch
 import app.morphe.patcher.Patcher
 import app.morphe.patcher.PatcherConfig
 import app.deviceinfo.patches.ads.removeAllAdsPatch
@@ -66,25 +56,7 @@ fun main(args: Array<String>) {
     var failed = false
 
     Patcher(PatcherConfig(apkFile = apk, temporaryFilesPath = temporaryFiles)).use { patcher ->
-        // The locale/native slimmers are opt-in and rewrite files in place, so they get
-        // their own set ("brave-slim") instead of running in the default Brave check.
         patcher += when (patchSet) {
-            "brave-slim" -> setOf(
-                braveLocaleSlimmerPatch,
-                braveNativeBloatSlimmerPatch,
-            )
-
-            "brave" -> setOf(
-                braveBackgroundSyncPatch,
-                braveBatteryOptimizationPatch,
-                braveBlockTelemetryPatch,
-                braveDisablePullToRefreshPatch,
-                braveNotificationSchedulerOptimizationPatch,
-                braveOriginPatch,
-                bravePerformanceOptimizationPatch,
-                braveSkipFirstRunPatch,
-            )
-
             "masareef" -> setOf(
                 bypassLicenseCheckPatch,
                 removeAdsPatch,
