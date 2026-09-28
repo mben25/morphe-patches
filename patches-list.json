@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.2.6",
+  "version": "1.2.7",
   "patches": [
     {
       "name": "AMOLED Dark Theme",
@@ -17,7 +17,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "2.6.4",
+              "version": "2.6.3",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
@@ -152,7 +152,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "2.6.4",
+              "version": "2.6.3",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
@@ -183,7 +183,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "2.6.4",
+              "version": "2.6.3",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
@@ -211,7 +211,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "2.6.4",
+              "version": "2.6.3",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
@@ -237,7 +237,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "2.6.4",
+              "version": "2.6.3",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
@@ -303,7 +303,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "2.6.4",
+              "version": "2.6.3",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
@@ -381,7 +381,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "2.6.4",
+              "version": "2.6.3",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
@@ -407,7 +407,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "2.6.4",
+              "version": "2.6.3",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
@@ -433,7 +433,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "2.6.4",
+              "version": "2.6.3",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
@@ -459,7 +459,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "2.6.4",
+              "version": "2.6.3",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
@@ -485,7 +485,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "2.6.4",
+              "version": "2.6.3",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
@@ -537,7 +537,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "2.6.4",
+              "version": "2.6.3",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
@@ -723,7 +723,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "2.6.4",
+              "version": "2.6.3",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
@@ -930,7 +930,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "2.6.4",
+              "version": "2.6.3",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
