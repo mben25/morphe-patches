@@ -3,7 +3,7 @@
  * it only applies the patches in this project to an APK on disk and prints the result,
  * so fingerprint regressions are caught without going through Manager or the CLI.
  *
- * Usage: ./gradlew :patches:applyToApk --args "<apk> [outputDexDir] [--patches=mtcapsule|masareef|deviceinfo]"
+ * Usage: ./gradlew :patches:applyToApk --args "<apk> [outputDexDir] [--patches=mtcapsule|masareef|deviceinfo|stayfree]"
  */
 
 package util
@@ -38,6 +38,10 @@ import app.masareef.patches.telemetry.removeCrashlyticsServicesPatch
 import app.masareef.patches.telemetry.removeFacebookServicesPatch
 import app.masareef.patches.telemetry.removeGoogleAnalyticsPatch
 import app.mtcapsule.patches.mtisland.unlockProPatch
+import app.stayfree.patches.inbox.removeInboxControlPatch
+import app.stayfree.patches.login.removeGoogleLoginRequestPatch
+import app.stayfree.patches.premium.unlockAllFeaturesPatch
+import app.stayfree.patches.telemetry.disableAllTelemetryPatch as stayfreeDisableAllTelemetryPatch
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.runBlocking
 import java.io.File
@@ -79,6 +83,13 @@ fun main(args: Array<String>) {
                 deviceinfoRemoveAdvertisingIdPatch,
                 removeAdServicesAttributionPatch,
                 removeFirebaseComponentDiscoveryPatch,
+            )
+
+            "stayfree" -> setOf(
+                stayfreeDisableAllTelemetryPatch,
+                removeGoogleLoginRequestPatch,
+                removeInboxControlPatch,
+                unlockAllFeaturesPatch,
             )
 
             else -> setOf(unlockProPatch)
