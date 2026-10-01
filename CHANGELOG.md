@@ -1,3 +1,9 @@
+## [1.3.0](https://github.com/mben25/morphe-patches/compare/v1.2.12...v1.3.0) (2026-09-29)
+
+### ✨ New Features
+
+* **patches:** add stayfree patches and update masareef target version ([c5180ae](https://github.com/mben25/morphe-patches/commit/c5180ae0a1980eb685c22a3622df7db0c23236f6))
+
 ## [1.2.12](https://github.com/mben25/morphe-patches/compare/v1.2.11...v1.2.12) (2026-09-28)
 
 ### 🐛 Bug Fixes
