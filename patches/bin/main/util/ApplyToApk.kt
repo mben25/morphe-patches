@@ -38,6 +38,12 @@ import app.masareef.patches.telemetry.removeCrashlyticsServicesPatch
 import app.masareef.patches.telemetry.removeFacebookServicesPatch
 import app.masareef.patches.telemetry.removeGoogleAnalyticsPatch
 import app.mtcapsule.patches.mtisland.unlockProPatch
+import app.salaat.patches.integrity.neutralizeSignatureCheckPatch
+import app.salaat.patches.rating.disableAppRatingPatch
+import app.salaat.patches.remoteconfig.ignoreRemoteConfigOverridesPatch
+import app.salaat.patches.telemetry.disableAllTelemetryPatch as salaatDisableAllTelemetryPatch
+import app.salaat.patches.telemetry.deactivateFirebaseTelemetryPatch
+import app.salaat.patches.telemetry.disablePartnerSdksPatch
 import app.stayfree.patches.inbox.removeInboxControlPatch
 import app.stayfree.patches.login.removeGoogleLoginRequestPatch
 import app.stayfree.patches.premium.unlockAllFeaturesPatch
@@ -90,6 +96,15 @@ fun main(args: Array<String>) {
                 removeGoogleLoginRequestPatch,
                 removeInboxControlPatch,
                 unlockAllFeaturesPatch,
+            )
+
+            "salaat" -> setOf(
+                neutralizeSignatureCheckPatch,
+                salaatDisableAllTelemetryPatch,
+                disablePartnerSdksPatch,
+                deactivateFirebaseTelemetryPatch,
+                disableAppRatingPatch,
+                ignoreRemoteConfigOverridesPatch,
             )
 
             else -> setOf(unlockProPatch)
