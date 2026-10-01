@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "patches": [
     {
       "name": "AMOLED Dark Theme",
@@ -140,6 +140,32 @@
       "options": []
     },
     {
+      "name": "Deactivate Firebase Telemetry",
+      "description": "Disables Firebase/Google Analytics collection, Crashlytics crash reporting and session tracking via manifest flags, strips the App Measurement services and receiver, and removes the advertising-ID permission. App functionality (prayer times, push notifications) is unaffected.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "org.hicham.salaat",
+          "name": "Salaat First",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#00897B",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "6.3.4",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
       "name": "Disable All Telemetry",
       "description": "Disables all analytics and telemetry: Firebase Analytics, Crashlytics, Sessions, Installations and Transport auto-registration, and the AdServices / Advertising ID attribution surface.",
       "default": false,
@@ -207,6 +233,36 @@
     },
     {
       "name": "Disable All Telemetry",
+      "description": "Comprehensive privacy patch: disables the OpenSignal and CellRebel data-collection SDKs and deactivates Firebase/Google Analytics, Crashlytics and session tracking. Does not affect app functionality.",
+      "default": false,
+      "dependencies": [
+        "BytecodePatch",
+        "BytecodePatch",
+        "ResourcePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "org.hicham.salaat",
+          "name": "Salaat First",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#00897B",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "6.3.4",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Disable All Telemetry",
       "description": "Removes and blocks all telemetry and analytics: SensorTower usage-data upload (app/web usage, browsing, shopping, AI prompts), Amplitude, Singular, Bugsnag, Firebase Analytics/Crashlytics/Performance/Sessions, Google App Measurement, Facebook app events and the advertising ID. Telemetry endpoints are also rewritten to localhost.",
       "default": true,
       "dependencies": [
@@ -223,6 +279,34 @@
           "targets": [
             {
               "version": "20.14.1",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Disable App Rating Prompt",
+      "description": "Removes the Play In-App Review (\"rate this app\") prompt launched from MainActivity.onCreate, so the review dialog is never requested.",
+      "default": false,
+      "dependencies": [
+        "BytecodePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "org.hicham.salaat",
+          "name": "Salaat First",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#00897B",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "6.3.4",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
@@ -364,6 +448,35 @@
       "options": []
     },
     {
+      "name": "Disable Partner Data-Collection SDKs",
+      "description": "Disables the bundled OpenSignal and CellRebel network-measurement SDKs, which collect location, cell and network telemetry in the background. Forces each wrapper's eligibility check to return false so the SDKs never initialize. Also strips their background components from the manifest.",
+      "default": false,
+      "dependencies": [
+        "BytecodePatch",
+        "ResourcePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "org.hicham.salaat",
+          "name": "Salaat First",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#00897B",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "6.3.4",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
       "name": "Fill Adaptive Icon",
       "description": "Scales the launcher adaptive icon foreground to fill the whole icon shape, removing the empty padding around it.",
       "default": false,
@@ -413,6 +526,60 @@
           "targets": [
             {
               "version": "3.4.3.4",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Ignore Remote-Config Overrides",
+      "description": "Severs the Flagsmith remote-override channel by forcing the remote-config delegate to always resolve to the Firebase provider (which uses the app's bundled defaults). Server-side flags can no longer be flipped on against a patched build. Config reads keep working normally.",
+      "default": false,
+      "dependencies": [
+        "BytecodePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "org.hicham.salaat",
+          "name": "Salaat First",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#00897B",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "6.3.4",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Neutralize Signature Check",
+      "description": "Stubs the hidden anti-tamper check in LanguageCheckerKt that MD5-fingerprints the signing certificate and calls System.exit(0) when it does not match the bundled signature. A re-signed (patched) APK always mismatches, so without this the app kills itself on launch and no other patch can run. Required dependency of every other Salaat patch.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "org.hicham.salaat",
+          "name": "Salaat First",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#00897B",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "6.3.4",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,

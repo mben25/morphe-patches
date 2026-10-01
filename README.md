@@ -33,7 +33,7 @@ Click here to add these patches to Morphe: https://morphe.software/add-source?gi
 ## 🩹 Patches list
 
 <!-- PATCHES_START EXPANDED -->
-> **[v1.3.0](https://github.com/mben25/morphe-patches/releases/tag/v1.3.0)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;29 patches total
+> **[v1.4.0](https://github.com/mben25/morphe-patches/releases/tag/v1.4.0)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;35 patches total
 <details open>
 <summary>📦 Masareef&nbsp;&nbsp;•&nbsp;&nbsp;14 patches</summary>
 <br>
@@ -59,6 +59,26 @@ Click here to add these patches to Morphe: https://morphe.software/add-source?gi
 | [Fill Adaptive Icon](#fill-adaptive-icon) | Scales the launcher adaptive icon foreground to fill the whole icon shape, removing the empty padding around it. |  |
 | [Remove Ads](#remove-ads) | Stubs out AdsManager so no banner/native ads or consent dialogs are ever loaded, requested, or shown, and the Mobile Ads SDK is never initialized. |  |
 | [Unlock Pro (Masareef)](#unlock-pro-masareef) | Makes UserDataManager.isSubscribed() always return true, unlocking all Pro features. |  |
+
+</details>
+
+<details open>
+<summary>📦 Salaat First&nbsp;&nbsp;•&nbsp;&nbsp;6 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 6.3.4 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
+|----------|----------------|-----------|
+| [Deactivate Firebase Telemetry](#deactivate-firebase-telemetry) | Disables Firebase/Google Analytics collection, Crashlytics crash reporting and session tracking via manifest flags, strips the App Measurement services and receiver, and removes the advertising-ID permission. App functionality (prayer times, push notifications) is unaffected. |  |
+| [Disable All Telemetry](#disable-all-telemetry) | Comprehensive privacy patch: disables the OpenSignal and CellRebel data-collection SDKs and deactivates Firebase/Google Analytics, Crashlytics and session tracking. Does not affect app functionality. |  |
+| [Disable App Rating Prompt](#disable-app-rating-prompt) | Removes the Play In-App Review ("rate this app") prompt launched from MainActivity.onCreate, so the review dialog is never requested. |  |
+| [Disable Partner Data-Collection SDKs](#disable-partner-data-collection-sdks) | Disables the bundled OpenSignal and CellRebel network-measurement SDKs, which collect location, cell and network telemetry in the background. Forces each wrapper's eligibility check to return false so the SDKs never initialize. Also strips their background components from the manifest. |  |
+| [Ignore Remote-Config Overrides](#ignore-remote-config-overrides) | Severs the Flagsmith remote-override channel by forcing the remote-config delegate to always resolve to the Firebase provider (which uses the app's bundled defaults). Server-side flags can no longer be flipped on against a patched build. Config reads keep working normally. |  |
+| [Neutralize Signature Check](#neutralize-signature-check) | Stubs the hidden anti-tamper check in LanguageCheckerKt that MD5-fingerprints the signing certificate and calls System.exit(0) when it does not match the bundled signature. A re-signed (patched) APK always mismatches, so without this the app kills itself on launch and no other patch can run. Required dependency of every other Salaat patch. |  |
 
 </details>
 

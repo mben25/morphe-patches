@@ -1,3 +1,9 @@
+## [1.4.0](https://github.com/mben25/morphe-patches/compare/v1.3.0...v1.4.0) (2026-10-01)
+
+### ✨ New Features
+
+* **patches:** add salaat patches ([4e838c8](https://github.com/mben25/morphe-patches/commit/4e838c8be9d0bd86aba77cd19b4051f183beaf6b))
+
 ## [1.3.0](https://github.com/mben25/morphe-patches/compare/v1.2.12...v1.3.0) (2026-09-29)
 
 ### ✨ New Features
