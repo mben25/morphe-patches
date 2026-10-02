@@ -3,7 +3,7 @@ group = "app.mtcapsule"
 patches {
     about {
         name = "Mben Morphe Patches"
-        description = "Patches for MT Capsule (incl. universal spoof/strip patches), Device Info, Masareef (ads, telemetry, branding, pro unlock) and StayFree (telemetry, unlocks, login/Inbox Control removal)"
+        description = "Patches for MT Capsule (incl. universal spoof/strip patches), Device Info, Masareef (ads, telemetry, branding, pro unlock) and StayFree (telemetry, unlocks, login/Inbox Control removal) and Windy (premium unlock)"
         source = "git@github.com:MorpheApp/morphe-patches-template.git"
         author = "na"
         contact = "na"
