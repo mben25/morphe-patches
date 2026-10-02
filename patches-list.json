@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "patches": [
     {
       "name": "AMOLED Dark Theme",
@@ -818,6 +818,34 @@
       "default": false,
       "dependencies": [],
       "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Unlock Premium",
+      "description": "Unlocks Windy Premium UI and features client-side by patching the JS bundle (store default 'premium', hasAny()=true, clearTier() neutralised, subs-premium body class) and forces the widgets' native premium check to true. Server-side premium data still requires a real subscription. Note: the map needs WebGL — it stays gray on WebViews that block WebGL (e.g. Cromite SystemWebView).",
+      "default": true,
+      "dependencies": [
+        "RawResourcePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "com.windyty.android",
+          "name": "Windy",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#9D0300",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "51.0.1",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
       "options": []
     },
     {

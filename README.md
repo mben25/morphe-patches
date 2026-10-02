@@ -33,7 +33,7 @@ Click here to add these patches to Morphe: https://morphe.software/add-source?gi
 ## 🩹 Patches list
 
 <!-- PATCHES_START EXPANDED -->
-> **[v1.4.0](https://github.com/mben25/morphe-patches/releases/tag/v1.4.0)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;35 patches total
+> **[v1.5.0](https://github.com/mben25/morphe-patches/releases/tag/v1.5.0)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;36 patches total
 <details open>
 <summary>📦 Masareef&nbsp;&nbsp;•&nbsp;&nbsp;14 patches</summary>
 <br>
@@ -118,6 +118,21 @@ Click here to add these patches to Morphe: https://morphe.software/add-source?gi
 | [Remove Google login request](#remove-google-login-request) | Removes the "Sign in with Google" page from onboarding and the "Create StayFree profile" step from the home setup checklist. Signing in manually from the drawer/pairing screens still works. |  |
 | [Remove Inbox Control](#remove-inbox-control) | Removes the Inbox Control (Gmail cleaner) feature: its drawer entry, its permissions section and every screen that opens it. The Neon theme and custom app icons that were locked behind signing up for it are unlocked. |  |
 | [Unlock all premium features](#unlock-all-premium-features) | Unlocks every theme (gamification-level, Black and Neon themes) and all custom app icons without earning levels, pairing a device or signing up for Inbox Control. |  |
+
+</details>
+
+<details open>
+<summary>📦 Windy&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 51.0.1 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
+|----------|----------------|-----------|
+| [Unlock Premium](#unlock-premium) | Unlocks Windy Premium UI and features client-side by patching the JS bundle (store default 'premium', hasAny()=true, clearTier() neutralised, subs-premium body class) and forces the widgets' native premium check to true. Server-side premium data still requires a real subscription. Note: the map needs WebGL — it stays gray on WebViews that block WebGL (e.g. Cromite SystemWebView). |  |
 
 </details>
 

@@ -1,3 +1,9 @@
+## [1.5.0](https://github.com/mben25/morphe-patches/compare/v1.4.0...v1.5.0) (2026-10-02)
+
+### ✨ New Features
+
+* **patches:** add windy premium unlock patch ([b14fd63](https://github.com/mben25/morphe-patches/commit/b14fd63004c4eff0ebbc442a576c359e58f551be))
+
 ## [1.4.0](https://github.com/mben25/morphe-patches/compare/v1.3.0...v1.4.0) (2026-10-01)
 
 ### ✨ New Features
