@@ -11,7 +11,8 @@ import app.windy.patches.shared.Constants.COMPATIBILITY_WINDY
 // Windy (com.windyty.android) is a Capacitor web-hybrid app. All subscription logic
 // lives in one minified ES-module bundle:
 //
-//   assets/public/v/<version>/mobile.js        (51.0.1 → "51.0.1.mob.0f9e")
+//   assets/public/v/<version>/mobile.js        (51.0.1 → "51.0.1.mob.0f9e",
+//                                               51.2.1 → "51.2.1.mob.683f")
 //
 // Only the home-screen widgets have a native premium check (see Fingerprints.kt).
 //
@@ -42,7 +43,7 @@ import app.windy.patches.shared.Constants.COMPATIBILITY_WINDY
 // The JS edits below were checked separately in headless Chromium: the bundle loads,
 // the UI renders and <body> gets `subs-premium`.
 //
-// ── Subscription model (mobile.js, 51.0.1 identifiers) ────────────────────────
+// ── Subscription model (mobile.js, 51.0.1 identifiers; see JS_PATCHES for 51.2.1) ─
 //
 // Store `P` (localStorage adapter mirrored to SharedPreferences):
 //   P.get(key): cache.has(key) ? cache.get(key) : storage.get() ?? def
@@ -58,65 +59,69 @@ import app.windy.patches.shared.Constants.COMPATIBILITY_WINDY
 // Not logged in, launch runs uu(null) → cu(), which clears everything. The edits make
 // the store default to 'premium', force gr/du true, and stop cu() from clearing.
 
-private data class JsPatch(val label: String, val original: String, val replacement: String) {
-    init {
-        // Same-length edits keep every other byte offset in the bundle unchanged.
-        require(original.toByteArray(Charsets.UTF_8).size == replacement.toByteArray(Charsets.UTF_8).size) {
-            "JsPatch '$label' byte-length mismatch — pad the replacement with spaces."
-        }
-    }
+// Minifier identifiers change every release (51.0.1 → 51.2.1: store P→N, ir→sr, gr→yr,
+// du→Cu), so each site is matched by a regex that captures them; only the code shape is
+// pinned. The bundle is decoded as ISO-8859-1 so every byte maps to one char and back —
+// regex offsets are byte offsets and non-ASCII bytes round-trip untouched.
+private const val ID = """[\w$]+"""
+
+private class JsPatch(
+    val label: String,
+    pattern: String,
+    /** Builds the edit from the match; padded with spaces to the original length. */
+    val replacement: (MatchResult) -> String,
+) {
+    val regex = Regex(pattern)
 }
 
 private val JS_PATCHES = listOf(
     // P1 — subscription store defaults.
-    //   def:`premium` → P.get('subscription') returns 'premium' on a cache/storage miss.
-    //   subscriptionInfo def:0 → falsy, so fu()/getIssue returns null (no "payment issue"
-    //   popup). e=>1 / nativeSync:1 are the same truthy values, freeing bytes for `premium`.
+    //   def:`premium` → <store>.get('subscription') returns 'premium' on a cache/storage miss.
+    //   subscriptionInfo def:0 → falsy, so getIssue returns null (no "payment issue" popup).
+    //   e=>1 / nativeSync:1 are the same truthy values, freeing bytes for `premium`.
     //   nativeSync stays on, so 'premium' also reaches SharedPreferences for the widgets.
     JsPatch(
         label = "subscription store default",
-        original = "subscription:{def:null,allowed:e=>!0,save:!0,nativeSync:!0},subscriptionInfo:{def:null,allowed:ir},",
-        replacement = "subscription:{def:`premium`,allowed:e=>1,save:!0,nativeSync:1},subscriptionInfo:{def:0,allowed:ir},",
-    ),
+        pattern = """subscription:\{def:null,allowed:e=>!0,save:!0,nativeSync:!0},""" +
+            """subscriptionInfo:\{def:null,allowed:($ID)},""",
+    ) { m ->
+        "subscription:{def:`premium`,allowed:e=>1,save:!0,nativeSync:1}," +
+            "subscriptionInfo:{def:0,allowed:${m.groupValues[1]}},"
+    },
 
-    // P2 — gr flag init: true at module load; the once-listener becomes dead code.
+    // P2 — premium flag init (gr in 51.0.1, yr in 51.2.1): true at module load; the
+    // once-listener becomes dead code.
     JsPatch(
-        label = "gr premium flag init",
-        original = "gr=!!P.get(`subscription`),gr||P.once(`subscription`,e=>gr=!!e)",
-        replacement = "gr=!0,!0||P.once(`subscription`,e=>gr=!0)                      ",
-    ),
+        label = "premium flag init",
+        pattern = """($ID)=!!($ID)\.get\(`subscription`\),\1\|\|\2\.once\(`subscription`,e=>\1=!!e\)""",
+    ) { m ->
+        val (flag, store) = m.destructured
+        "$flag=!0,!0||$store.once(`subscription`,e=>$flag=!0)"
+    },
 
-    // P3 — du() hasAny: always true.
+    // P3 — hasAny() (du in 51.0.1, Cu in 51.2.1): always true.
     JsPatch(
-        label = "du hasAny gate",
-        original = "du=()=>P.get(`subscription`)!==null",
-        replacement = "du=()=>!0||P.get(`subscription`)   ",
-    ),
+        label = "hasAny gate",
+        pattern = """($ID)=\(\)=>($ID)\.get\(`subscription`\)!==null""",
+    ) { m ->
+        val (fn, store) = m.destructured
+        "$fn=()=>!0||$store.get(`subscription`)"
+    },
 
-    // P4 — cu(): drop the two P.set(...,null) calls so the 'premium' value is never
-    // evicted from the cache nor overwritten in storage.
+    // P4 — clearTier(): drop the two <store>.set(...,null) calls so the 'premium' value is
+    // never evicted from the cache nor overwritten in storage.
     JsPatch(
-        label = "cu subscription store clear",
-        original = "P.set(`subscription`,null),P.set(`subscriptionInfo`,null)",
-        replacement = "void 0                                                   ",
-    ),
+        label = "clearTier store clear",
+        pattern = """($ID)\.set\(`subscription`,null\),\1\.set\(`subscriptionInfo`,null\)""",
+    ) { "void 0" },
 
-    // P5 — cu(): remove → add, so `subs-premium` is (re)applied instead of stripped.
+    // P5 — clearTier(): remove → add, so `subs-premium` is (re)applied instead of stripped.
     // e is 'premium' here thanks to P1 + P4. classList.add is idempotent.
     JsPatch(
-        label = "cu body class direction",
-        original = "e&&document.body.classList.remove(`subs-\${e}`)",
-        replacement = "e&&document.body.classList.add   (`subs-\${e}`)",
-    ),
+        label = "clearTier body class direction",
+        pattern = Regex.escape("e&&document.body.classList.remove(`subs-\${e}`)"),
+    ) { "e&&document.body.classList.add   (`subs-\${e}`)" },
 )
-
-private fun ByteArray.indexOf(needle: ByteArray, from: Int = 0): Int {
-    outer@ for (i in from..size - needle.size) {
-        for (j in needle.indices) if (this[i + j] != needle[j]) continue@outer
-        return i
-    }
-    return -1
-}
 
 /** Applies [JS_PATCHES] to mobile.js on disk. */
 private val unlockPremiumBundlePatch = rawResourcePatch {
@@ -130,24 +135,29 @@ private val unlockPremiumBundlePatch = rawResourcePatch {
             .firstOrNull { it.exists() }
             ?: throw PatchException("Windy: assets/public/v/<version>/mobile.js not found.")
 
-        val bytes = bundleFile.readBytes()
+        var js = bundleFile.readText(Charsets.ISO_8859_1)
 
         for (patch in JS_PATCHES) {
-            val original = patch.original.toByteArray(Charsets.UTF_8)
-            val idx = bytes.indexOf(original)
-            if (idx < 0) {
-                throw PatchException(
+            val matches = patch.regex.findAll(js).toList()
+            when {
+                matches.isEmpty() -> throw PatchException(
                     "Windy: '${patch.label}' not found in mobile.js — bundle changed or already patched.",
                 )
+                // Each site must be unique, otherwise we might be editing the wrong one.
+                matches.size > 1 -> throw PatchException(
+                    "Windy: '${patch.label}' matched ${matches.size} times in mobile.js.",
+                )
             }
-            // Each pattern must be unique, otherwise we might be editing the wrong site.
-            if (bytes.indexOf(original, idx + 1) >= 0) {
-                throw PatchException("Windy: '${patch.label}' matched more than once in mobile.js.")
+            val match = matches.single()
+            val edit = patch.replacement(match)
+            // Same-length edits keep every other byte offset in the bundle unchanged.
+            if (edit.length > match.value.length) {
+                throw PatchException("Windy: '${patch.label}' replacement longer than original.")
             }
-            patch.replacement.toByteArray(Charsets.UTF_8).copyInto(bytes, idx)
+            js = js.replaceRange(match.range, edit.padEnd(match.value.length))
         }
 
-        bundleFile.writeBytes(bytes)
+        bundleFile.writeText(js, Charsets.ISO_8859_1)
     }
 }
 
@@ -166,7 +176,7 @@ val unlockPremiumPatch = bytecodePatch(
     dependsOn(unlockPremiumBundlePatch)
 
     execute {
-        // `.locals 2` in 51.0.1, so v0 is a plain local register.
+        // `.locals 2` in 51.0.1 (kr6.b) and 51.2.1 (ra6.b), so v0 is a plain local register.
         IsPremiumForWidgetFingerprint.method.addInstructions(
             0,
             """

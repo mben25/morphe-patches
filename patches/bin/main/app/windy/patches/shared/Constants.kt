@@ -11,11 +11,15 @@ object Constants {
         apkFileType = ApkFileType.APK,
         appIconColor = 0x9D0300, // Windy red.
         targets = listOf(
-            // Version the patches were developed and verified against. The JS bundle
-            // byte patterns are version-specific, so no experimental "any version" target.
+            // Versions the patches were verified against. The JS sites are matched by
+            // shape, not minified names, but a bundle rewrite can still break them, so no
+            // experimental "any version" target.
+            AppTarget(
+                version = "51.2.1"
+            ),
             AppTarget(
                 version = "51.0.1"
-            )
+            ),
         )
     )
 }
