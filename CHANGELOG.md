@@ -1,3 +1,9 @@
+## [1.5.1](https://github.com/mben25/morphe-patches/compare/v1.5.0...v1.5.1) (2026-10-02)
+
+### 🐛 Bug Fixes
+
+* **windy:** support Windy 51.2.1 ([ac82b4d](https://github.com/mben25/morphe-patches/commit/ac82b4da30d3bdd65fc4072b5b85c8b482afa780))
+
 ## [1.5.0](https://github.com/mben25/morphe-patches/compare/v1.4.0...v1.5.0) (2026-10-02)
 
 ### ✨ New Features
