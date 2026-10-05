@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.5.1",
+  "version": "1.5.2",
   "patches": [
     {
       "name": "AMOLED Dark Theme",
@@ -18,6 +18,34 @@
           "targets": [
             {
               "version": "2.6.4",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "AMOLED dark mode",
+      "description": "Unlocks AliExpress' built-in dark mode on every device (Redmi/Xiaomi/POCO are blacklisted by the app), turns it on by default so the app follows the system theme (it can still be switched off in Settings > Dark mode), and makes dark backgrounds pure black.",
+      "default": true,
+      "dependencies": [
+        "ResourcePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "com.alibaba.aliexpresshd",
+          "name": "AliExpress",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#FF4747",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "8.162.8",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
@@ -477,6 +505,136 @@
       "options": []
     },
     {
+      "name": "Disable analytics",
+      "description": "Stops the Alibaba UT analytics SDK from attaching global properties and your account identity (nick, user id, open id) to tracked events.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.alibaba.aliexpresshd",
+          "name": "AliExpress",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#FF4747",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "8.162.8",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Disable forced updates",
+      "description": "Stops the automatic \"new version available\" and forced update dialogs.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.alibaba.aliexpresshd",
+          "name": "AliExpress",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#FF4747",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "8.162.8",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Disable promotions notifications",
+      "description": "Drops promotional push notifications (deals, campaigns, wishlist price drops, trends). Order status and message notifications still come through.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.alibaba.aliexpresshd",
+          "name": "AliExpress",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#FF4747",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "8.162.8",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Disable splash screen",
+      "description": "Skips the full-screen splash advertisement shown on app launch.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.alibaba.aliexpresshd",
+          "name": "AliExpress",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#FF4747",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "8.162.8",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Enable image saving",
+      "description": "Always shows the Save button in the full-screen product and review image viewer.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.alibaba.aliexpresshd",
+          "name": "AliExpress",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#FF4747",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "8.162.8",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
       "name": "Fill Adaptive Icon",
       "description": "Scales the launcher adaptive icon foreground to fill the whole icon shape, removing the empty padding around it.",
       "default": false,
@@ -794,6 +952,110 @@
           "targets": [
             {
               "version": "20.14.1",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Remove ads",
+      "description": "Blocks the marketing pop-up layers (campaign interstitials, coupon and gift overlays) shown over the home page, product pages and search.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.alibaba.aliexpresshd",
+          "name": "AliExpress",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#FF4747",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "8.162.8",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Remove affiliate tracking",
+      "description": "Disables the Firebase Analytics events AliExpress logs for attribution and affiliate/marketing tracking.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.alibaba.aliexpresshd",
+          "name": "AliExpress",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#FF4747",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "8.162.8",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Remove coupons popup",
+      "description": "Hides the coupon floor/popup shown over search results.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.alibaba.aliexpresshd",
+          "name": "AliExpress",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#FF4747",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "8.162.8",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Remove sponsored items from search",
+      "description": "Removes sponsored (AD) products from search results.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.alibaba.aliexpresshd",
+          "name": "AliExpress",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#FF4747",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "8.162.8",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,

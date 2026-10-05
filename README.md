@@ -33,7 +33,7 @@ Click here to add these patches to Morphe: https://morphe.software/add-source?gi
 ## 🩹 Patches list
 
 <!-- PATCHES_START EXPANDED -->
-> **[v1.5.1](https://github.com/mben25/morphe-patches/releases/tag/v1.5.1)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;36 patches total
+> **[v1.5.2](https://github.com/mben25/morphe-patches/releases/tag/v1.5.2)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;46 patches total
 <details open>
 <summary>📦 Masareef&nbsp;&nbsp;•&nbsp;&nbsp;14 patches</summary>
 <br>
@@ -59,6 +59,30 @@ Click here to add these patches to Morphe: https://morphe.software/add-source?gi
 | [Fill Adaptive Icon](#fill-adaptive-icon) | Scales the launcher adaptive icon foreground to fill the whole icon shape, removing the empty padding around it. |  |
 | [Remove Ads](#remove-ads) | Stubs out AdsManager so no banner/native ads or consent dialogs are ever loaded, requested, or shown, and the Mobile Ads SDK is never initialized. |  |
 | [Unlock Pro (Masareef)](#unlock-pro-masareef) | Makes UserDataManager.isSubscribed() always return true, unlocking all Pro features. |  |
+
+</details>
+
+<details open>
+<summary>📦 AliExpress&nbsp;&nbsp;•&nbsp;&nbsp;10 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 8.162.8 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
+|----------|----------------|-----------|
+| [AMOLED dark mode](#amoled-dark-mode) | Unlocks AliExpress' built-in dark mode on every device (Redmi/Xiaomi/POCO are blacklisted by the app), turns it on by default so the app follows the system theme (it can still be switched off in Settings > Dark mode), and makes dark backgrounds pure black. |  |
+| [Disable analytics](#disable-analytics) | Stops the Alibaba UT analytics SDK from attaching global properties and your account identity (nick, user id, open id) to tracked events. |  |
+| [Disable forced updates](#disable-forced-updates) | Stops the automatic "new version available" and forced update dialogs. |  |
+| [Disable promotions notifications](#disable-promotions-notifications) | Drops promotional push notifications (deals, campaigns, wishlist price drops, trends). Order status and message notifications still come through. |  |
+| [Disable splash screen](#disable-splash-screen) | Skips the full-screen splash advertisement shown on app launch. |  |
+| [Enable image saving](#enable-image-saving) | Always shows the Save button in the full-screen product and review image viewer. |  |
+| [Remove ads](#remove-ads) | Blocks the marketing pop-up layers (campaign interstitials, coupon and gift overlays) shown over the home page, product pages and search. |  |
+| [Remove affiliate tracking](#remove-affiliate-tracking) | Disables the Firebase Analytics events AliExpress logs for attribution and affiliate/marketing tracking. |  |
+| [Remove coupons popup](#remove-coupons-popup) | Hides the coupon floor/popup shown over search results. |  |
+| [Remove sponsored items from search](#remove-sponsored-items-from-search) | Removes sponsored (AD) products from search results. |  |
 
 </details>
 

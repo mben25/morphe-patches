@@ -1,3 +1,9 @@
+## [1.5.2](https://github.com/mben25/morphe-patches/compare/v1.5.1...v1.5.2) (2026-10-05)
+
+### 🐛 Bug Fixes
+
+* **aliexpress:** add AliExpress patches with working fingerprints and AMOLED dark mode ([1dc1b27](https://github.com/mben25/morphe-patches/commit/1dc1b2724a1f43ea6e934748d344ee8c5f28d34e))
+
 ## [1.5.1](https://github.com/mben25/morphe-patches/compare/v1.5.0...v1.5.1) (2026-10-02)
 
 ### 🐛 Bug Fixes
