@@ -1,3 +1,9 @@
+## [1.5.3](https://github.com/mben25/morphe-patches/compare/v1.5.2...v1.5.3) (2026-10-05)
+
+### 🐛 Bug Fixes
+
+* **windy:** escape regex braces so the bundle loads on Android ([c56368e](https://github.com/mben25/morphe-patches/commit/c56368e3165183d06b8dc81c1c1bcb179b585225))
+
 ## [1.5.2](https://github.com/mben25/morphe-patches/compare/v1.5.1...v1.5.2) (2026-10-05)
 
 ### 🐛 Bug Fixes
