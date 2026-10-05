@@ -3,13 +3,23 @@
  * it only applies the patches in this project to an APK on disk and prints the result,
  * so fingerprint regressions are caught without going through Manager or the CLI.
  *
- * Usage: ./gradlew :patches:applyToApk --args "<apk> [outputDexDir] [--patches=mtcapsule|masareef|deviceinfo|stayfree|salaat|windy]"
+ * Usage: ./gradlew :patches:applyToApk --args "<apk> [outputDexDir] [--patches=mtcapsule|masareef|deviceinfo|stayfree|salaat|windy|aliexpress]"
  */
 
 package util
 
 import app.morphe.patcher.Patcher
 import app.morphe.patcher.PatcherConfig
+import app.aliexpress.patches.ads.hideSponsoredItemsPatch
+import app.aliexpress.patches.ads.removeAdsPatch as aliexpressRemoveAdsPatch
+import app.aliexpress.patches.analytics.disableAnalyticsPatch as aliexpressDisableAnalyticsPatch
+import app.aliexpress.patches.coupons.removeCouponsPopupPatch
+import app.aliexpress.patches.media.enableImageSavingPatch
+import app.aliexpress.patches.notifications.disablePromotionsNotificationsPatch
+import app.aliexpress.patches.splash.disableSplashScreenPatch
+import app.aliexpress.patches.theme.amoledDarkModePatch
+import app.aliexpress.patches.tracking.removeAffiliateTrackingPatch
+import app.aliexpress.patches.updates.disableForcedUpdatesPatch
 import app.deviceinfo.patches.ads.removeAllAdsPatch
 import app.deviceinfo.patches.ads.removeFacebookAudienceNetworkInitPatch
 import app.deviceinfo.patches.settings.hideSupportUsSectionPatch
@@ -109,6 +119,19 @@ fun main(args: Array<String>) {
             )
 
             "windy" -> setOf(windyUnlockPremiumPatch)
+
+            "aliexpress" -> setOf(
+                amoledDarkModePatch,
+                aliexpressRemoveAdsPatch,
+                hideSponsoredItemsPatch,
+                disableSplashScreenPatch,
+                removeCouponsPopupPatch,
+                disableForcedUpdatesPatch,
+                disablePromotionsNotificationsPatch,
+                aliexpressDisableAnalyticsPatch,
+                removeAffiliateTrackingPatch,
+                enableImageSavingPatch,
+            )
 
             else -> setOf(unlockProPatch)
         }
