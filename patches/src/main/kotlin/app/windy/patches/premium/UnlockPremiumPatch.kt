@@ -71,7 +71,11 @@ private class JsPatch(
     /** Builds the edit from the match; padded with spaces to the original length. */
     val replacement: (MatchResult) -> String,
 ) {
-    val regex = Regex(pattern)
+    // Literal `{` and `}` must both be escaped: the JVM accepts a bare `}`, but Android's ICU
+    // regex engine rejects it. JS_PATCHES is built in this file's static initializer, so a bad
+    // pattern there made the Manager reject the whole bundle ("corrupted or incomplete",
+    // 0 patches). Lazy, so a pattern error can only fail this patch at execute time.
+    val regex by lazy { Regex(pattern) }
 }
 
 private val JS_PATCHES = listOf(
@@ -82,8 +86,8 @@ private val JS_PATCHES = listOf(
     //   nativeSync stays on, so 'premium' also reaches SharedPreferences for the widgets.
     JsPatch(
         label = "subscription store default",
-        pattern = """subscription:\{def:null,allowed:e=>!0,save:!0,nativeSync:!0},""" +
-            """subscriptionInfo:\{def:null,allowed:($ID)},""",
+        pattern = """subscription:\{def:null,allowed:e=>!0,save:!0,nativeSync:!0\},""" +
+            """subscriptionInfo:\{def:null,allowed:($ID)\},""",
     ) { m ->
         "subscription:{def:`premium`,allowed:e=>1,save:!0,nativeSync:1}," +
             "subscriptionInfo:{def:0,allowed:${m.groupValues[1]}},"
