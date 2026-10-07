@@ -62,6 +62,7 @@ import app.stayfree.patches.premium.unlockAllFeaturesPatch
 import app.stayfree.patches.sync.inAppQrScannerPatch
 import app.stayfree.patches.sync.localDeviceSyncPatch
 import app.stayfree.patches.telemetry.disableAllTelemetryPatch as stayfreeDisableAllTelemetryPatch
+import app.stayfree.patches.ui.hideTextsPatch
 import app.windy.patches.premium.unlockPremiumPatch as windyUnlockPremiumPatch
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.runBlocking
@@ -115,6 +116,7 @@ fun main(args: Array<String>) {
                 unlockAllFeaturesPatch,
                 localDeviceSyncPatch,
                 inAppQrScannerPatch,
+                hideTextsPatch,
             )
 
             "salaat" -> setOf(
