@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.5.6",
+  "version": "1.5.7",
   "patches": [
     {
       "name": "AMOLED Dark Theme",
@@ -752,6 +752,41 @@
           "targets": [
             {
               "version": "6.3.4",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "In-app QR scanner",
+      "description": "Scans the browser extension's pairing QR code inside StayFree, like Brave's built-in scanner, instead of asking you to open the camera app (whose link can't open a patched app). Opens on its own when you choose to pair with a browser extension or the desktop app, and from a \"Scan QR code\" shortcut on the app icon. Uses ZXing, so it works without Google Play Services.",
+      "default": true,
+      "dependencies": [
+        "ResourcePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "com.burockgames.timeclocker",
+          "name": "StayFree",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#4E7CFF",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "20.16.1",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": "20.14.1",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,

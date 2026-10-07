@@ -1,3 +1,9 @@
+## [1.5.7](https://github.com/mben25/morphe-patches/compare/v1.5.6...v1.5.7) (2026-10-07)
+
+### 🐛 Bug Fixes
+
+* **stayfree:** scan the pairing QR code inside the app ([87c500a](https://github.com/mben25/morphe-patches/commit/87c500a09120a811792fb704808260d60001f3e3))
+
 ## [1.5.6](https://github.com/mben25/morphe-patches/compare/v1.5.5...v1.5.6) (2026-10-07)
 
 ### 🐛 Bug Fixes
