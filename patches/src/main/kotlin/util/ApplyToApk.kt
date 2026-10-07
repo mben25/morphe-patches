@@ -56,6 +56,7 @@ import app.salaat.patches.telemetry.deactivateFirebaseTelemetryPatch
 import app.salaat.patches.telemetry.disablePartnerSdksPatch
 import app.stayfree.patches.inbox.removeInboxControlPatch
 import app.stayfree.patches.login.hidePairedDevicesGoogleSignInPatch
+import app.stayfree.patches.login.removeDrawerSignInPatch
 import app.stayfree.patches.login.removeGoogleLoginRequestPatch
 import app.stayfree.patches.premium.unlockAllFeaturesPatch
 import app.stayfree.patches.sync.inAppQrScannerPatch
@@ -109,6 +110,7 @@ fun main(args: Array<String>) {
                 stayfreeDisableAllTelemetryPatch,
                 removeGoogleLoginRequestPatch,
                 hidePairedDevicesGoogleSignInPatch,
+                removeDrawerSignInPatch,
                 removeInboxControlPatch,
                 unlockAllFeaturesPatch,
                 localDeviceSyncPatch,

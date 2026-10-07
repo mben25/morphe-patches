@@ -41,3 +41,17 @@ object PairedDevicesSectionFingerprint : Fingerprint(
         fieldAccess(definingClass = R_STRING, name = "pair_with_code"),
     ),
 )
+
+/**
+ * Navigation drawer account footer composable (`Lez4;->d(Le02;I)V` in 20.16.1): a divider, then
+ * a clickable row with the Google avatar and the display name/email, or "Sign into StayFree"
+ * when signed out. The `sign_into_stayfree` string is only used here.
+ */
+object DrawerAccountFooterFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("L", "I"),
+    filters = listOf(
+        fieldAccess(definingClass = R_STRING, name = "sign_into_stayfree"),
+    ),
+)
