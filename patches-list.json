@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.5.4",
+  "version": "1.5.5",
   "patches": [
     {
       "name": "AMOLED Dark Theme",
@@ -305,6 +305,13 @@
           "appIconColor": "#4E7CFF",
           "signatures": null,
           "targets": [
+            {
+              "version": "20.16.1",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
             {
               "version": "20.14.1",
               "versionCodes": null,
@@ -683,6 +690,13 @@
           "signatures": null,
           "targets": [
             {
+              "version": "20.16.1",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
               "version": "20.14.1",
               "versionCodes": null,
               "isExperimental": false,
@@ -762,6 +776,13 @@
           "appIconColor": "#4E7CFF",
           "signatures": null,
           "targets": [
+            {
+              "version": "20.16.1",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
             {
               "version": "20.14.1",
               "versionCodes": null,
@@ -975,6 +996,13 @@
           "signatures": null,
           "targets": [
             {
+              "version": "20.16.1",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
               "version": "20.14.1",
               "versionCodes": null,
               "isExperimental": false,
@@ -1002,6 +1030,13 @@
           "appIconColor": "#4E7CFF",
           "signatures": null,
           "targets": [
+            {
+              "version": "20.16.1",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
             {
               "version": "20.14.1",
               "versionCodes": null,
@@ -1244,6 +1279,13 @@
           "appIconColor": "#4E7CFF",
           "signatures": null,
           "targets": [
+            {
+              "version": "20.16.1",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
             {
               "version": "20.14.1",
               "versionCodes": null,

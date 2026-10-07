@@ -1,3 +1,9 @@
+## [1.5.5](https://github.com/mben25/morphe-patches/compare/v1.5.4...v1.5.5) (2026-10-07)
+
+### 🐛 Bug Fixes
+
+* **stayfree:** support 20.16.1 ([a49f114](https://github.com/mben25/morphe-patches/commit/a49f114ba65a0d844871325d2540d070450281e6))
+
 ## [1.5.4](https://github.com/mben25/morphe-patches/compare/v1.5.3...v1.5.4) (2026-10-07)
 
 ### 🐛 Bug Fixes

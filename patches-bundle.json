@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-10-07T15:39:45",
-  "description": "## [1.5.4](https://github.com/mben25/morphe-patches/compare/v1.5.3...v1.5.4) (2026-10-07)\n\n### 🐛 Bug Fixes\n\n* **stayfree:** add local device sync and hide Paired Devices Google sign-in ([0c9aec9](https://github.com/mben25/morphe-patches/commit/0c9aec9149abe058c8bb68906258c686c3022e1a))",
-  "download_url": "https://github.com/mben25/morphe-patches/releases/download/v1.5.4/patches-1.5.4.mpp",
+  "created_at": "2026-10-07T16:43:35",
+  "description": "## [1.5.5](https://github.com/mben25/morphe-patches/compare/v1.5.4...v1.5.5) (2026-10-07)\n\n### 🐛 Bug Fixes\n\n* **stayfree:** support 20.16.1 ([a49f114](https://github.com/mben25/morphe-patches/commit/a49f114ba65a0d844871325d2540d070450281e6))",
+  "download_url": "https://github.com/mben25/morphe-patches/releases/download/v1.5.5/patches-1.5.5.mpp",
   "signature_download_url": "",
-  "version": "1.5.4"
+  "version": "1.5.5"
 }
