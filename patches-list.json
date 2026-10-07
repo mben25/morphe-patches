@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.5.7",
+  "version": "1.5.8",
   "patches": [
     {
       "name": "AMOLED Dark Theme",
@@ -1153,6 +1153,39 @@
           "targets": [
             {
               "version": "8.162.8",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Remove drawer sign-in",
+      "description": "Removes the \"Sign into StayFree\" account row from the bottom of the side menu.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.burockgames.timeclocker",
+          "name": "StayFree",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#4E7CFF",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "20.16.1",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": "20.14.1",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,

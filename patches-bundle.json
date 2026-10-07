@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-10-07T17:36:11",
-  "description": "## [1.5.7](https://github.com/mben25/morphe-patches/compare/v1.5.6...v1.5.7) (2026-10-07)\n\n### 🐛 Bug Fixes\n\n* **stayfree:** scan the pairing QR code inside the app ([87c500a](https://github.com/mben25/morphe-patches/commit/87c500a09120a811792fb704808260d60001f3e3))",
-  "download_url": "https://github.com/mben25/morphe-patches/releases/download/v1.5.7/patches-1.5.7.mpp",
+  "created_at": "2026-10-07T17:51:15",
+  "description": "## [1.5.8](https://github.com/mben25/morphe-patches/compare/v1.5.7...v1.5.8) (2026-10-07)\n\n### 🐛 Bug Fixes\n\n* **stayfree:** remove the drawer \"Sign into StayFree\" row ([adeaa16](https://github.com/mben25/morphe-patches/commit/adeaa1696d708424868ba158933ecc036c7db32d))",
+  "download_url": "https://github.com/mben25/morphe-patches/releases/download/v1.5.8/patches-1.5.8.mpp",
   "signature_download_url": "",
-  "version": "1.5.7"
+  "version": "1.5.8"
 }

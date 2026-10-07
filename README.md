@@ -33,7 +33,7 @@ Click here to add these patches to Morphe: https://morphe.software/add-source?gi
 ## 🩹 Patches list
 
 <!-- PATCHES_START EXPANDED -->
-> **[v1.5.7](https://github.com/mben25/morphe-patches/releases/tag/v1.5.7)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;49 patches total
+> **[v1.5.8](https://github.com/mben25/morphe-patches/releases/tag/v1.5.8)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;50 patches total
 <details open>
 <summary>📦 Masareef&nbsp;&nbsp;•&nbsp;&nbsp;14 patches</summary>
 <br>
@@ -128,7 +128,7 @@ Click here to add these patches to Morphe: https://morphe.software/add-source?gi
 </details>
 
 <details open>
-<summary>📦 StayFree&nbsp;&nbsp;•&nbsp;&nbsp;7 patches</summary>
+<summary>📦 StayFree&nbsp;&nbsp;•&nbsp;&nbsp;8 patches</summary>
 <br>
 
 **🎯 Supported versions:**
@@ -144,6 +144,7 @@ Click here to add these patches to Morphe: https://morphe.software/add-source?gi
 | [Local device sync](#local-device-sync) | Pairs the phone with the StayFree browser extension over your local network without data collection. The app runs a small sync server on port 8787 and serves its usage straight from Android, so nothing goes to StayFree/SensorTower. Removes the "Anonymous data collection must be enabled to pair devices" prompt. Needs the patched browser extension. |  |
 | [Remove Google login request](#remove-google-login-request) | Removes the "Sign in with Google" page from onboarding and the "Create StayFree profile" step from the home setup checklist. Signing in manually from the drawer/pairing screens still works. |  |
 | [Remove Inbox Control](#remove-inbox-control) | Removes the Inbox Control (Gmail cleaner) feature: its drawer entry, its permissions section and every screen that opens it. The Neon theme and custom app icons that were locked behind signing up for it are unlocked, and the Gmail sign-in no longer keeps the permission setup reminder on the home screen. |  |
+| [Remove drawer sign-in](#remove-drawer-sign-in) | Removes the "Sign into StayFree" account row from the bottom of the side menu. |  |
 | [Unlock all premium features](#unlock-all-premium-features) | Unlocks every theme (gamification-level, Black and Neon themes) and all custom app icons without earning levels, pairing a device or signing up for Inbox Control. |  |
 
 </details>
