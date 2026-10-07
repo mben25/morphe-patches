@@ -1,3 +1,9 @@
+## [1.5.9](https://github.com/mben25/morphe-patches/compare/v1.5.8...v1.5.9) (2026-10-07)
+
+### 🐛 Bug Fixes
+
+* **stayfree:** hide texts on the "Pair with code" screen ([307e738](https://github.com/mben25/morphe-patches/commit/307e7386551538e4287034b88ff0365888eda2a4))
+
 ## [1.5.8](https://github.com/mben25/morphe-patches/compare/v1.5.7...v1.5.8) (2026-10-07)
 
 ### 🐛 Bug Fixes

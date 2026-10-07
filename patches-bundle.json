@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-10-07T17:51:15",
-  "description": "## [1.5.8](https://github.com/mben25/morphe-patches/compare/v1.5.7...v1.5.8) (2026-10-07)\n\n### 🐛 Bug Fixes\n\n* **stayfree:** remove the drawer \"Sign into StayFree\" row ([adeaa16](https://github.com/mben25/morphe-patches/commit/adeaa1696d708424868ba158933ecc036c7db32d))",
-  "download_url": "https://github.com/mben25/morphe-patches/releases/download/v1.5.8/patches-1.5.8.mpp",
+  "created_at": "2026-10-07T18:08:18",
+  "description": "## [1.5.9](https://github.com/mben25/morphe-patches/compare/v1.5.8...v1.5.9) (2026-10-07)\n\n### 🐛 Bug Fixes\n\n* **stayfree:** hide texts on the \"Pair with code\" screen ([307e738](https://github.com/mben25/morphe-patches/commit/307e7386551538e4287034b88ff0365888eda2a4))",
+  "download_url": "https://github.com/mben25/morphe-patches/releases/download/v1.5.9/patches-1.5.9.mpp",
   "signature_download_url": "",
-  "version": "1.5.8"
+  "version": "1.5.9"
 }
