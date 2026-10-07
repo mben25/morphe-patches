@@ -58,6 +58,7 @@ import app.stayfree.patches.inbox.removeInboxControlPatch
 import app.stayfree.patches.login.hidePairedDevicesGoogleSignInPatch
 import app.stayfree.patches.login.removeGoogleLoginRequestPatch
 import app.stayfree.patches.premium.unlockAllFeaturesPatch
+import app.stayfree.patches.sync.inAppQrScannerPatch
 import app.stayfree.patches.sync.localDeviceSyncPatch
 import app.stayfree.patches.telemetry.disableAllTelemetryPatch as stayfreeDisableAllTelemetryPatch
 import app.windy.patches.premium.unlockPremiumPatch as windyUnlockPremiumPatch
@@ -111,6 +112,7 @@ fun main(args: Array<String>) {
                 removeInboxControlPatch,
                 unlockAllFeaturesPatch,
                 localDeviceSyncPatch,
+                inAppQrScannerPatch,
             )
 
             "salaat" -> setOf(
