@@ -1,3 +1,9 @@
+## [1.5.6](https://github.com/mben25/morphe-patches/compare/v1.5.5...v1.5.6) (2026-10-07)
+
+### 🐛 Bug Fixes
+
+* **stayfree:** hide permission setup reminder when all permissions are granted ([09f75fb](https://github.com/mben25/morphe-patches/commit/09f75fbe4538d467e83f1c0bdac7be7cd5fa6acd))
+
 ## [1.5.5](https://github.com/mben25/morphe-patches/compare/v1.5.4...v1.5.5) (2026-10-07)
 
 ### 🐛 Bug Fixes
