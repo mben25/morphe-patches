@@ -50,6 +50,10 @@ public final class LocalSync {
         }
     }
 
+    static synchronized boolean isRunning() {
+        return server != null;
+    }
+
     /**
      * Called at the start of {@code Retrofit.Builder.baseUrl(String)}. Rewrites unconditionally,
      * even if the server failed to start: a failed lookup is preferable to sending pairing keys
