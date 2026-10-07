@@ -1,3 +1,9 @@
+## [1.5.4](https://github.com/mben25/morphe-patches/compare/v1.5.3...v1.5.4) (2026-10-07)
+
+### 🐛 Bug Fixes
+
+* **stayfree:** add local device sync and hide Paired Devices Google sign-in ([0c9aec9](https://github.com/mben25/morphe-patches/commit/0c9aec9149abe058c8bb68906258c686c3022e1a))
+
 ## [1.5.3](https://github.com/mben25/morphe-patches/compare/v1.5.2...v1.5.3) (2026-10-05)
 
 ### 🐛 Bug Fixes
