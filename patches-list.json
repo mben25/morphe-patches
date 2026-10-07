@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.5.3",
+  "version": "1.5.4",
   "patches": [
     {
       "name": "AMOLED Dark Theme",
@@ -669,6 +669,32 @@
       "options": []
     },
     {
+      "name": "Hide Google sign-in in Paired Devices",
+      "description": "Hides the \"Sign in with Google\" button from the Paired Devices section in settings. Pairing with a code still works.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.burockgames.timeclocker",
+          "name": "StayFree",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#4E7CFF",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "20.14.1",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
       "name": "Hide Support Us Section",
       "description": "Removes the \"Support Us\" preference category (Rate Us, Donate / Remove Ads) from the Settings screen.",
       "default": false,
@@ -712,6 +738,32 @@
           "targets": [
             {
               "version": "6.3.4",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Local device sync",
+      "description": "Pairs the phone with the StayFree browser extension over your local network without data collection. The app runs a small sync server on port 8787 and serves its usage straight from Android, so nothing goes to StayFree/SensorTower. Removes the \"Anonymous data collection must be enabled to pair devices\" prompt. Needs the patched browser extension.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.burockgames.timeclocker",
+          "name": "StayFree",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#4E7CFF",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "20.14.1",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
