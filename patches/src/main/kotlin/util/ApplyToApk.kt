@@ -55,8 +55,10 @@ import app.salaat.patches.telemetry.disableAllTelemetryPatch as salaatDisableAll
 import app.salaat.patches.telemetry.deactivateFirebaseTelemetryPatch
 import app.salaat.patches.telemetry.disablePartnerSdksPatch
 import app.stayfree.patches.inbox.removeInboxControlPatch
+import app.stayfree.patches.login.hidePairedDevicesGoogleSignInPatch
 import app.stayfree.patches.login.removeGoogleLoginRequestPatch
 import app.stayfree.patches.premium.unlockAllFeaturesPatch
+import app.stayfree.patches.sync.localDeviceSyncPatch
 import app.stayfree.patches.telemetry.disableAllTelemetryPatch as stayfreeDisableAllTelemetryPatch
 import app.windy.patches.premium.unlockPremiumPatch as windyUnlockPremiumPatch
 import kotlinx.coroutines.flow.collect
@@ -105,8 +107,10 @@ fun main(args: Array<String>) {
             "stayfree" -> setOf(
                 stayfreeDisableAllTelemetryPatch,
                 removeGoogleLoginRequestPatch,
+                hidePairedDevicesGoogleSignInPatch,
                 removeInboxControlPatch,
                 unlockAllFeaturesPatch,
+                localDeviceSyncPatch,
             )
 
             "salaat" -> setOf(
