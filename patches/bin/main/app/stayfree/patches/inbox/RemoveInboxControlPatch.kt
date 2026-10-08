@@ -14,12 +14,13 @@ val removeInboxControlPatch = bytecodePatch(
     name = "Remove Inbox Control",
     description = "Removes the Inbox Control (Gmail cleaner) feature: its drawer entry, its " +
         "permissions section and every screen that opens it. The Neon theme and custom app " +
-        "icons that were locked behind signing up for it are unlocked.",
+        "icons that were locked behind signing up for it are unlocked, and the Gmail sign-in no " +
+        "longer keeps the permission setup reminder on the home screen.",
     default = true,
 ) {
     compatibleWith(COMPATIBILITY_STAYFREE)
 
-    dependsOn(hasEverLoggedInStayFreshPatch)
+    dependsOn(hasEverLoggedInStayFreshPatch, permissionSetupCompletePatch)
 
     execute {
         // 1. Drawer: skip the row composable for INBOX_CLEANING. The early return sits before the
