@@ -1,3 +1,9 @@
+## [1.5.14](https://github.com/mben25/morphe-patches/compare/v1.5.13...v1.5.14) (2026-10-08)
+
+### 🐛 Bug Fixes
+
+* write sync debug log to a dir the app can actually write ([f3d71f9](https://github.com/mben25/morphe-patches/commit/f3d71f918f72be8c299ee9e11b9e95bd78283895))
+
 ## [1.5.13](https://github.com/mben25/morphe-patches/compare/v1.5.12...v1.5.13) (2026-10-08)
 
 ### 🐛 Bug Fixes
