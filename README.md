@@ -33,7 +33,7 @@ Click here to add these patches to Morphe: https://morphe.software/add-source?gi
 ## 🩹 Patches list
 
 <!-- PATCHES_START EXPANDED -->
-> **[v1.5.10](https://github.com/mben25/morphe-patches/releases/tag/v1.5.10)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;51 patches total
+> **[v1.5.11](https://github.com/mben25/morphe-patches/releases/tag/v1.5.11)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;52 patches total
 <details open>
 <summary>📦 Masareef&nbsp;&nbsp;•&nbsp;&nbsp;14 patches</summary>
 <br>
@@ -128,7 +128,7 @@ Click here to add these patches to Morphe: https://morphe.software/add-source?gi
 </details>
 
 <details open>
-<summary>📦 StayFree&nbsp;&nbsp;•&nbsp;&nbsp;9 patches</summary>
+<summary>📦 StayFree&nbsp;&nbsp;•&nbsp;&nbsp;10 patches</summary>
 <br>
 
 **🎯 Supported versions:**
@@ -139,6 +139,7 @@ Click here to add these patches to Morphe: https://morphe.software/add-source?gi
 | 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
 |----------|----------------|-----------|
 | [Disable All Telemetry](#disable-all-telemetry) | Removes and blocks all telemetry and analytics: SensorTower usage-data upload (app/web usage, browsing, shopping, AI prompts), Amplitude, Singular, Bugsnag, Firebase Analytics/Crashlytics/Performance/Sessions, Google App Measurement, Facebook app events and the advertising ID. Telemetry endpoints are also rewritten to localhost. |  |
+| [Fix MIUI permission check crash](#fix-miui-permission-check-crash) | Stops the Xiaomi/Redmi/Poco "background pop-up" permission check from crashing on AOSP-based ROMs ("Bad operation #10021"), which otherwise aborts device pairing with "Something went wrong". |  |
 | [Hide Google sign-in in Paired Devices](#hide-google-sign-in-in-paired-devices) | Hides the "Sign in with Google" button from the Paired Devices section in settings. Pairing with a code still works. |  |
 | [Hide texts](#hide-texts) | Hides the instruction text on the "Pair with code" screen: "Select the app you want to pair your Android app with:". |  |
 | [In-app QR scanner](#in-app-qr-scanner) | Scans the browser extension's pairing QR code inside StayFree, like Brave's built-in scanner, instead of asking you to open the camera app (whose link can't open a patched app). Opens on its own when you choose to pair with a browser extension or the desktop app, and from a "Scan QR code" shortcut on the app icon. Uses ZXing, so it works without Google Play Services. |  |

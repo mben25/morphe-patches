@@ -1,3 +1,9 @@
+## [1.5.11](https://github.com/mben25/morphe-patches/compare/v1.5.10...v1.5.11) (2026-10-08)
+
+### 🐛 Bug Fixes
+
+* **stayfree:** stop MIUI permission check crashing pairing on AOSP ROMs ([1fb1f7f](https://github.com/mben25/morphe-patches/commit/1fb1f7fa5aa996900f988e0e35c66ce0feb7d5bc))
+
 ## [1.5.10](https://github.com/mben25/morphe-patches/compare/v1.5.9...v1.5.10) (2026-10-08)
 
 ### 🐛 Bug Fixes

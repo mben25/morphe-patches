@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-10-08T11:16:33",
-  "description": "## [1.5.10](https://github.com/mben25/morphe-patches/compare/v1.5.9...v1.5.10) (2026-10-08)\n\n### 🐛 Bug Fixes\n\n* stop blanking whole Pair-with-code screen in Hide texts patch ([57fd9a5](https://github.com/mben25/morphe-patches/commit/57fd9a508aeb8723b14f6cf6ee42989a4164ed2b))",
-  "download_url": "https://github.com/mben25/morphe-patches/releases/download/v1.5.10/patches-1.5.10.mpp",
+  "created_at": "2026-10-08T11:56:29",
+  "description": "## [1.5.11](https://github.com/mben25/morphe-patches/compare/v1.5.10...v1.5.11) (2026-10-08)\n\n### 🐛 Bug Fixes\n\n* **stayfree:** stop MIUI permission check crashing pairing on AOSP ROMs ([1fb1f7f](https://github.com/mben25/morphe-patches/commit/1fb1f7fa5aa996900f988e0e35c66ce0feb7d5bc))",
+  "download_url": "https://github.com/mben25/morphe-patches/releases/download/v1.5.11/patches-1.5.11.mpp",
   "signature_download_url": "",
-  "version": "1.5.10"
+  "version": "1.5.11"
 }
