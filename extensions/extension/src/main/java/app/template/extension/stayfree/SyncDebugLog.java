@@ -41,6 +41,7 @@ final class SyncDebugLog {
     synchronized void request(String method, String target, boolean loopback, String remote,
                               byte[] body, int status, Throwable failure) {
         try {
+            ensureParent();
             rotateIfNeeded();
             try (PrintWriter out = new PrintWriter(new FileWriter(file, true))) {
                 out.print(timestamp.format(new Date()));
@@ -71,6 +72,7 @@ final class SyncDebugLog {
     /** Every Retrofit base URL StayFree builds, and what it was rewritten to. */
     synchronized void baseUrl(String original, String rewritten) {
         try {
+            ensureParent();
             rotateIfNeeded();
             try (PrintWriter out = new PrintWriter(new FileWriter(file, true))) {
                 out.print(timestamp.format(new Date()));
@@ -90,6 +92,16 @@ final class SyncDebugLog {
     private static boolean isPairingOrConfig(String target) {
         return target != null && (target.contains("pairing") || target.contains("sync/config")
                 || target.contains("web/upload") || target.contains("devices"));
+    }
+
+    /** {@code FileWriter} will not create missing parent directories; the app's external files dir
+     * often does not exist until something writes to it, so create it first. */
+    private void ensureParent() {
+        File dir = file.getParentFile();
+        if (dir != null && !dir.isDirectory()) {
+            //noinspection ResultOfMethodCallIgnored
+            dir.mkdirs();
+        }
     }
 
     private void rotateIfNeeded() {
