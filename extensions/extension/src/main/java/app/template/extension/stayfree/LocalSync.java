@@ -73,4 +73,28 @@ public final class LocalSync {
         if (log != null) log.baseUrl(url, result);
         return result;
     }
+
+    /**
+     * Diagnostic probe for the QR pairing path. Records a named checkpoint and the two values
+     * that decide whether StayFree issues the pairing call at all.
+     * <p>
+     * The pairing chain on 20.16.1 is: {@code MainActivity.onCreate} stashes the code in a static
+     * field, a composable later reads it behind a guard equivalent to
+     * {@code if (stashedCode != null && sheetIsQrPairing)}, and only then launches the suspend
+     * function that builds the Retrofit client. On this device nothing downstream ever runs, and
+     * the two conditions fail for completely different reasons — a lost stash versus a sheet that
+     * composed with the wrong type — so the log has to tell them apart.
+     *
+     * Takes no checkpoint name on purpose: the lambda it is injected into is register-tight, the
+     * patcher cannot widen a method's frame, and loading a tag string would mean clobbering one
+     * of the two live registers the guards are about to test. The checkpoint is implied by the
+     * method instead.
+     *
+     * @param code the stashed pairing code, or null if the stash was lost
+     * @param flag the captured "this is the QR pairing sheet" boolean
+     */
+    public static void probePairingGuard(String code, boolean flag) {
+        SyncDebugLog log = debugLog;
+        if (log != null) log.probe("pairing.guard", code, flag);
+    }
 }

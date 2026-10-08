@@ -104,6 +104,29 @@ final class SyncDebugLog {
         }
     }
 
+    /**
+     * A checkpoint in StayFree's own pairing path, with the two values that gate it. The code is
+     * recorded as present/absent rather than verbatim: it is a live pairing secret, and whether
+     * the stash survived is the only thing the diagnosis needs.
+     */
+    synchronized void probe(String tag, String code, boolean flag) {
+        try {
+            ensureParent();
+            rotateIfNeeded();
+            try (PrintWriter out = new PrintWriter(new FileWriter(file, true))) {
+                out.print(timestamp.format(new Date()));
+                out.print("  PROBE  ");
+                out.print(tag);
+                out.print("  code=");
+                out.print(code == null ? "null" : "set(" + code.length() + ")");
+                out.print("  flag=");
+                out.println(flag);
+            }
+        } catch (Throwable t) {
+            reportFailure(t);
+        }
+    }
+
     /** Reports the first write failure with its stack trace, then stays quiet. */
     private void reportFailure(Throwable t) {
         if (reportedFailure) return;
