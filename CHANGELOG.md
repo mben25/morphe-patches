@@ -1,3 +1,17 @@
+## [1.8.0](https://github.com/mben25/morphe-patches/compare/v1.7.0...v1.8.0) (2026-10-08)
+
+### 🐛 Bug Fixes
+
+* pair StayFree devices on a ROM that cannot reach Google ([f63395c](https://github.com/mben25/morphe-patches/commit/f63395ca973fd975ce3a17a4844ea4e93bcfe87a))
+
+### ✨ New Features
+
+* add AliExpress patches for ads, analytics, coupons, media, notifications, and splash screen ([a91e017](https://github.com/mben25/morphe-patches/commit/a91e01799175e10b16a0e918454ca77a21787e3f))
+
+### 🚀 Updated App Support
+
+* drop StayFree 20.14.1 target, keep 20.16.1 only ([115d7f1](https://github.com/mben25/morphe-patches/commit/115d7f143893cb18eca059e7cbb12de591c2c211))
+
 ## [1.7.0](https://github.com/mben25/morphe-patches/compare/v1.6.0...v1.7.0) (2026-10-08)
 
 ### ✨ New Features
