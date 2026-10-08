@@ -59,6 +59,7 @@ import app.stayfree.patches.login.hidePairedDevicesGoogleSignInPatch
 import app.stayfree.patches.login.removeDrawerSignInPatch
 import app.stayfree.patches.login.removeGoogleLoginRequestPatch
 import app.stayfree.patches.premium.unlockAllFeaturesPatch
+import app.stayfree.patches.sync.assumeInternetConnectionPatch
 import app.stayfree.patches.sync.inAppQrScannerPatch
 import app.stayfree.patches.sync.localDeviceSyncPatch
 import app.stayfree.patches.sync.miuiBackgroundPopupCheckPatch
@@ -117,6 +118,7 @@ fun main(args: Array<String>) {
                 removeInboxControlPatch,
                 unlockAllFeaturesPatch,
                 localDeviceSyncPatch,
+                assumeInternetConnectionPatch,
                 inAppQrScannerPatch,
                 miuiBackgroundPopupCheckPatch,
                 hideTextsPatch,

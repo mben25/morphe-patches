@@ -47,3 +47,20 @@ object QrPairingLaunchFingerprint : Fingerprint(
         fieldAccess(name = "USER_PAIRED_CODE_BY_QR", opcode = Opcode.SGET_OBJECT),
     ),
 )
+
+/**
+ * SensorTower's captive-portal check, `NetworkUtils.hasInternetConnection()`. It GETs
+ * `https://clients3.google.com/generate_204`, falls back to `https://www.qualcomm.cn/generate_204`,
+ * and returns true only on an exact HTTP 204.
+ *
+ * The class is in a library that R8 does not rename, so it is matched by its own name rather than
+ * by a fingerprint over obfuscated callers: the no-arg overload is the only entry point, and the
+ * private `(String)Z` worker it delegates to keeps the URLs as fields, so there is no string left
+ * in the public method to anchor on.
+ */
+object HasInternetConnectionFingerprint : Fingerprint(
+    definingClass = "Lcom/sensortower/network/glidesupport/util/NetworkUtils;",
+    name = "hasInternetConnection",
+    returnType = "Z",
+    parameters = emptyList(),
+)
