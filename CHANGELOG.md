@@ -1,3 +1,9 @@
+## [1.5.13](https://github.com/mben25/morphe-patches/compare/v1.5.12...v1.5.13) (2026-10-08)
+
+### 🐛 Bug Fixes
+
+* create sync log parent dir before writing ([2397642](https://github.com/mben25/morphe-patches/commit/2397642db17b12be4908ab5ab5ae5dfe68e7e3c9))
+
 ## [1.5.12](https://github.com/mben25/morphe-patches/compare/v1.5.11...v1.5.12) (2026-10-08)
 
 ### 🐛 Bug Fixes

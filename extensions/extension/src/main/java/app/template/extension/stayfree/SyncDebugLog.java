@@ -17,10 +17,15 @@ import java.util.Locale;
  * {@code install_id} and {@code code} are visible), whether it came over loopback (the app) or the
  * LAN (the browser extension), the response status, and the full stack trace of any failure.
  * <p>
- * The file lives in the app's <em>external</em> files dir so it can be pulled with
- * {@code adb pull} (no root) or read with a file manager:
+ * The file lives in the app's external files dir when that is writable, so it can be pulled with
+ * {@code adb pull} or read with a file manager:
  * <pre>
  * /sdcard/Android/data/com.burockgames.timeclocker/files/stayfree-sync.log
+ * </pre>
+ * On a patched build that dir is often never provisioned, so it falls back to the private files
+ * dir, readable on a debuggable build with:
+ * <pre>
+ * adb shell run-as com.burockgames.timeclocker cat files/stayfree-sync.log
  * </pre>
  * It is best-effort: any I/O problem is swallowed so logging never breaks the server. The file is
  * capped at {@link #MAX_BYTES} and rotated once to keep it pullable.
@@ -31,10 +36,20 @@ final class SyncDebugLog {
 
     private final File file;
     private final SimpleDateFormat timestamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS", Locale.US);
+    /** The server logs every request, so a broken destination would otherwise spam logcat
+     * several times a second and bury the very evidence this log exists to capture. */
+    private boolean reportedFailure;
 
     SyncDebugLog(Context context) {
-        File dir = context.getExternalFilesDir(null);
-        if (dir == null) dir = context.getFilesDir();
+        // The external files dir is only usable once Android has provisioned it; on a patched
+        // build with no storage permission it may never exist, and FileWriter then throws ENOENT
+        // (or EACCES if the dir is created by hand) on *every* request. The private files dir
+        // always exists and is readable with `adb run-as` on a debuggable build, so prefer it and
+        // keep the external dir only when it is genuinely writable.
+        File external = context.getExternalFilesDir(null);
+        File dir = external != null && external.isDirectory() && external.canWrite()
+                ? external
+                : context.getFilesDir();
         this.file = new File(dir, "stayfree-sync.log");
     }
 
@@ -65,7 +80,7 @@ final class SyncDebugLog {
                 if (failure != null) failure.printStackTrace(out);
             }
         } catch (Throwable t) {
-            Log.w(LocalSync.TAG, "Could not write sync debug log", t);
+            reportFailure(t);
         }
     }
 
@@ -85,8 +100,16 @@ final class SyncDebugLog {
                 out.println();
             }
         } catch (Throwable t) {
-            Log.w(LocalSync.TAG, "Could not write sync debug log", t);
+            reportFailure(t);
         }
+    }
+
+    /** Reports the first write failure with its stack trace, then stays quiet. */
+    private void reportFailure(Throwable t) {
+        if (reportedFailure) return;
+        reportedFailure = true;
+        Log.w(LocalSync.TAG, "Could not write sync debug log to " + file
+                + "; further write failures will not be logged", t);
     }
 
     private static boolean isPairingOrConfig(String target) {
