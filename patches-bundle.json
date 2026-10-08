@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-10-08T12:16:45",
-  "description": "## [1.5.12](https://github.com/mben25/morphe-patches/compare/v1.5.11...v1.5.12) (2026-10-08)\n\n### 🐛 Bug Fixes\n\n* **stayfree:** log local-sync requests to a file for pairing diagnosis ([071f8cb](https://github.com/mben25/morphe-patches/commit/071f8cb168ae62db55926c4fb3afc115eb1c8b1f))",
-  "download_url": "https://github.com/mben25/morphe-patches/releases/download/v1.5.12/patches-1.5.12.mpp",
+  "created_at": "2026-10-08T13:04:35",
+  "description": "## [1.5.13](https://github.com/mben25/morphe-patches/compare/v1.5.12...v1.5.13) (2026-10-08)\n\n### 🐛 Bug Fixes\n\n* create sync log parent dir before writing ([2397642](https://github.com/mben25/morphe-patches/commit/2397642db17b12be4908ab5ab5ae5dfe68e7e3c9))",
+  "download_url": "https://github.com/mben25/morphe-patches/releases/download/v1.5.13/patches-1.5.13.mpp",
   "signature_download_url": "",
-  "version": "1.5.12"
+  "version": "1.5.13"
 }
