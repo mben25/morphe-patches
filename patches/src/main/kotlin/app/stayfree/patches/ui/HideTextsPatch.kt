@@ -1,6 +1,5 @@
 package app.stayfree.patches.ui
 
-import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.bytecodePatch
@@ -12,19 +11,13 @@ import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 @Suppress("unused")
 val hideTextsPatch = bytecodePatch(
     name = "Hide texts",
-    description = "Hides promotional and instruction texts: on the \"Pair with code\" screen, " +
-        "\"Visit stayfreeapps.com to explore all StayFree apps.\" and \"Select the app you " +
-        "want to pair your Android app with:\".",
+    description = "Hides the instruction text on the \"Pair with code\" screen: \"Select the app " +
+        "you want to pair your Android app with:\".",
     default = true,
 ) {
     compatibleWith(COMPATIBILITY_STAYFREE)
 
     execute {
-        // "Visit … to explore all StayFree apps.": the composable draws only that text, so return
-        // before it starts its restart group; it then emits nothing and the caller's Compose
-        // groups stay balanced.
-        PairWithCodeVisitTextFingerprint.method.addInstruction(0, "return-void")
-
         // "Select the app you want to pair …": drop the Text call and the Spacer call after it.
         // A removed composable call is a removed self-contained group, so this stays balanced too.
         val method = PairWithCodeSelectTextFingerprint.method
