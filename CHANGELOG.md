@@ -1,3 +1,9 @@
+## [1.5.10](https://github.com/mben25/morphe-patches/compare/v1.5.9...v1.5.10) (2026-10-08)
+
+### 🐛 Bug Fixes
+
+* stop blanking whole Pair-with-code screen in Hide texts patch ([57fd9a5](https://github.com/mben25/morphe-patches/commit/57fd9a508aeb8723b14f6cf6ee42989a4164ed2b))
+
 ## [1.5.9](https://github.com/mben25/morphe-patches/compare/v1.5.8...v1.5.9) (2026-10-07)
 
 ### 🐛 Bug Fixes
