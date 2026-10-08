@@ -1,3 +1,9 @@
+## [1.7.0](https://github.com/mben25/morphe-patches/compare/v1.6.0...v1.7.0) (2026-10-08)
+
+### ✨ New Features
+
+* add StayFree 20.16.1 as compatible target ([3bd158b](https://github.com/mben25/morphe-patches/commit/3bd158b1dca9d7993b89bc1ac8e57f32666f5073))
+
 ## [1.6.0](https://github.com/mben25/morphe-patches/compare/v1.5.14...v1.6.0) (2026-10-08)
 
 ### ✨ New Features
