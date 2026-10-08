@@ -31,6 +31,7 @@ public final class LocalSync {
     private static final String LOCAL_PREFIX = "http://127.0.0.1:" + PORT + "/";
 
     private static LocalSyncServer server;
+    private static SyncDebugLog debugLog;
 
     private LocalSync() {
     }
@@ -40,6 +41,10 @@ public final class LocalSync {
      */
     public static synchronized void start(Context context) {
         if (server != null) return;
+        try {
+            debugLog = new SyncDebugLog(context.getApplicationContext());
+        } catch (Throwable ignored) {
+        }
         try {
             LocalSyncServer created = new LocalSyncServer(context.getApplicationContext(), PORT);
             created.start();
@@ -60,9 +65,12 @@ public final class LocalSync {
      * and usage to the vendor server behind the user's back.
      */
     public static String rewriteBaseUrl(String url) {
+        String result = url;
         if (url != null && url.startsWith(UPSTREAM_PREFIX)) {
-            return LOCAL_PREFIX + url.substring(UPSTREAM_PREFIX.length());
+            result = LOCAL_PREFIX + url.substring(UPSTREAM_PREFIX.length());
         }
-        return url;
+        SyncDebugLog log = debugLog;
+        if (log != null) log.baseUrl(url, result);
+        return result;
     }
 }

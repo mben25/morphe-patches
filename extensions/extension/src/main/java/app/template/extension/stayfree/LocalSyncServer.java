@@ -65,6 +65,7 @@ final class LocalSyncServer {
     private final int port;
     private final LocalSyncStore store;
     private final AndroidUsage usage;
+    private final SyncDebugLog debugLog;
     private final ExecutorService workers = Executors.newFixedThreadPool(4);
     private ServerSocket serverSocket;
 
@@ -72,6 +73,7 @@ final class LocalSyncServer {
         this.port = port;
         this.store = new LocalSyncStore(new File(context.getFilesDir(), "stayfree_local_sync.json"));
         this.usage = new AndroidUsage(context);
+        this.debugLog = new SyncDebugLog(context);
     }
 
     void start() throws IOException {
@@ -152,14 +154,19 @@ final class LocalSyncServer {
             request.loopback = s.getInetAddress().isLoopbackAddress();
 
             Response response;
+            Throwable failure = null;
             try {
                 response = route(request);
             } catch (LocalSyncStore.HttpError e) {
+                failure = e;
                 response = Response.error(e.status, e.getMessage());
             } catch (Throwable t) {
+                failure = t;
                 Log.e(LocalSync.TAG, "Error handling " + request.method + " " + request.path, t);
                 response = Response.error(500, t.toString());
             }
+            debugLog.request(request.method, request.target, request.loopback,
+                    s.getInetAddress().getHostAddress(), request.body, response.status, failure);
             writeResponse(s.getOutputStream(), request.method, response);
         } catch (IOException ignored) {
             // Client went away.
