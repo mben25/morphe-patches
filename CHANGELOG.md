@@ -1,3 +1,9 @@
+## [1.6.0](https://github.com/mben25/morphe-patches/compare/v1.5.14...v1.6.0) (2026-10-08)
+
+### ✨ New Features
+
+* add a QR pairing diagnostic probe ([e374d7a](https://github.com/mben25/morphe-patches/commit/e374d7a0bc93123117c2e18fb30f402a292391ec))
+
 ## [1.5.14](https://github.com/mben25/morphe-patches/compare/v1.5.13...v1.5.14) (2026-10-08)
 
 ### 🐛 Bug Fixes

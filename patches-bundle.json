@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-10-08T13:48:22",
-  "description": "## [1.5.14](https://github.com/mben25/morphe-patches/compare/v1.5.13...v1.5.14) (2026-10-08)\n\n### 🐛 Bug Fixes\n\n* write sync debug log to a dir the app can actually write ([f3d71f9](https://github.com/mben25/morphe-patches/commit/f3d71f918f72be8c299ee9e11b9e95bd78283895))",
-  "download_url": "https://github.com/mben25/morphe-patches/releases/download/v1.5.14/patches-1.5.14.mpp",
+  "created_at": "2026-10-08T17:23:32",
+  "description": "## [1.6.0](https://github.com/mben25/morphe-patches/compare/v1.5.14...v1.6.0) (2026-10-08)\n\n### ✨ New Features\n\n* add a QR pairing diagnostic probe ([e374d7a](https://github.com/mben25/morphe-patches/commit/e374d7a0bc93123117c2e18fb30f402a292391ec))",
+  "download_url": "https://github.com/mben25/morphe-patches/releases/download/v1.6.0/patches-1.6.0.mpp",
   "signature_download_url": "",
-  "version": "1.5.14"
+  "version": "1.6.0"
 }
