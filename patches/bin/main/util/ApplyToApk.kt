@@ -3,13 +3,23 @@
  * it only applies the patches in this project to an APK on disk and prints the result,
  * so fingerprint regressions are caught without going through Manager or the CLI.
  *
- * Usage: ./gradlew :patches:applyToApk --args "<apk> [outputDexDir] [--patches=mtcapsule|masareef|deviceinfo|stayfree|salaat|windy]"
+ * Usage: ./gradlew :patches:applyToApk --args "<apk> [outputDexDir] [--patches=mtcapsule|masareef|deviceinfo|stayfree|salaat|windy|aliexpress]"
  */
 
 package util
 
 import app.morphe.patcher.Patcher
 import app.morphe.patcher.PatcherConfig
+import app.aliexpress.patches.ads.hideSponsoredItemsPatch
+import app.aliexpress.patches.ads.removeAdsPatch as aliexpressRemoveAdsPatch
+import app.aliexpress.patches.analytics.disableAnalyticsPatch as aliexpressDisableAnalyticsPatch
+import app.aliexpress.patches.coupons.removeCouponsPopupPatch
+import app.aliexpress.patches.media.enableImageSavingPatch
+import app.aliexpress.patches.notifications.disablePromotionsNotificationsPatch
+import app.aliexpress.patches.splash.disableSplashScreenPatch
+import app.aliexpress.patches.theme.amoledDarkModePatch
+import app.aliexpress.patches.tracking.removeAffiliateTrackingPatch
+import app.aliexpress.patches.updates.disableForcedUpdatesPatch
 import app.deviceinfo.patches.ads.removeAllAdsPatch
 import app.deviceinfo.patches.ads.removeFacebookAudienceNetworkInitPatch
 import app.deviceinfo.patches.settings.hideSupportUsSectionPatch
@@ -45,9 +55,17 @@ import app.salaat.patches.telemetry.disableAllTelemetryPatch as salaatDisableAll
 import app.salaat.patches.telemetry.deactivateFirebaseTelemetryPatch
 import app.salaat.patches.telemetry.disablePartnerSdksPatch
 import app.stayfree.patches.inbox.removeInboxControlPatch
+import app.stayfree.patches.login.hidePairedDevicesGoogleSignInPatch
+import app.stayfree.patches.login.removeDrawerSignInPatch
 import app.stayfree.patches.login.removeGoogleLoginRequestPatch
 import app.stayfree.patches.premium.unlockAllFeaturesPatch
+import app.stayfree.patches.sync.assumeInternetConnectionPatch
+import app.stayfree.patches.sync.inAppQrScannerPatch
+import app.stayfree.patches.sync.localDeviceSyncPatch
+import app.stayfree.patches.sync.miuiBackgroundPopupCheckPatch
+import app.stayfree.patches.sync.qrPairingProbePatch
 import app.stayfree.patches.telemetry.disableAllTelemetryPatch as stayfreeDisableAllTelemetryPatch
+import app.stayfree.patches.ui.hideTextsPatch
 import app.windy.patches.premium.unlockPremiumPatch as windyUnlockPremiumPatch
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.runBlocking
@@ -95,8 +113,17 @@ fun main(args: Array<String>) {
             "stayfree" -> setOf(
                 stayfreeDisableAllTelemetryPatch,
                 removeGoogleLoginRequestPatch,
+                hidePairedDevicesGoogleSignInPatch,
+                removeDrawerSignInPatch,
                 removeInboxControlPatch,
                 unlockAllFeaturesPatch,
+                localDeviceSyncPatch,
+                assumeInternetConnectionPatch,
+                inAppQrScannerPatch,
+                miuiBackgroundPopupCheckPatch,
+                hideTextsPatch,
+                // Ships disabled; included here so its fingerprint is still verified.
+                qrPairingProbePatch,
             )
 
             "salaat" -> setOf(
@@ -109,6 +136,19 @@ fun main(args: Array<String>) {
             )
 
             "windy" -> setOf(windyUnlockPremiumPatch)
+
+            "aliexpress" -> setOf(
+                amoledDarkModePatch,
+                aliexpressRemoveAdsPatch,
+                hideSponsoredItemsPatch,
+                disableSplashScreenPatch,
+                removeCouponsPopupPatch,
+                disableForcedUpdatesPatch,
+                disablePromotionsNotificationsPatch,
+                aliexpressDisableAnalyticsPatch,
+                removeAffiliateTrackingPatch,
+                enableImageSavingPatch,
+            )
 
             else -> setOf(unlockProPatch)
         }

@@ -7,8 +7,7 @@ import app.morphe.patcher.patch.Compatibility
 object Constants {
     /**
      * Verified against `apps/stayfree/stayfree.20.16.1.apk` (versionCode 201601498, the base
-     * APK of the Play split bundle) and the decompiled `apps/stayfree/stayfree.20.14.1.apk`
-     * (apktool.yml: versionCode 201401492, versionName 20.14.1, minSdk 32).
+     * APK of the Play split bundle).
      */
     val COMPATIBILITY_STAYFREE = Compatibility(
         name = "StayFree",
@@ -17,7 +16,6 @@ object Constants {
         appIconColor = 0x4E7CFF,
         targets = listOf(
             AppTarget(version = "20.16.1"),
-            AppTarget(version = "20.14.1"),
         ),
     )
 }
