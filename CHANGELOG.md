@@ -1,3 +1,9 @@
+## [1.5.12](https://github.com/mben25/morphe-patches/compare/v1.5.11...v1.5.12) (2026-10-08)
+
+### 🐛 Bug Fixes
+
+* **stayfree:** log local-sync requests to a file for pairing diagnosis ([071f8cb](https://github.com/mben25/morphe-patches/commit/071f8cb168ae62db55926c4fb3afc115eb1c8b1f))
+
 ## [1.5.11](https://github.com/mben25/morphe-patches/compare/v1.5.10...v1.5.11) (2026-10-08)
 
 ### 🐛 Bug Fixes
