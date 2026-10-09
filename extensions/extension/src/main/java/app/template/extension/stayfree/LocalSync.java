@@ -97,4 +97,25 @@ public final class LocalSync {
         SyncDebugLog log = debugLog;
         if (log != null) log.probe("pairing.guard", code, flag);
     }
+
+    /**
+     * The device-group status the pairing coroutine reads on its very first instruction.
+     * <p>
+     * {@code u83.invokeSuspend} opens with
+     * {@code if (statusFlow.value == NETWORK_CONNECTION_LOST) return} — a plain field read with no
+     * suspension, which is why the failure is instant and leaves no trace: the coroutine launches,
+     * returns before building any Retrofit client, and never touches the status again, so whatever
+     * error the UI is already showing simply stays on screen.
+     * <p>
+     * Both guards before this point are known to pass, and the log shows no request afterwards, so
+     * this read is the last unobserved branch between them. Recording the value distinguishes a
+     * stale {@code NETWORK_CONNECTION_LOST} left over from an earlier failed attempt from the
+     * coroutine getting past here and dying further down.
+     *
+     * @param status the current {@code DeviceGroupStatusType}, or null before the first check runs
+     */
+    public static void probePairingStatus(Object status) {
+        SyncDebugLog log = debugLog;
+        if (log != null) log.checkpoint("pairing.status", status);
+    }
 }

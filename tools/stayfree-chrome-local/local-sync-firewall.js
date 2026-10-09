@@ -61,6 +61,9 @@
   }
 
   let phoneBase = null;
+  // The address last confirmed to answer /local/status, so a saved address is re-checked once per
+  // address rather than once per request. Cleared whenever the address changes or a call fails.
+  let verifiedBase = null;
   let ready = (async () => {
     try {
       const stored = await ext.storage.local.get(STORAGE_KEY);
@@ -75,6 +78,7 @@
       if (area === "local" && STORAGE_KEY in changes) {
         phoneBase = normalize(changes[STORAGE_KEY].newValue);
         ready = Promise.resolve(phoneBase);
+        verifiedBase = null;
       }
     });
   } catch {
@@ -171,21 +175,45 @@
     return found;
   }
 
+  /**
+   * The subnet of an address that answered before. Chrome hides host ICE candidates behind mDNS
+   * on most setups, so `ownSubnets()` usually comes back empty and the scan falls through to
+   * COMMON_SUBNETS — which cannot list every home network. A previously-saved address is the one
+   * piece of evidence we have about which network this browser actually pairs on, so re-scan its
+   * subnet even once the address itself has gone stale (the phone took a new DHCP lease).
+   */
+  function subnetOf(base) {
+    if (!base) return [];
+    const match = /^https?:\/\/(\d{1,3}(?:\.\d{1,3}){2})\.\d{1,3}/.exec(base);
+    return match ? [match[1]] : [];
+  }
+
   let discovering = null;
   let lastFailedDiscovery = 0;
 
-  /** Finds the phone on the LAN and saves its address. Resolves to the base URL or null. */
-  function discover() {
+  /**
+   * Finds the phone on the LAN and saves its address. Resolves to the base URL or null.
+   * `force` skips the post-failure cooldown: pressing "Find" on the options page is an explicit
+   * request to scan now, and silently answering null there reads as the button being broken.
+   */
+  function discover(force) {
     if (!canDiscover) return Promise.resolve(null);
     if (discovering) return discovering;
-    if (Date.now() - lastFailedDiscovery < RESCAN_AFTER_FAILURE_MS) return Promise.resolve(null);
+    if (!force && Date.now() - lastFailedDiscovery < RESCAN_AFTER_FAILURE_MS) {
+      return Promise.resolve(null);
+    }
     discovering = (async () => {
-      const subnets = [...new Set([...(await ownSubnets()), ...COMMON_SUBNETS])];
+      // Order matters: this computer's own subnet, then the one that worked last time, then the
+      // common guesses. Each miss costs a 254-address sweep, so the likely networks go first.
+      const subnets = [
+        ...new Set([...(await ownSubnets()), ...subnetOf(phoneBase), ...COMMON_SUBNETS]),
+      ];
       for (const subnet of subnets) {
         const base = await scanSubnet(subnet);
         if (!base) continue;
         phoneBase = base;
         ready = Promise.resolve(base);
+        verifiedBase = base; // discover() only returns an address that just answered.
         try {
           await ext.storage.local.set({ [STORAGE_KEY]: base });
         } catch {
@@ -223,7 +251,16 @@
         return originalFetch(request ? new Request(target, request) : target, init);
       };
       return ready.then(async (stored) => {
-        const base = stored ?? (await discover());
+        // A saved address survives a change of network, so it can point at a subnet this computer
+        // is no longer on. Check it before trusting it: on a different Wi-Fi the connection fails
+        // with ERR_ADDRESS_UNREACHABLE immediately, so this costs nothing when it is wrong, and
+        // one cheap request when it is right. Without this the first pairing call always fails.
+        let base = stored;
+        if (base && base !== verifiedBase) {
+          if (await isStayFree(base, PROBE_TIMEOUT_MS)) verifiedBase = base;
+          else base = null;
+        }
+        base ??= await discover();
         if (!base) {
           throw phoneError(
             "StayFree wasn't found on your Wi-Fi. Open the patched StayFree app on your phone " +
@@ -236,6 +273,7 @@
         } catch (error) {
           if (error?.name === "AbortError") throw error;
           // The phone may have a new address (DHCP): look for it once, then retry.
+          verifiedBase = null;
           const found = await discover();
           if (found && found !== base) return send(found, spare);
           throw phoneError(
