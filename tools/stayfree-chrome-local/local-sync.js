@@ -59,7 +59,7 @@ document.getElementById("find").addEventListener("click", async (event) => {
   button.disabled = true;
   show("Looking for StayFree on your Wi-Fi\u2026 this can take up to a minute.");
   try {
-    const base = await globalThis.__stayfreeLocalSyncDiscover?.();
+    const base = await globalThis.__stayfreeLocalSyncDiscover?.(true);
     if (base) {
       input.value = base;
       await test();
