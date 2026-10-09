@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-10-09T11:18:09",
-  "description": "## [1.9.0](https://github.com/mben25/morphe-patches/compare/v1.8.0...v1.9.0) (2026-10-09)\n\n### ✨ New Features\n\n* add Speedtest by Ookla patches (ad-free, disable telemetry) ([fe7063f](https://github.com/mben25/morphe-patches/commit/fe7063f0e777dfe6e09c3192c1f78cc82e04299a))",
-  "download_url": "https://github.com/mben25/morphe-patches/releases/download/v1.9.0/patches-1.9.0.mpp",
+  "created_at": "2026-10-09T18:04:28",
+  "description": "## [1.9.1](https://github.com/mben25/morphe-patches/compare/v1.9.0...v1.9.1) (2026-10-09)\n\n### 🐛 Bug Fixes\n\n* probe the status gate that silently blocks StayFree pairing ([fa7b167](https://github.com/mben25/morphe-patches/commit/fa7b1675a29a96b4db93e05182ee1fbdef957668))\n* re-check the saved phone address before trusting it ([a97fb32](https://github.com/mben25/morphe-patches/commit/a97fb3227a459d98e36e08bbc4d2130f47a32d20))",
+  "download_url": "https://github.com/mben25/morphe-patches/releases/download/v1.9.1/patches-1.9.1.mpp",
   "signature_download_url": "",
-  "version": "1.9.0"
+  "version": "1.9.1"
 }

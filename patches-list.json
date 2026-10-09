@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.9.0",
+  "version": "1.9.1",
   "patches": [
     {
       "name": "AMOLED Dark Theme",
@@ -221,7 +221,7 @@
     },
     {
       "name": "Debug QR pairing path",
-      "description": "Diagnostic only. Records why StayFree's QR pairing does or does not issue its pairing request, to the same log as \"Local device sync\". Leave this off unless you are debugging a pairing failure.",
+      "description": "Diagnostic only. Records why StayFree's QR pairing does or does not issue its pairing request — the two guards on the scanned code, and the device-group status the pairing coroutine checks before it reaches the network — to the same log as \"Local device sync\". Leave this off unless you are debugging a pairing failure.",
       "default": false,
       "dependencies": [],
       "compatiblePackages": [

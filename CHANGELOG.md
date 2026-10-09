@@ -1,3 +1,10 @@
+## [1.9.1](https://github.com/mben25/morphe-patches/compare/v1.9.0...v1.9.1) (2026-10-09)
+
+### 🐛 Bug Fixes
+
+* probe the status gate that silently blocks StayFree pairing ([fa7b167](https://github.com/mben25/morphe-patches/commit/fa7b1675a29a96b4db93e05182ee1fbdef957668))
+* re-check the saved phone address before trusting it ([a97fb32](https://github.com/mben25/morphe-patches/commit/a97fb3227a459d98e36e08bbc4d2130f47a32d20))
+
 ## [1.9.0](https://github.com/mben25/morphe-patches/compare/v1.8.0...v1.9.0) (2026-10-09)
 
 ### ✨ New Features
