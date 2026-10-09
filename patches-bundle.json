@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-10-08T18:16:41",
-  "description": "## [1.8.0](https://github.com/mben25/morphe-patches/compare/v1.7.0...v1.8.0) (2026-10-08)\n\n### 🐛 Bug Fixes\n\n* pair StayFree devices on a ROM that cannot reach Google ([f63395c](https://github.com/mben25/morphe-patches/commit/f63395ca973fd975ce3a17a4844ea4e93bcfe87a))\n\n### ✨ New Features\n\n* add AliExpress patches for ads, analytics, coupons, media, notifications, and splash screen ([a91e017](https://github.com/mben25/morphe-patches/commit/a91e01799175e10b16a0e918454ca77a21787e3f))\n\n### 🚀 Updated App Support\n\n* drop StayFree 20.14.1 target, keep 20.16.1 only ([115d7f1](https://github.com/mben25/morphe-patches/commit/115d7f143893cb18eca059e7cbb12de591c2c211))",
-  "download_url": "https://github.com/mben25/morphe-patches/releases/download/v1.8.0/patches-1.8.0.mpp",
+  "created_at": "2026-10-09T11:18:09",
+  "description": "## [1.9.0](https://github.com/mben25/morphe-patches/compare/v1.8.0...v1.9.0) (2026-10-09)\n\n### ✨ New Features\n\n* add Speedtest by Ookla patches (ad-free, disable telemetry) ([fe7063f](https://github.com/mben25/morphe-patches/commit/fe7063f0e777dfe6e09c3192c1f78cc82e04299a))",
+  "download_url": "https://github.com/mben25/morphe-patches/releases/download/v1.9.0/patches-1.9.0.mpp",
   "signature_download_url": "",
-  "version": "1.8.0"
+  "version": "1.9.0"
 }

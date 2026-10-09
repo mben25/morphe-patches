@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.8.0",
+  "version": "1.9.0",
   "patches": [
     {
       "name": "AMOLED Dark Theme",
@@ -343,6 +343,34 @@
     },
     {
       "name": "Disable All Telemetry",
+      "description": "Comprehensive privacy patch: silences the Ookla DevMetrics dispatcher so no event reaches Firebase Analytics, Crashlytics or Logcat. Does not affect speed-test functionality.",
+      "default": false,
+      "dependencies": [
+        "BytecodePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "org.zwanoo.android.speedtest",
+          "name": "Speedtest",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#D81F26",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "7.1.1",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Disable All Telemetry",
       "description": "Removes and blocks all telemetry and analytics: SensorTower usage-data upload (app/web usage, browsing, shopping, AI prompts), Amplitude, Singular, Bugsnag, Firebase Analytics/Crashlytics/Performance/Sessions, Google App Measurement, Facebook app events and the advertising ID. Telemetry endpoints are also rewritten to localhost.",
       "default": true,
       "dependencies": [
@@ -517,6 +545,32 @@
           "targets": [
             {
               "version": "2.6.4",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Disable Logging (Analytics)",
+      "description": "Stops Speedtest by Ookla's DevMetrics dispatcher (com.ookla.tools.logging) from forwarding info/watch/alarm events to Firebase Analytics, Crashlytics and Logcat.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "org.zwanoo.android.speedtest",
+          "name": "Speedtest",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#D81F26",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "7.1.1",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
@@ -1291,6 +1345,32 @@
       "default": false,
       "dependencies": [],
       "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Unlock Ad-Free",
+      "description": "Removes ads and unlocks ad-free status in Speedtest by Ookla.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "org.zwanoo.android.speedtest",
+          "name": "Speedtest",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#D81F26",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "7.1.1",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
       "options": []
     },
     {

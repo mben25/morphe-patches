@@ -1,3 +1,9 @@
+## [1.9.0](https://github.com/mben25/morphe-patches/compare/v1.8.0...v1.9.0) (2026-10-09)
+
+### ✨ New Features
+
+* add Speedtest by Ookla patches (ad-free, disable telemetry) ([fe7063f](https://github.com/mben25/morphe-patches/commit/fe7063f0e777dfe6e09c3192c1f78cc82e04299a))
+
 ## [1.8.0](https://github.com/mben25/morphe-patches/compare/v1.7.0...v1.8.0) (2026-10-08)
 
 ### 🐛 Bug Fixes
