@@ -2,6 +2,7 @@ package app.stayfree.patches.sync
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.fieldAccess
+import app.morphe.patcher.methodCall
 import com.android.tools.smali.dexlib2.Opcode
 
 private const val R_STRING = "Lcom/burockgames/R\$string;"
@@ -45,6 +46,38 @@ object PairDeviceDataCollectionGateFingerprint : Fingerprint(
 object QrPairingLaunchFingerprint : Fingerprint(
     filters = listOf(
         fieldAccess(name = "USER_PAIRED_CODE_BY_QR", opcode = Opcode.SGET_OBJECT),
+    ),
+)
+
+/**
+ * A pairing coroutine body that opens with the status gate — `Lu83;->invokeSuspend` (the QR path)
+ * and `Lt83;->invokeSuspend` (the manual code-entry path) in 20.16.1. Both share the shape:
+ *
+ * ```
+ * invoke-virtual {statusFlow}, Log6;->getValue()Ljava/lang/Object;
+ * move-result-object vValue
+ * sget-object vLost, …DeviceGroupStatusType;->NETWORK_CONNECTION_LOST:…
+ * if-ne vValue, vLost, :proceed
+ * return Unit                      # silent: the status is not changed, nothing is logged
+ * ```
+ *
+ * Two anchors are needed. `NETWORK_CONNECTION_LOST` alone also matches `Lk20;`, the connectivity
+ * coroutine that *writes* the status; it reads the same constant and its `invokeSuspend` is found
+ * first. Adding `DevicePairingResponse$GroupKey.getKey()` — the unobfuscated library accessor for
+ * the group key a successful pairing returns — excludes it, since `k20` never handles a pairing
+ * response.
+ *
+ * This matches more than one method by design; the patch instruments every match, so the probe
+ * covers whichever path the user actually exercises.
+ */
+object PairingStatusGateFingerprint : Fingerprint(
+    name = "invokeSuspend",
+    filters = listOf(
+        fieldAccess(name = "NETWORK_CONNECTION_LOST", opcode = Opcode.SGET_OBJECT),
+        methodCall(
+            definingClass = "Lcom/sensortower/network/usageapi/entity/DevicePairingResponse\$GroupKey;",
+            name = "getKey",
+        ),
     ),
 )
 

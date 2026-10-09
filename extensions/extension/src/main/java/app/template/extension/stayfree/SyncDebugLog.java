@@ -127,6 +127,31 @@ final class SyncDebugLog {
         }
     }
 
+    /**
+     * A checkpoint carrying one arbitrary value — an enum constant, a status object, a null. Used
+     * where the question is "what was this when execution got here", rather than the fixed
+     * code/flag pair {@link #probe} records.
+     *
+     * <p>The value is rendered with {@code String.valueOf}, so an enum prints as its constant name
+     * and a null prints as {@code null}. Nothing here is a secret: the pairing code is never passed
+     * to this method, only to {@link #probe}, which redacts it.
+     */
+    synchronized void checkpoint(String tag, Object value) {
+        try {
+            ensureParent();
+            rotateIfNeeded();
+            try (PrintWriter out = new PrintWriter(new FileWriter(file, true))) {
+                out.print(timestamp.format(new Date()));
+                out.print("  PROBE  ");
+                out.print(tag);
+                out.print("  value=");
+                out.println(String.valueOf(value));
+            }
+        } catch (Throwable t) {
+            reportFailure(t);
+        }
+    }
+
     /** Reports the first write failure with its stack trace, then stays quiet. */
     private void reportFailure(Throwable t) {
         if (reportedFailure) return;

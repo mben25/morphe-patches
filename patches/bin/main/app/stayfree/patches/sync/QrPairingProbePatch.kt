@@ -15,8 +15,9 @@ private const val LOCAL_SYNC = "Lapp/template/extension/stayfree/LocalSync;"
 val qrPairingProbePatch = bytecodePatch(
     name = "Debug QR pairing path",
     description = "Diagnostic only. Records why StayFree's QR pairing does or does not issue its " +
-        "pairing request, to the same log as \"Local device sync\". Leave this off unless you " +
-        "are debugging a pairing failure.",
+        "pairing request — the two guards on the scanned code, and the device-group status the " +
+        "pairing coroutine checks before it reaches the network — to the same log as \"Local " +
+        "device sync\". Leave this off unless you are debugging a pairing failure.",
     default = false,
 ) {
     compatibleWith(COMPATIBILITY_STAYFREE)
@@ -80,5 +81,43 @@ val qrPairingProbePatch = bytecodePatch(
             "invoke-static {v$codeRegister, v$flagRegister}, " +
                 "$LOCAL_SYNC->probePairingGuard(Ljava/lang/String;Z)V",
         )
+
+        // Second checkpoint: the status gate the pairing coroutine hits immediately after launch.
+        //
+        //     if (statusFlow.value == NETWORK_CONNECTION_LOST) return
+        //
+        // The guards above are known to pass and no request follows, so this read — a field
+        // access with no suspension, which is why the failure is instant — is the last unobserved
+        // branch in between. Log the value the comparison is about to use.
+        // Both pairing paths — QR and manual code entry — carry the same gate, and instrumenting
+        // both costs nothing: whichever one the user exercises, the log gets the value.
+        val gates = PairingStatusGateFingerprint.matchAll()
+        if (gates.isEmpty()) throw PatchException("Pairing status gate not found")
+
+        gates.forEach { gate ->
+            val gateMethod = gate.method
+            val gateInstructions = gateMethod.implementation!!.instructions.toList()
+            val lostIndex = gate.instructionMatches.first().index
+
+            // The value under test is produced by the `move-result-object` just before the
+            // constant is loaded. Taking the register from there rather than from the `if-ne`
+            // keeps this correct whichever operand order R8 emits the comparison in.
+            val moveResult = (lostIndex - 1 downTo maxOf(0, lostIndex - 4)).firstOrNull {
+                gateInstructions[it].opcode == Opcode.MOVE_RESULT_OBJECT
+            } ?: throw PatchException("Pairing status value not found in ${gateMethod.definingClass}")
+
+            val statusRegister = (gateInstructions[moveResult] as OneRegisterInstruction).registerA
+            if (statusRegister > 15) {
+                throw PatchException("Pairing status register out of range for invoke-static")
+            }
+
+            // Insert after the `move-result-object`, where the value is live and nothing has
+            // branched yet.
+            gateMethod.addInstructions(
+                moveResult + 1,
+                "invoke-static {v$statusRegister}, " +
+                    "$LOCAL_SYNC->probePairingStatus(Ljava/lang/Object;)V",
+            )
+        }
     }
 }
