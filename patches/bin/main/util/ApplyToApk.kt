@@ -3,7 +3,7 @@
  * it only applies the patches in this project to an APK on disk and prints the result,
  * so fingerprint regressions are caught without going through Manager or the CLI.
  *
- * Usage: ./gradlew :patches:applyToApk --args "<apk> [outputDexDir] [--patches=mtcapsule|masareef|deviceinfo|stayfree|salaat|windy|aliexpress]"
+ * Usage: ./gradlew :patches:applyToApk --args "<apk> [outputDexDir] [--patches=mtcapsule|masareef|deviceinfo|stayfree|salaat|windy|aliexpress|speedtest]"
  */
 
 package util
@@ -54,6 +54,9 @@ import app.salaat.patches.remoteconfig.ignoreRemoteConfigOverridesPatch
 import app.salaat.patches.telemetry.disableAllTelemetryPatch as salaatDisableAllTelemetryPatch
 import app.salaat.patches.telemetry.deactivateFirebaseTelemetryPatch
 import app.salaat.patches.telemetry.disablePartnerSdksPatch
+import app.speedtest.patches.ads.unlockAdFreePatch
+import app.speedtest.patches.telemetry.disableAllTelemetryPatch as speedtestDisableAllTelemetryPatch
+import app.speedtest.patches.telemetry.noAnalyticsPatch
 import app.stayfree.patches.inbox.removeInboxControlPatch
 import app.stayfree.patches.login.hidePairedDevicesGoogleSignInPatch
 import app.stayfree.patches.login.removeDrawerSignInPatch
@@ -136,6 +139,12 @@ fun main(args: Array<String>) {
             )
 
             "windy" -> setOf(windyUnlockPremiumPatch)
+
+            "speedtest" -> setOf(
+                unlockAdFreePatch,
+                noAnalyticsPatch,
+                speedtestDisableAllTelemetryPatch,
+            )
 
             "aliexpress" -> setOf(
                 amoledDarkModePatch,
