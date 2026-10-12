@@ -9,9 +9,9 @@ import app.stayfree.patches.shared.Constants.COMPATIBILITY_STAYFREE
 val assumeInternetConnectionPatch = bytecodePatch(
     name = "Assume device is online",
     description = "Fixes \"Something went wrong, please try again…\" when pairing with the browser " +
-        "extension. StayFree gates all sync behind a captive-portal check that has to reach " +
-        "Google, which fails on a de-Googled or firewalled ROM; local pairing never needs the " +
-        "internet, so report the device as online.",
+        "extension. StayFree gates all sync behind a precheck that must reach Google and that " +
+        "also refuses to sync while usage-data collection is opted out; local pairing is served " +
+        "from the phone itself and needs neither, so report the device as free to sync.",
     default = true,
 ) {
     compatibleWith(COMPATIBILITY_STAYFREE)
@@ -43,6 +43,40 @@ val assumeInternetConnectionPatch = bytecodePatch(
             """
                 const/4 v0, 0x1
                 return v0
+            """,
+        )
+
+        // Forcing the captive-portal check true is necessary but not sufficient: the precheck
+        // every sync entry point awaits ANDs that result with two consent flags, and the last one
+        // is fatal here.
+        //
+        //     canSync = hasInternetConnection() && hasMadeConsentChoice() && !isOptedOut()
+        //
+        // "Disable All Telemetry" pins isOptedOut() to true so that no uploader ever transmits —
+        // which is the whole point of it, and it stays exactly as it is. But this precheck reuses
+        // that same flag as permission to sync at all, so with telemetry disabled the last term is
+        // always false and the precheck always returns false.
+        //
+        // The failure that causes is invisible by design. The pairing coroutine passes its status
+        // gate, sets LOADING, awaits this precheck, gets false, and returns null before
+        // constructing the Retrofit client — so no request is ever issued, the local sync server
+        // logs nothing at all, and the caller maps the null to the generic "Something went
+        // wrong, please try again…". Instant, silent, and indistinguishable from a network error.
+        //
+        // Return true from the precheck as a whole rather than unpinning isOptedOut(): the opt-out
+        // must keep reading true everywhere else or telemetry resumes. Its three conditions are
+        // all moot for this build anyway — sync is served by the local server on 127.0.0.1, which
+        // needs no internet, and consent to upload to a vendor server that is no longer contacted
+        // is not a question worth asking. Every other sync path (device-group config, categorizing
+        // worker, the remaining ~30 callers) is unblocked by the same instruction.
+        val precondition = SyncPreconditionFingerprint.methodOrNull
+            ?: throw PatchException("Sync precondition not found")
+
+        precondition.addInstructions(
+            0,
+            """
+                sget-object v0, Ljava/lang/Boolean;->TRUE:Ljava/lang/Boolean;
+                return-object v0
             """,
         )
     }

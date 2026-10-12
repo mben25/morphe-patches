@@ -82,6 +82,40 @@ object PairingStatusGateFingerprint : Fingerprint(
 )
 
 /**
+ * The shared "may this device sync?" precheck, `Lt38;->a(Ly92;)Ljava/lang/Object;` in 20.16.1 —
+ * a suspend function every sync entry point awaits before it touches the network. Roughly:
+ *
+ * ```
+ * suspend fun canSync(): Boolean {
+ *     if (!withContext(IO) { NetworkUtils.hasInternetConnection() }) return false
+ *     if (!prefs.hasMadeConsentChoice()) return false
+ *     if (prefs.isOptedOut()) return false      // <- fatal here
+ *     return true
+ * }
+ * ```
+ *
+ * The third condition is why pairing fails on this build. "Disable All Telemetry" forces
+ * `isOptedOut()` to return true so no uploader ever sends anything — correct for its own purpose,
+ * and deliberately left alone — but this precheck reads the same flag as permission to sync at
+ * all. So the pairing coroutine gets a false here, returns null *without building a Retrofit
+ * client*, and the caller paints the generic "Something went wrong, please try again…". Nothing
+ * reaches the local server, which is why the failure is instant and leaves no request in its log.
+ *
+ * Anchored on the two calls that only co-occur in this method: constructing `Lr38;` (the
+ * `withContext` body that calls `hasInternetConnection()`) and the consent-choice getter invoked
+ * right after. The other `()Z` helpers on this class are permission/OEM checks that build no
+ * coroutine body, and `Lr38;` is constructed nowhere else.
+ */
+object SyncPreconditionFingerprint : Fingerprint(
+    name = "a",
+    returnType = "Ljava/lang/Object;",
+    parameters = listOf("L"),
+    filters = listOf(
+        methodCall(definingClass = "Lr38;", name = "<init>"),
+    ),
+)
+
+/**
  * SensorTower's captive-portal check, `NetworkUtils.hasInternetConnection()`. It GETs
  * `https://clients3.google.com/generate_204`, falls back to `https://www.qualcomm.cn/generate_204`,
  * and returns true only on an exact HTTP 204.
