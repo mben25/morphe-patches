@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.9.2",
+  "version": "1.9.3",
   "patches": [
     {
       "name": "AMOLED Dark Theme",
@@ -976,6 +976,32 @@
           "targets": [
             {
               "version": "6.3.4",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Refresh paired devices list",
+      "description": "Fixes Settings > Paired Devices staying empty after a device pairs successfully. StayFree reloads the device list and announces it on a flow that nothing observes, while the screen waits on a flow that nothing ever updates, so it never recomposes. Announce the reload on the flow the screen actually watches.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.burockgames.timeclocker",
+          "name": "StayFree",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#4E7CFF",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "20.16.1",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,

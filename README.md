@@ -33,7 +33,7 @@ Click here to add these patches to Morphe: https://morphe.software/add-source?gi
 ## 🩹 Patches list
 
 <!-- PATCHES_START EXPANDED -->
-> **[v1.9.2](https://github.com/mben25/morphe-patches/releases/tag/v1.9.2)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;57 patches total
+> **[v1.9.3](https://github.com/mben25/morphe-patches/releases/tag/v1.9.3)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;58 patches total
 <details open>
 <summary>📦 Masareef&nbsp;&nbsp;•&nbsp;&nbsp;14 patches</summary>
 <br>
@@ -87,7 +87,7 @@ Click here to add these patches to Morphe: https://morphe.software/add-source?gi
 </details>
 
 <details open>
-<summary>📦 StayFree&nbsp;&nbsp;•&nbsp;&nbsp;12 patches</summary>
+<summary>📦 StayFree&nbsp;&nbsp;•&nbsp;&nbsp;13 patches</summary>
 <br>
 
 **🎯 Supported versions:**
@@ -105,6 +105,7 @@ Click here to add these patches to Morphe: https://morphe.software/add-source?gi
 | [Hide texts](#hide-texts) | Hides the instruction text on the "Pair with code" screen: "Select the app you want to pair your Android app with:". |  |
 | [In-app QR scanner](#in-app-qr-scanner) | Scans the browser extension's pairing QR code inside StayFree, like Brave's built-in scanner, instead of asking you to open the camera app (whose link can't open a patched app). Opens on its own when you choose to pair with a browser extension or the desktop app, and from a "Scan QR code" shortcut on the app icon. Uses ZXing, so it works without Google Play Services. |  |
 | [Local device sync](#local-device-sync) | Pairs the phone with the StayFree browser extension over your local network without data collection. The app runs a small sync server on port 8787 and serves its usage straight from Android, so nothing goes to StayFree/SensorTower. Removes the "Anonymous data collection must be enabled to pair devices" prompt. Needs the patched browser extension. |  |
+| [Refresh paired devices list](#refresh-paired-devices-list) | Fixes Settings > Paired Devices staying empty after a device pairs successfully. StayFree reloads the device list and announces it on a flow that nothing observes, while the screen waits on a flow that nothing ever updates, so it never recomposes. Announce the reload on the flow the screen actually watches. |  |
 | [Remove Google login request](#remove-google-login-request) | Removes the "Sign in with Google" page from onboarding and the "Create StayFree profile" step from the home setup checklist. Signing in manually from the drawer/pairing screens still works. |  |
 | [Remove Inbox Control](#remove-inbox-control) | Removes the Inbox Control (Gmail cleaner) feature: its drawer entry, its permissions section and every screen that opens it. The Neon theme and custom app icons that were locked behind signing up for it are unlocked, and the Gmail sign-in no longer keeps the permission setup reminder on the home screen. |  |
 | [Remove drawer sign-in](#remove-drawer-sign-in) | Removes the "Sign into StayFree" account row from the bottom of the side menu. |  |

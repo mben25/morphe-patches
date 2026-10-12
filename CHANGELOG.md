@@ -1,3 +1,9 @@
+## [1.9.3](https://github.com/mben25/morphe-patches/compare/v1.9.2...v1.9.3) (2026-10-12)
+
+### 🐛 Bug Fixes
+
+* refresh StayFree Paired Devices list after a device pairs ([5f88596](https://github.com/mben25/morphe-patches/commit/5f88596d38d5a0587d5db4b9656a99c0f667986f))
+
 ## [1.9.2](https://github.com/mben25/morphe-patches/compare/v1.9.1...v1.9.2) (2026-10-12)
 
 ### 🐛 Bug Fixes
