@@ -116,6 +116,41 @@ object SyncPreconditionFingerprint : Fingerprint(
 )
 
 /**
+ * `Lzl2;->s(Lqq2;Lz92;)Ljava/lang/Object;` in 20.16.1 — the repository method that reloads the
+ * paired-device list out of the Room `Device` table and publishes it for the UI:
+ *
+ * ```
+ * suspend fun reloadDevices(db: Database) {
+ *     devices = db.getDevices()            // -> Lzl2;->B0:Ljava/util/List;
+ *     deviceListChangedAt.postValue(now)   // -> Lzl2;->T:Lq87;
+ * }
+ * ```
+ *
+ * The second line is the bug. Settings > Paired Devices (`Lst9;`) — and eight other screens —
+ * read the device list out of the static `B0` and wrap it in a Compose cache keyed on a
+ * *different* flow, `Lzl2;->h0:Lq87;`. Across the whole app `T` is written here and read nowhere,
+ * while `h0` is read by every one of those screens and written nowhere but `<clinit>`. The two
+ * halves of the invalidation were never connected, so the screen composes once against whatever
+ * `B0` held at the time (an empty list on a cold start) and is never told to recompute.
+ *
+ * Nothing about this is specific to local sync — it is StayFree's own defect — but it only becomes
+ * visible once pairing works, because before that the list was legitimately empty.
+ *
+ * Anchored on the `B0` write together with the `T` post: `qq2.e()` (the device read) appears in
+ * seven methods and the two field accesses appear in no other method, so the three together pin
+ * this one.
+ */
+object DeviceListPublishFingerprint : Fingerprint(
+    name = "s",
+    returnType = "Ljava/lang/Object;",
+    parameters = listOf("L", "L"),
+    filters = listOf(
+        fieldAccess(definingClass = "Lzl2;", name = "B0", opcode = Opcode.SPUT_OBJECT),
+        fieldAccess(definingClass = "Lzl2;", name = "T", opcode = Opcode.SGET_OBJECT),
+    ),
+)
+
+/**
  * SensorTower's captive-portal check, `NetworkUtils.hasInternetConnection()`. It GETs
  * `https://clients3.google.com/generate_204`, falls back to `https://www.qualcomm.cn/generate_204`,
  * and returns true only on an exact HTTP 204.

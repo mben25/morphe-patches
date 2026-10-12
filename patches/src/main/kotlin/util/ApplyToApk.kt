@@ -67,6 +67,7 @@ import app.stayfree.patches.sync.inAppQrScannerPatch
 import app.stayfree.patches.sync.localDeviceSyncPatch
 import app.stayfree.patches.sync.miuiBackgroundPopupCheckPatch
 import app.stayfree.patches.sync.qrPairingProbePatch
+import app.stayfree.patches.sync.refreshPairedDevicesPatch
 import app.stayfree.patches.telemetry.disableAllTelemetryPatch as stayfreeDisableAllTelemetryPatch
 import app.stayfree.patches.ui.hideTextsPatch
 import app.windy.patches.premium.unlockPremiumPatch as windyUnlockPremiumPatch
@@ -122,6 +123,7 @@ fun main(args: Array<String>) {
                 unlockAllFeaturesPatch,
                 localDeviceSyncPatch,
                 assumeInternetConnectionPatch,
+                refreshPairedDevicesPatch,
                 inAppQrScannerPatch,
                 miuiBackgroundPopupCheckPatch,
                 hideTextsPatch,
