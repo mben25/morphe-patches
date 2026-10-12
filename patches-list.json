@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.9.1",
+  "version": "1.9.2",
   "patches": [
     {
       "name": "AMOLED Dark Theme",
@@ -58,7 +58,7 @@
     },
     {
       "name": "Assume device is online",
-      "description": "Fixes \"Something went wrong, please try again…\" when pairing with the browser extension. StayFree gates all sync behind a captive-portal check that has to reach Google, which fails on a de-Googled or firewalled ROM; local pairing never needs the internet, so report the device as online.",
+      "description": "Fixes \"Something went wrong, please try again…\" when pairing with the browser extension. StayFree gates all sync behind a precheck that must reach Google and that also refuses to sync while usage-data collection is opted out; local pairing is served from the phone itself and needs neither, so report the device as free to sync.",
       "default": true,
       "dependencies": [],
       "compatiblePackages": [

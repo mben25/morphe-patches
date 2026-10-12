@@ -1,3 +1,9 @@
+## [1.9.2](https://github.com/mben25/morphe-patches/compare/v1.9.1...v1.9.2) (2026-10-12)
+
+### 🐛 Bug Fixes
+
+* let pairing past the sync precondition when telemetry is off ([794c992](https://github.com/mben25/morphe-patches/commit/794c9927a9ae9b9315cf86df4b3fb91fafd9b3c9))
+
 ## [1.9.1](https://github.com/mben25/morphe-patches/compare/v1.9.0...v1.9.1) (2026-10-09)
 
 ### 🐛 Bug Fixes

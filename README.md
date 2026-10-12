@@ -33,7 +33,7 @@ Click here to add these patches to Morphe: https://morphe.software/add-source?gi
 ## 🩹 Patches list
 
 <!-- PATCHES_START EXPANDED -->
-> **[v1.9.1](https://github.com/mben25/morphe-patches/releases/tag/v1.9.1)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;57 patches total
+> **[v1.9.2](https://github.com/mben25/morphe-patches/releases/tag/v1.9.2)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;57 patches total
 <details open>
 <summary>📦 Masareef&nbsp;&nbsp;•&nbsp;&nbsp;14 patches</summary>
 <br>
@@ -97,7 +97,7 @@ Click here to add these patches to Morphe: https://morphe.software/add-source?gi
 
 | 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
 |----------|----------------|-----------|
-| [Assume device is online](#assume-device-is-online) | Fixes "Something went wrong, please try again…" when pairing with the browser extension. StayFree gates all sync behind a captive-portal check that has to reach Google, which fails on a de-Googled or firewalled ROM; local pairing never needs the internet, so report the device as online. |  |
+| [Assume device is online](#assume-device-is-online) | Fixes "Something went wrong, please try again…" when pairing with the browser extension. StayFree gates all sync behind a precheck that must reach Google and that also refuses to sync while usage-data collection is opted out; local pairing is served from the phone itself and needs neither, so report the device as free to sync. |  |
 | [Debug QR pairing path](#debug-qr-pairing-path) | Diagnostic only. Records why StayFree's QR pairing does or does not issue its pairing request — the two guards on the scanned code, and the device-group status the pairing coroutine checks before it reaches the network — to the same log as "Local device sync". Leave this off unless you are debugging a pairing failure. |  |
 | [Disable All Telemetry](#disable-all-telemetry) | Removes and blocks all telemetry and analytics: SensorTower usage-data upload (app/web usage, browsing, shopping, AI prompts), Amplitude, Singular, Bugsnag, Firebase Analytics/Crashlytics/Performance/Sessions, Google App Measurement, Facebook app events and the advertising ID. Telemetry endpoints are also rewritten to localhost. |  |
 | [Fix MIUI permission check crash](#fix-miui-permission-check-crash) | Stops the Xiaomi/Redmi/Poco "background pop-up" permission check from crashing on AOSP-based ROMs ("Bad operation #10021"), which otherwise aborts device pairing with "Something went wrong". |  |
