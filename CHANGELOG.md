@@ -1,3 +1,9 @@
+## [1.10.1](https://github.com/mben25/morphe-patches/compare/v1.10.0...v1.10.1) (2026-10-13)
+
+### 🐛 Bug Fixes
+
+* stop StayFree caching placeholder icons when a download fails ([d7e30f7](https://github.com/mben25/morphe-patches/commit/d7e30f73be0603ce86e69269fcf002900cb3c7b2))
+
 ## [1.10.0](https://github.com/mben25/morphe-patches/compare/v1.9.4...v1.10.0) (2026-10-13)
 
 ### ✨ New Features
