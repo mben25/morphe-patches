@@ -57,11 +57,18 @@ import app.salaat.patches.telemetry.disablePartnerSdksPatch
 import app.speedtest.patches.ads.unlockAdFreePatch
 import app.speedtest.patches.telemetry.disableAllTelemetryPatch as speedtestDisableAllTelemetryPatch
 import app.speedtest.patches.telemetry.noAnalyticsPatch
+import app.stayfree.patches.backup.localDataBackupPatch
+import app.stayfree.patches.drawer.removeFollowUsPatch
+import app.stayfree.patches.dashboard.removePairDevicesBannerPatch
+import app.stayfree.patches.drawer.removeMyFriendsPatch
 import app.stayfree.patches.inbox.removeInboxControlPatch
 import app.stayfree.patches.login.hidePairedDevicesGoogleSignInPatch
 import app.stayfree.patches.login.removeDrawerSignInPatch
 import app.stayfree.patches.login.removeGoogleLoginRequestPatch
 import app.stayfree.patches.premium.unlockAllFeaturesPatch
+import app.stayfree.patches.settings.removeAppInfoContentsPatch
+import app.stayfree.patches.settings.removeDataCollectionOptOutPatch
+import app.stayfree.patches.settings.removeGetHelpPatch
 import app.stayfree.patches.sync.assumeInternetConnectionPatch
 import app.stayfree.patches.sync.inAppQrScannerPatch
 import app.stayfree.patches.sync.localDeviceSyncPatch
@@ -127,6 +134,13 @@ fun main(args: Array<String>) {
                 inAppQrScannerPatch,
                 miuiBackgroundPopupCheckPatch,
                 hideTextsPatch,
+                localDataBackupPatch,
+                removeGetHelpPatch,
+                removeAppInfoContentsPatch,
+                removeDataCollectionOptOutPatch,
+                removeFollowUsPatch,
+                removeMyFriendsPatch,
+                removePairDevicesBannerPatch,
                 // Ships disabled; included here so its fingerprint is still verified.
                 qrPairingProbePatch,
             )
