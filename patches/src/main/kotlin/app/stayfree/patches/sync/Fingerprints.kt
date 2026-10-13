@@ -166,3 +166,28 @@ object HasInternetConnectionFingerprint : Fingerprint(
     returnType = "Z",
     parameters = emptyList(),
 )
+private const val GLIDE_SUPPORT = "Lcom/sensortower/network/glidesupport/glide"
+
+/**
+ * `DataFetcher.loadData(Priority, DataCallback)` of SensorTower's three network-backed Glide icon
+ * fetchers: brand icon URLs, website favicons, and icons of apps that aren't installed. Same
+ * unrenamed library as `NetworkUtils`, so matched by name. Each falls back to a cached
+ * placeholder bitmap from `DataFetchersKt.getDefault*Icon` when the download fails.
+ */
+object IconUrlDataFetcherFingerprint : Fingerprint(
+    definingClass = "$GLIDE_SUPPORT/IconUrlDataFetcher;",
+    name = "loadData",
+    returnType = "V",
+)
+
+object WebsiteIconDataFetcherFingerprint : Fingerprint(
+    definingClass = "$GLIDE_SUPPORT/WebsiteIconDataFetcher;",
+    name = "loadData",
+    returnType = "V",
+)
+
+object AppIconDataFetcherFingerprint : Fingerprint(
+    definingClass = "$GLIDE_SUPPORT/AppIconDataFetcher;",
+    name = "loadData",
+    returnType = "V",
+)
