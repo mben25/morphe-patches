@@ -1,9 +1,16 @@
 package app.stayfree.patches.sync
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
+import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.bytecodePatch
 import app.stayfree.patches.shared.Constants.COMPATIBILITY_STAYFREE
+import com.android.tools.smali.dexlib2.Opcode
+import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
+import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
+import com.android.tools.smali.dexlib2.iface.reference.MethodReference
+
+private const val DATA_FETCHERS_KT = "Lcom/sensortower/network/glidesupport/glide/DataFetchersKt;"
 
 @Suppress("unused")
 val assumeInternetConnectionPatch = bytecodePatch(
@@ -79,5 +86,47 @@ val assumeInternetConnectionPatch = bytecodePatch(
                 return-object v0
             """,
         )
+
+        // Forcing hasInternetConnection() true has a side effect on the Glide icon fetchers
+        // (icon URL, website favicon, uninstalled-app icon). Each one is shaped like
+        //
+        //     if (!hasInternetConnection()) { callback.onDataReady(null); return; }
+        //     try { bitmap = download(...) } catch (e) { bitmap = getDefaultAppIcon(...) }
+        //     callback.onDataReady(bitmap)
+        //
+        // A null result is a failed load: nothing is cached, the composable's failure slot draws
+        // the default icon, and the next display retries. The placeholder bitmap, though, is a
+        // *successful* load — Glide writes it to its disk cache under the icon's key and never
+        // asks again. With the check pinned true, every download attempted while the phone is
+        // offline (or that fails once) now takes the catch path, so brand icons on In-App
+        // Blocking, Usage Stats, etc. get stuck on the generic robot / globe until the app's
+        // cache is cleared.
+        //
+        // Hand Glide null instead of the placeholder in all three fetchers: the result looks the
+        // same on screen (the failure slot draws that same default icon), but it is not cached,
+        // so the real icon appears as soon as a download succeeds.
+        listOf(
+            IconUrlDataFetcherFingerprint,
+            WebsiteIconDataFetcherFingerprint,
+            AppIconDataFetcherFingerprint,
+        ).forEach { fingerprint ->
+            val method = fingerprint.methodOrNull
+                ?: throw PatchException("${fingerprint.javaClass.simpleName} not found")
+            val instructions = method.implementation!!.instructions.toList()
+            val placeholders = instructions.indices.filter { index ->
+                instructions[index].opcode == Opcode.INVOKE_STATIC &&
+                    ((instructions[index] as ReferenceInstruction).reference as MethodReference).let {
+                        it.definingClass == DATA_FETCHERS_KT && it.name.startsWith("getDefault")
+                    }
+            }
+            if (placeholders.isEmpty()) throw PatchException("Icon placeholder not found in ${method.definingClass}")
+            placeholders.forEach { index ->
+                val result = instructions[index + 1]
+                if (result.opcode != Opcode.MOVE_RESULT_OBJECT) throw PatchException("Unexpected icon placeholder shape")
+                // Same instruction count, so the indices found above stay valid.
+                method.replaceInstruction(index, "nop")
+                method.replaceInstruction(index + 1, "const/16 v${(result as OneRegisterInstruction).registerA}, 0x0")
+            }
+        }
     }
 }
