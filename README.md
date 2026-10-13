@@ -33,7 +33,7 @@ Click here to add these patches to Morphe: https://morphe.software/add-source?gi
 ## 🩹 Patches list
 
 <!-- PATCHES_START EXPANDED -->
-> **[v1.9.4](https://github.com/mben25/morphe-patches/releases/tag/v1.9.4)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;58 patches total
+> **[v1.10.0](https://github.com/mben25/morphe-patches/releases/tag/v1.10.0)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;65 patches total
 <details open>
 <summary>📦 Masareef&nbsp;&nbsp;•&nbsp;&nbsp;14 patches</summary>
 <br>
@@ -87,7 +87,7 @@ Click here to add these patches to Morphe: https://morphe.software/add-source?gi
 </details>
 
 <details open>
-<summary>📦 StayFree&nbsp;&nbsp;•&nbsp;&nbsp;13 patches</summary>
+<summary>📦 StayFree&nbsp;&nbsp;•&nbsp;&nbsp;20 patches</summary>
 <br>
 
 **🎯 Supported versions:**
@@ -104,11 +104,18 @@ Click here to add these patches to Morphe: https://morphe.software/add-source?gi
 | [Hide Google sign-in in Paired Devices](#hide-google-sign-in-in-paired-devices) | Hides the "Sign in with Google" button from the Paired Devices section in settings. Pairing with a code still works. |  |
 | [Hide texts](#hide-texts) | Hides the instruction text on the "Pair with code" screen: "Select the app you want to pair your Android app with:". |  |
 | [In-app QR scanner](#in-app-qr-scanner) | Scans the browser extension's pairing QR code inside StayFree, like Brave's built-in scanner, instead of asking you to open the camera app (whose link can't open a patched app). Opens on its own when you choose to pair with a browser extension or the desktop app, and from a "Scan QR code" shortcut on the app icon. Uses ZXing, so it works without Google Play Services. |  |
+| [Local data backup](#local-data-backup) | Replaces the Google Drive "Usage Data Backup" in Settings > Storage with a local backup: export your usage history, limits and settings to a zip file you pick, and restore them from one. Needs no Google account and no longer asks you to opt in to data collection. |  |
 | [Local device sync](#local-device-sync) | Pairs the phone with the StayFree browser extension over your local network without data collection. The app runs a small sync server on port 8787 and serves its usage straight from Android, so nothing goes to StayFree/SensorTower. Removes the "Anonymous data collection must be enabled to pair devices" prompt. Needs the patched browser extension. |  |
 | [Refresh paired devices list](#refresh-paired-devices-list) | Fixes Settings > Paired Devices staying empty after a device pairs successfully. StayFree reloads the device list and announces it on a flow that nothing observes, while the screen waits on a flow that nothing ever updates, so it never recomposes. Announce the reload on the flow the screen actually watches. |  |
+| [Remove App Info contents](#remove-app-info-contents) | Keeps the "App Info" row with the version number in Settings, but it no longer opens the App Info screen: Debug Usage Limit Problems, Data Privacy, StayFree Community, Support us, Credits & Open source libraries and the support App ID are gone. They are also removed from the settings search. |  |
+| [Remove Follow us](#remove-follow-us) | Removes the "• Follow us!" link next to "StayFree" at the top of the side menu. Tapping the header no longer opens StayFree's social media page. |  |
+| [Remove Get Help](#remove-get-help) | Removes the "Get Help" row (HelpScout support chat) from Settings and from the settings search. |  |
 | [Remove Google login request](#remove-google-login-request) | Removes the "Sign in with Google" page from onboarding and the "Create StayFree profile" step from the home setup checklist. Signing in manually from the drawer/pairing screens still works. |  |
 | [Remove Inbox Control](#remove-inbox-control) | Removes the Inbox Control (Gmail cleaner) feature: its drawer entry, its permissions section and every screen that opens it. The Neon theme and custom app icons that were locked behind signing up for it are unlocked, and the Gmail sign-in no longer keeps the permission setup reminder on the home screen. |  |
+| [Remove My Friends](#remove-my-friends) | Removes "My Friends" (usage sharing with friends through StayFree's servers) from the side menu and from the settings search. |  |
+| [Remove data collection opt-out](#remove-data-collection-opt-out) | Removes the "Opt-Out of Data Collection" switch from Settings > Data Privacy and locks data collection off: the opt-out can no longer be undone (the "Opt-In" buttons do nothing) and the opt-out status is never reported to StayFree. Includes "Disable All Telemetry". |  |
 | [Remove drawer sign-in](#remove-drawer-sign-in) | Removes the "Sign into StayFree" account row from the bottom of the side menu. |  |
+| [Remove pair devices banner](#remove-pair-devices-banner) | Removes the "Tap to pair your devices for the best StayFree experience!" banner from the dashboard and the "Cross Platform is here" sheet it opens (Google login on each device, "Share Download Links"). |  |
 | [Unlock all premium features](#unlock-all-premium-features) | Unlocks every theme (gamification-level, Black and Neon themes) and all custom app icons without earning levels, pairing a device or signing up for Inbox Control. |  |
 
 </details>

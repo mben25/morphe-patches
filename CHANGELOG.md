@@ -1,3 +1,12 @@
+## [1.10.0](https://github.com/mben25/morphe-patches/compare/v1.9.4...v1.10.0) (2026-10-13)
+
+### ✨ New Features
+
+* add StayFree local data backup in place of Google Drive backup ([1144342](https://github.com/mben25/morphe-patches/commit/1144342c494691c516df0bf7d28dcdd62036d262))
+* remove Follow us and My Friends from the StayFree side menu ([845863f](https://github.com/mben25/morphe-patches/commit/845863f62c4aed743d30bfaaffebb5d366745bbb))
+* remove StayFree Get Help, App Info contents and data collection opt-out ([b3b4560](https://github.com/mben25/morphe-patches/commit/b3b4560e937903bfb4773b02e24a55cba9ff21d6))
+* remove StayFree pair devices banner and its Cross Platform sheet ([6ea6885](https://github.com/mben25/morphe-patches/commit/6ea688508fda1c407dfb16e921a7ee31c0d00985))
+
 ## [1.9.4](https://github.com/mben25/morphe-patches/compare/v1.9.3...v1.9.4) (2026-10-13)
 
 ### 🐛 Bug Fixes

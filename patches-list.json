@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.9.4",
+  "version": "1.10.0",
   "patches": [
     {
       "name": "AMOLED Dark Theme",
@@ -935,6 +935,34 @@
       "options": []
     },
     {
+      "name": "Local data backup",
+      "description": "Replaces the Google Drive \"Usage Data Backup\" in Settings > Storage with a local backup: export your usage history, limits and settings to a zip file you pick, and restore them from one. Needs no Google account and no longer asks you to opt in to data collection.",
+      "default": true,
+      "dependencies": [
+        "ResourcePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "com.burockgames.timeclocker",
+          "name": "StayFree",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#4E7CFF",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "20.16.1",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
       "name": "Local device sync",
       "description": "Pairs the phone with the StayFree browser extension over your local network without data collection. The app runs a small sync server on port 8787 and serves its usage straight from Android, so nothing goes to StayFree/SensorTower. Removes the \"Anonymous data collection must be enabled to pair devices\" prompt. Needs the patched browser extension.",
       "default": true,
@@ -1119,6 +1147,32 @@
       "options": []
     },
     {
+      "name": "Remove App Info contents",
+      "description": "Keeps the \"App Info\" row with the version number in Settings, but it no longer opens the App Info screen: Debug Usage Limit Problems, Data Privacy, StayFree Community, Support us, Credits & Open source libraries and the support App ID are gone. They are also removed from the settings search.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.burockgames.timeclocker",
+          "name": "StayFree",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#4E7CFF",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "20.16.1",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
       "name": "Remove Facebook Audience Network Initialization",
       "description": "Removes the manifest-declared ContentProvider that auto-initializes the Facebook Audience Network mediation SDK on every app start.",
       "default": false,
@@ -1171,6 +1225,58 @@
       "options": []
     },
     {
+      "name": "Remove Follow us",
+      "description": "Removes the \"• Follow us!\" link next to \"StayFree\" at the top of the side menu. Tapping the header no longer opens StayFree's social media page.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.burockgames.timeclocker",
+          "name": "StayFree",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#4E7CFF",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "20.16.1",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Remove Get Help",
+      "description": "Removes the \"Get Help\" row (HelpScout support chat) from Settings and from the settings search.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.burockgames.timeclocker",
+          "name": "StayFree",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#4E7CFF",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "20.16.1",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
       "name": "Remove Google login request",
       "description": "Removes the \"Sign in with Google\" page from onboarding and the \"Create StayFree profile\" step from the home setup checklist. Signing in manually from the drawer/pairing screens still works.",
       "default": true,
@@ -1206,6 +1312,32 @@
         "BytecodePatch",
         "BytecodePatch"
       ],
+      "compatiblePackages": [
+        {
+          "packageName": "com.burockgames.timeclocker",
+          "name": "StayFree",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#4E7CFF",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "20.16.1",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Remove My Friends",
+      "description": "Removes \"My Friends\" (usage sharing with friends through StayFree's servers) from the side menu and from the settings search.",
+      "default": true,
+      "dependencies": [],
       "compatiblePackages": [
         {
           "packageName": "com.burockgames.timeclocker",
@@ -1306,8 +1438,62 @@
       "options": []
     },
     {
+      "name": "Remove data collection opt-out",
+      "description": "Removes the \"Opt-Out of Data Collection\" switch from Settings > Data Privacy and locks data collection off: the opt-out can no longer be undone (the \"Opt-In\" buttons do nothing) and the opt-out status is never reported to StayFree. Includes \"Disable All Telemetry\".",
+      "default": true,
+      "dependencies": [
+        "BytecodePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "com.burockgames.timeclocker",
+          "name": "StayFree",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#4E7CFF",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "20.16.1",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
       "name": "Remove drawer sign-in",
       "description": "Removes the \"Sign into StayFree\" account row from the bottom of the side menu.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.burockgames.timeclocker",
+          "name": "StayFree",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#4E7CFF",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "20.16.1",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Remove pair devices banner",
+      "description": "Removes the \"Tap to pair your devices for the best StayFree experience!\" banner from the dashboard and the \"Cross Platform is here\" sheet it opens (Google login on each device, \"Share Download Links\").",
       "default": true,
       "dependencies": [],
       "compatiblePackages": [
