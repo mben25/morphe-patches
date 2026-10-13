@@ -1,3 +1,9 @@
+## [1.9.4](https://github.com/mben25/morphe-patches/compare/v1.9.3...v1.9.4) (2026-10-13)
+
+### 🐛 Bug Fixes
+
+* hide StayFree permission-setup prompts when Google login is removed ([5211aa7](https://github.com/mben25/morphe-patches/commit/5211aa70a1b533693c83bebe48e0b04d63f37ee4))
+
 ## [1.9.3](https://github.com/mben25/morphe-patches/compare/v1.9.2...v1.9.3) (2026-10-12)
 
 ### 🐛 Bug Fixes
