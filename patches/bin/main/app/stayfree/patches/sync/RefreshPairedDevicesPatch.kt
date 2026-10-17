@@ -20,15 +20,15 @@ val refreshPairedDevicesPatch = bytecodePatch(
     compatibleWith(COMPATIBILITY_STAYFREE)
 
     execute {
-        // `Lzl2;->s()` reloads the paired devices out of the Room `Device` table and publishes
+        // `Lyl2;->s()` reloads the paired devices out of the Room `Device` table and publishes
         // them for the UI:
         //
-        //     devices = db.getDevices()            // sput -> Lzl2;->B0:Ljava/util/List;
-        //     deviceListChangedAt.postValue(now)   // sget -> Lzl2;->T:Lq87;
+        //     devices = db.getDevices()            // sput -> Lyl2;->B0:Ljava/util/List;
+        //     deviceListChangedAt.postValue(now)   // sget -> Lyl2;->T:Lu87;
         //
-        // Settings > Paired Devices (`Lst9;`) reads the list straight out of the static `B0` and
+        // Settings > Paired Devices (`Lst9;`, obfuscated) reads the list straight out of the static `B0` and
         // feeds it to `DeviceRegistry.deviceGroups-impl(...)`, but wraps that whole computation in
-        // a Compose cache keyed on `Lzl2;->h0:Lq87;` — a *different* flow. Across the entire app:
+        // a Compose cache keyed on `Lyl2;->h0:Lu87;` — a *different* flow. Across the entire app:
         //
         //   - `T`  is posted to here and read by nothing.
         //   - `h0` is collected by this screen and eight others, and written nowhere but <clinit>.
@@ -61,7 +61,7 @@ val refreshPairedDevicesPatch = bytecodePatch(
         val index = publish.implementation!!.instructions.toList().indexOfFirst { instruction ->
             instruction.opcode == Opcode.SGET_OBJECT &&
                 ((instruction as ReferenceInstruction).reference as FieldReference).let {
-                    it.definingClass == "Lzl2;" && it.name == "T"
+                    it.definingClass == DEVICE_REPOSITORY && it.name == "T"
                 }
         }
 
@@ -71,8 +71,8 @@ val refreshPairedDevicesPatch = bytecodePatch(
         publish.addInstructions(
             index + 2,
             """
-                sget-object v0, Lzl2;->h0:Lq87;
-                invoke-virtual {v0, p2}, Log6;->postValue(Ljava/lang/Object;)V
+                sget-object v0, $DEVICE_REPOSITORY->h0:$DEVICE_FLOW
+                invoke-virtual {v0, p2}, $DEVICE_FLOW_POST->postValue(Ljava/lang/Object;)V
             """,
         )
     }

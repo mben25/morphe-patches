@@ -8,6 +8,20 @@ import com.android.tools.smali.dexlib2.Opcode
 private const val R_STRING = "Lcom/burockgames/R\$string;"
 
 /**
+ * The repository holding the paired-device statics and their invalidation flows. R8 renumbers it
+ * every release — `Lzl2;` in 20.16.1, `Lyl2;` in 20.17.0 — but the field names on it (`B0`, `T`,
+ * `h0`) have been stable, so only this one constant and [DEVICE_FLOW] move. Identify it after a
+ * version bump as the single class declaring `static B0:Ljava/util/List;` alongside a `T` flow.
+ */
+internal const val DEVICE_REPOSITORY = "Lyl2;"
+
+/** The `MutableLiveData` subclass those flows are typed as (`Lq87;` in 20.16.1). */
+internal const val DEVICE_FLOW = "Lu87;"
+
+/** Its `postValue(Object)` declaring class (`Log6;` in 20.16.1). */
+internal const val DEVICE_FLOW_POST = "Lrg6;"
+
+/**
  * Retrofit `Builder.baseUrl(String)` (`Lvo9;->c(Ljava/lang/String;)V` in 20.14.1, merged by R8
  * into an unrelated class). Every SensorTower/StayFree Retrofit service is built through it, so
  * hooking it redirects all `https://api.stayfreeapps.com/` services in one place.
@@ -82,7 +96,7 @@ object PairingStatusGateFingerprint : Fingerprint(
 )
 
 /**
- * The shared "may this device sync?" precheck, `Lt38;->a(Ly92;)Ljava/lang/Object;` in 20.16.1 —
+ * The shared "may this device sync?" precheck, `Lw38;->a(Lx92;)Ljava/lang/Object;` in 20.17.0 —
  * a suspend function every sync entry point awaits before it touches the network. Roughly:
  *
  * ```
@@ -101,34 +115,38 @@ object PairingStatusGateFingerprint : Fingerprint(
  * client*, and the caller paints the generic "Something went wrong, please try again…". Nothing
  * reaches the local server, which is why the failure is instant and leaves no request in its log.
  *
- * Anchored on the two calls that only co-occur in this method: constructing `Lr38;` (the
- * `withContext` body that calls `hasInternetConnection()`) and the consent-choice getter invoked
- * right after. The other `()Z` helpers on this class are permission/OEM checks that build no
- * coroutine body, and `Lr38;` is constructed nowhere else.
+ * Anchored on constructing the `withContext` body that calls `hasInternetConnection()` — in
+ * 20.17.0 `Lu38;`, the only one of the five classes that construct it whose caller is a
+ * `(L)Ljava/lang/Object;` named `a`. The other `()Z` helpers on this class are permission/OEM
+ * checks that build no coroutine body.
+ *
+ * Both names shift every release (20.16.1: `Lt38;->a` with body `Lr38;`), so the body class is
+ * resolved by its single unobfuscated call — `NetworkUtils.hasInternetConnection()` — rather than
+ * hardcoded; only the two R8-renumbered digits ever move.
  */
 object SyncPreconditionFingerprint : Fingerprint(
     name = "a",
     returnType = "Ljava/lang/Object;",
     parameters = listOf("L"),
     filters = listOf(
-        methodCall(definingClass = "Lr38;", name = "<init>"),
+        methodCall(definingClass = "Lu38;", name = "<init>"),
     ),
 )
 
 /**
- * `Lzl2;->s(Lqq2;Lz92;)Ljava/lang/Object;` in 20.16.1 — the repository method that reloads the
+ * `Lyl2;->s(Lpq2;Ly92;)Ljava/lang/Object;` in 20.17.0 — the repository method that reloads the
  * paired-device list out of the Room `Device` table and publishes it for the UI:
  *
  * ```
  * suspend fun reloadDevices(db: Database) {
- *     devices = db.getDevices()            // -> Lzl2;->B0:Ljava/util/List;
- *     deviceListChangedAt.postValue(now)   // -> Lzl2;->T:Lq87;
+ *     devices = db.getDevices()            // -> Lyl2;->B0:Ljava/util/List;
+ *     deviceListChangedAt.postValue(now)   // -> Lyl2;->T:Lu87;
  * }
  * ```
  *
  * The second line is the bug. Settings > Paired Devices (`Lst9;`) — and eight other screens —
  * read the device list out of the static `B0` and wrap it in a Compose cache keyed on a
- * *different* flow, `Lzl2;->h0:Lq87;`. Across the whole app `T` is written here and read nowhere,
+ * *different* flow, `Lyl2;->h0:Lu87;`. Across the whole app `T` is written here and read nowhere,
  * while `h0` is read by every one of those screens and written nowhere but `<clinit>`. The two
  * halves of the invalidation were never connected, so the screen composes once against whatever
  * `B0` held at the time (an empty list on a cold start) and is never told to recompute.
@@ -136,7 +154,7 @@ object SyncPreconditionFingerprint : Fingerprint(
  * Nothing about this is specific to local sync — it is StayFree's own defect — but it only becomes
  * visible once pairing works, because before that the list was legitimately empty.
  *
- * Anchored on the `B0` write together with the `T` post: `qq2.e()` (the device read) appears in
+ * Anchored on the `B0` write together with the `T` post: `pq2.e()` (the device read) appears in
  * seven methods and the two field accesses appear in no other method, so the three together pin
  * this one.
  */
@@ -145,8 +163,8 @@ object DeviceListPublishFingerprint : Fingerprint(
     returnType = "Ljava/lang/Object;",
     parameters = listOf("L", "L"),
     filters = listOf(
-        fieldAccess(definingClass = "Lzl2;", name = "B0", opcode = Opcode.SPUT_OBJECT),
-        fieldAccess(definingClass = "Lzl2;", name = "T", opcode = Opcode.SGET_OBJECT),
+        fieldAccess(definingClass = DEVICE_REPOSITORY, name = "B0", opcode = Opcode.SPUT_OBJECT),
+        fieldAccess(definingClass = DEVICE_REPOSITORY, name = "T", opcode = Opcode.SGET_OBJECT),
     ),
 )
 
