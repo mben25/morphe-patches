@@ -1,3 +1,9 @@
+## [1.10.2](https://github.com/mben25/morphe-patches/compare/v1.10.1...v1.10.2) (2026-10-17)
+
+### 🐛 Bug Fixes
+
+* target StayFree 20.17.0 and re-resolve the renamed sync classes ([49fcf42](https://github.com/mben25/morphe-patches/commit/49fcf426df1accdccd1fc16243e5e53f014e4c8e))
+
 ## [1.10.1](https://github.com/mben25/morphe-patches/compare/v1.10.0...v1.10.1) (2026-10-13)
 
 ### 🐛 Bug Fixes
