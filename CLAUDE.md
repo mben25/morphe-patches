@@ -84,6 +84,7 @@ diagnosable on the next app version.
 Do not hand-manage releases.
 
 - Work on `dev`. Merge `dev` → `main` (merge commit, never squash) for a stable release.
+- **Only `main` triggers the release.** `release.yml` is configured with `push: branches: [main]` — pushing to `dev` does nothing and silently falls through. The `.releaserc` comment ("dev and main") is outdated; trust the workflow file. After finishing work on `dev`, `git checkout main && git merge --no-ff dev && git push` is the step that cuts the release.
 - [Semantic commits](https://kapeli.com/cheat_sheets/Semantic_Commits.docset/Contents/Resources/Documents/index) only: `feat:` and `fix:` cut a release, `chore:` does not.
 - `release.yml` + `.releaserc` handle everything. Don't write new release scripts; modify these.
 - Generated, never hand-edited or hand-committed: `patches-list.json`, `patches-bundle.json`, `CHANGELOG.md`, and the `<!-- PATCHES_START -->` block in [README.md](README.md).
