@@ -33,7 +33,7 @@ Click here to add these patches to Morphe: https://morphe.software/add-source?gi
 ## 🩹 Patches list
 
 <!-- PATCHES_START EXPANDED -->
-> **[v1.10.3](https://github.com/mben25/morphe-patches/releases/tag/v1.10.3)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;65 patches total
+> **[v1.11.0](https://github.com/mben25/morphe-patches/releases/tag/v1.11.0)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;70 patches total
 <details open>
 <summary>📦 Masareef&nbsp;&nbsp;•&nbsp;&nbsp;14 patches</summary>
 <br>
@@ -162,6 +162,26 @@ Click here to add these patches to Morphe: https://morphe.software/add-source?gi
 </details>
 
 <details open>
+<summary>📦 MT Capsule&nbsp;&nbsp;•&nbsp;&nbsp;6 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 17.3 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
+|----------|----------------|-----------|
+| [Disable All Telemetry](#disable-all-telemetry) | Disables all analytics and telemetry: Firebase Analytics, Installations and Transport auto-registration, the Google Measurement and DataTransport upload services, and the AdServices / Advertising ID attribution surface. |  |
+| [Remove AdServices Attribution](#remove-adservices-attribution) | Removes the ACCESS_ADSERVICES_ATTRIBUTION / ACCESS_ADSERVICES_AD_ID permissions and the android.ext.adservices uses-library entry, so the Privacy Sandbox AdServices APIs are never touched. |  |
+| [Remove Advertising ID](#remove-advertising-id) | Removes the Google Play Services Advertising ID permission. |  |
+| [Remove Analytics Services](#remove-analytics-services) | Removes the Google Measurement and DataTransport services and receivers that upload analytics events, so no scheduled job or alarm can wake the app to send telemetry. |  |
+| [Remove Firebase Component Discovery](#remove-firebase-component-discovery) | Removes the Firebase ComponentDiscoveryService and FirebaseInitProvider, which is how Analytics and Installations auto-register themselves on startup. |  |
+| [Unlock Pro](#unlock-pro) | Unlocks all pro features without a purchase. |  |
+
+</details>
+
+<details open>
 <summary>📦 Speedtest&nbsp;&nbsp;•&nbsp;&nbsp;3 patches</summary>
 <br>
 
@@ -190,21 +210,6 @@ Click here to add these patches to Morphe: https://morphe.software/add-source?gi
 | 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
 |----------|----------------|-----------|
 | [Unlock Premium](#unlock-premium) | Unlocks Windy Premium UI and features client-side by patching the JS bundle (store default 'premium', hasAny()=true, clearTier() neutralised, subs-premium body class) and forces the widgets' native premium check to true. Server-side premium data still requires a real subscription. Note: the map needs WebGL — it stays gray on WebViews that block WebGL (e.g. Cromite SystemWebView). |  |
-
-</details>
-
-<details open>
-<summary>📦 MT Capsule&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
-<br>
-
-**🎯 Supported versions:**
-
-| 17.3 |
-| :---: |
-
-| 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
-|----------|----------------|-----------|
-| [Unlock Pro](#unlock-pro) | Unlocks all pro features without a purchase. |  |
 
 </details>
 

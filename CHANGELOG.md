@@ -1,3 +1,9 @@
+## [1.11.0](https://github.com/mben25/morphe-patches/compare/v1.10.3...v1.11.0) (2026-10-20)
+
+### ✨ New Features
+
+* block all telemetry in MT Capsule ([f44e68d](https://github.com/mben25/morphe-patches/commit/f44e68d9ecae3ab2d62002b3969b62e5b780261b))
+
 ## [1.10.3](https://github.com/mben25/morphe-patches/compare/v1.10.2...v1.10.3) (2026-10-20)
 
 ### 🐛 Bug Fixes
