@@ -13,7 +13,7 @@ an in-app QR scanner).
 | App | Package | Verified version | File type |
 | --- | --- | --- | --- |
 | AliExpress | `com.alibaba.aliexpresshd` | 8.162.8 | APKM (split bundle) |
-| DeviceInfo | `com.ytheekshana.deviceinfo` | 3.4.3.4 | APK |
+| DeviceInfo | `com.ytheekshana.deviceinfo` | 3.4.4.0 | APK |
 | Infinity for Reddit+ | `ml.docilealligator.infinityforreddit.plus` | 8.3.3 | APK |
 | Infinity for Reddit (Patreon) | `ml.docilealligator.infinityforreddit.patreon` | 8.3.3 | APK |
 | Masareef | `com.appsqueue.masareef` | 2.6.4 | APK |
@@ -51,13 +51,16 @@ every release. Highlights:
 | Local data backup | StayFree | Export/restore usage history, limits and settings to a local zip — no Google account. |
 | Local device sync | StayFree | Pairs with the browser extension over your LAN, so nothing goes to StayFree/SensorTower. |
 | In-app QR scanner | StayFree | Scans the extension's pairing QR inside the app, via ZXing (no Play Services). |
-| AMOLED dark mode | AliExpress, Masareef | Pure-black backgrounds; on AliExpress it also unblacklists Xiaomi devices. |
+| AMOLED dark mode | AliExpress, Masareef, DeviceInfo | Pure-black backgrounds; on AliExpress it also unblacklists Xiaomi devices, on DeviceInfo it covers every theme color and "Use system colors". |
+| Remove Donate Screen | DeviceInfo | Removes every entry into the Donate screen (Settings, overflow menu, About) and closes it if anything still opens it. |
 | Bypass License Check | Masareef | Stubs the pairip signature/license check that otherwise rejects the re-signed APK. |
 | Neutralize Signature Check | Salaat First | Stubs the anti-tamper check that `System.exit(0)`s a re-signed build. Required by every other Salaat patch. |
 | Disable All Telemetry | 6 apps | One switch per app that pulls in that app's full analytics/tracking removal. |
 
 Most telemetry and ad-removal patches ship **disabled by default** — enable the ones
-you want in Morphe Manager.
+you want in Morphe Manager. Every DeviceInfo patch (including `AMOLED Dark Theme`,
+`Hide Privacy Policy Link`, `Hide Remove Ads Button` and `Remove Donate Screen`) is
+disabled by default.
 
 ### ⚠️ Patches that need setup
 

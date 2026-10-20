@@ -37,3 +37,22 @@ fun Document.removePreferenceCategory(titleReference: String) {
         }
     }
 }
+
+/**
+ * Removes every preference element (any tag) whose `android:key` equals [key]. A no-op when the
+ * key is already gone, e.g. because [removePreferenceCategory] dropped its whole category first.
+ *
+ * Only safe for keys whose `findPreference(key)` result the settings fragment null-checks - in
+ * 3.4.4.0 every key lookup in its `onCreatePreferences` (`Lgi2;`) is followed by `if-eqz`.
+ */
+fun Document.removePreference(key: String) {
+    val root = documentElement ?: return
+    val elements = root.getElementsByTagName("*")
+
+    for (i in elements.length - 1 downTo 0) {
+        val element = elements.item(i) as? Element ?: continue
+        if (element.getAttribute("android:key") == key) {
+            element.parentNode.removeChild(element)
+        }
+    }
+}
