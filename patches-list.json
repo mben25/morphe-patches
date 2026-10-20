@@ -1,7 +1,33 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.12.0",
+  "version": "1.13.0",
   "patches": [
+    {
+      "name": "AMOLED Dark Theme",
+      "description": "Makes the dark theme pure black for every theme color and for \"Use system colors\": window, cards and lists become #000000, while dialogs and menus stay near-black so they remain visible.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.ytheekshana.deviceinfo",
+          "name": "DeviceInfo",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#1976D2",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "3.4.4.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
     {
       "name": "AMOLED Dark Theme",
       "description": "Flattens dark theme backgrounds (window, cards, dialogs, toolbar, navigation bar, search, calendar) to pure black instead of the stock dark-gray shades.",
@@ -264,7 +290,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "3.4.3.4",
+              "version": "3.4.4.0",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
@@ -865,6 +891,58 @@
       "options": []
     },
     {
+      "name": "Hide Privacy Policy Link",
+      "description": "Removes the \"Privacy Policy\" link from the About section of the Settings screen.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.ytheekshana.deviceinfo",
+          "name": "DeviceInfo",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#1976D2",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "3.4.4.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Hide Remove Ads Button",
+      "description": "Removes the \"Remove Ads\" entry from the main overflow menu and the \"Remove Ads\" / \"Donate\" button from the About screen.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.ytheekshana.deviceinfo",
+          "name": "DeviceInfo",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#1976D2",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "3.4.4.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
       "name": "Hide Support Us Section",
       "description": "Removes the \"Support Us\" preference category (Rate Us, Donate / Remove Ads) from the Settings screen.",
       "default": false,
@@ -879,7 +957,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "3.4.3.4",
+              "version": "3.4.4.0",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
@@ -1093,7 +1171,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "3.4.3.4",
+              "version": "3.4.4.0",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
@@ -1178,7 +1256,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "3.4.3.4",
+              "version": "3.4.4.0",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
@@ -1224,7 +1302,7 @@
     },
     {
       "name": "Remove All Ads",
-      "description": "Stubs the app's single native-ad load trigger so no banner, native, or interstitial ad is ever requested or shown on any screen (dashboard, Wi-Fi/app analyzer, sensors, battery, memory, tools, or automatic tests), and removes the Facebook Audience Network mediation SDK's auto-initializing ContentProvider so it never starts.",
+      "description": "Turns on the app's own ad-free flag so no native or interstitial ad is ever requested or shown on any screen (dashboard, Wi-Fi/app analyzer, sensors, battery, memory, tools, or automatic tests), which also hides the \"Remove ads\" promo cards, and removes the Facebook Audience Network mediation SDK's auto-initializing ContentProvider so it never starts.",
       "default": false,
       "dependencies": [
         "ResourcePatch"
@@ -1239,7 +1317,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "3.4.3.4",
+              "version": "3.4.4.0",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
@@ -1310,6 +1388,35 @@
       "options": []
     },
     {
+      "name": "Remove Donate Screen",
+      "description": "Removes every way into the Donate screen (Settings \"Donate (Remove Ads)\", the overflow-menu and About-screen \"Remove Ads\" buttons) and makes the screen close itself immediately if anything still opens it.",
+      "default": false,
+      "dependencies": [
+        "ResourcePatch",
+        "ResourcePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "com.ytheekshana.deviceinfo",
+          "name": "DeviceInfo",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#1976D2",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "3.4.4.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
       "name": "Remove Facebook Audience Network Initialization",
       "description": "Removes the manifest-declared ContentProvider that auto-initializes the Facebook Audience Network mediation SDK on every app start.",
       "default": false,
@@ -1324,7 +1431,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "3.4.3.4",
+              "version": "3.4.4.0",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
@@ -1350,7 +1457,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "3.4.3.4",
+              "version": "3.4.4.0",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,

@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-10-20T16:01:02",
-  "description": "## [1.12.0](https://github.com/mben25/morphe-patches/compare/v1.11.0...v1.12.0) (2026-10-20)\n\n### ✨ New Features\n\n* add Infinity for Reddit+ spoof client patch ([1edf607](https://github.com/mben25/morphe-patches/commit/1edf60710c0b903a15425e01352a373ac3e5d425))",
-  "download_url": "https://github.com/mben25/morphe-patches/releases/download/v1.12.0/patches-1.12.0.mpp",
+  "created_at": "2026-10-20T17:58:36",
+  "description": "## [1.13.0](https://github.com/mben25/morphe-patches/compare/v1.12.0...v1.13.0) (2026-10-20)\n\n### ✨ New Features\n\n* **DeviceInfo:** support 3.4.4.0 and add AMOLED theme, donate and privacy-link removal ([08ac261](https://github.com/mben25/morphe-patches/commit/08ac26107c7144e699ea0a9ad2d84223240120b5))",
+  "download_url": "https://github.com/mben25/morphe-patches/releases/download/v1.13.0/patches-1.13.0.mpp",
   "signature_download_url": "",
-  "version": "1.12.0"
+  "version": "1.13.0"
 }

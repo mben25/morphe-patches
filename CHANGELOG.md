@@ -1,3 +1,9 @@
+## [1.13.0](https://github.com/mben25/morphe-patches/compare/v1.12.0...v1.13.0) (2026-10-20)
+
+### ✨ New Features
+
+* **DeviceInfo:** support 3.4.4.0 and add AMOLED theme, donate and privacy-link removal ([08ac261](https://github.com/mben25/morphe-patches/commit/08ac26107c7144e699ea0a9ad2d84223240120b5))
+
 ## [1.12.0](https://github.com/mben25/morphe-patches/compare/v1.11.0...v1.12.0) (2026-10-20)
 
 ### ✨ New Features
