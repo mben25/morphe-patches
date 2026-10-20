@@ -26,7 +26,11 @@ import app.aliexpress.patches.updates.disableForcedUpdatesPatch
 import app.deviceinfo.patches.ads.removeAllAdsPatch
 import app.infinity.patches.api.spoofClientPatch as infinitySpoofClientPatch
 import app.deviceinfo.patches.ads.removeFacebookAudienceNetworkInitPatch
+import app.deviceinfo.patches.settings.hidePrivacyPolicyLinkPatch
+import app.deviceinfo.patches.settings.hideRemoveAdsButtonPatch
 import app.deviceinfo.patches.settings.hideSupportUsSectionPatch
+import app.deviceinfo.patches.settings.removeDonateScreenPatch
+import app.deviceinfo.patches.theme.amoledDarkThemePatch as deviceinfoAmoledDarkThemePatch
 import app.deviceinfo.patches.telemetry.disableAllTelemetryPatch as deviceinfoDisableAllTelemetryPatch
 import app.deviceinfo.patches.telemetry.removeAdServicesAttributionPatch
 import app.deviceinfo.patches.telemetry.removeAdvertisingIdPatch as deviceinfoRemoveAdvertisingIdPatch
@@ -119,6 +123,10 @@ fun main(args: Array<String>) {
                 removeAllAdsPatch,
                 removeFacebookAudienceNetworkInitPatch,
                 hideSupportUsSectionPatch,
+                hidePrivacyPolicyLinkPatch,
+                hideRemoveAdsButtonPatch,
+                removeDonateScreenPatch,
+                deviceinfoAmoledDarkThemePatch,
                 deviceinfoDisableAllTelemetryPatch,
                 deviceinfoRemoveAdvertisingIdPatch,
                 removeAdServicesAttributionPatch,
