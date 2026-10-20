@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.11.0",
+  "version": "1.12.0",
   "patches": [
     {
       "name": "AMOLED Dark Theme",
@@ -1720,6 +1720,79 @@
       "dependencies": [],
       "compatiblePackages": null,
       "options": []
+    },
+    {
+      "name": "Spoof client (Infinity)",
+      "description": "Replaces the bundled Reddit OAuth credentials with your own, so the app keeps working after Reddit's API changes. Requires a client ID from https://www.reddit.com/prefs/apps (create an 'installed app').",
+      "default": true,
+      "dependencies": [
+        "BytecodePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "ml.docilealligator.infinityforreddit.plus",
+          "name": "Infinity for Reddit+",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#0D47A1",
+          "signatures": null,
+          "targets": [
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        },
+        {
+          "packageName": "ml.docilealligator.infinityforreddit.patreon",
+          "name": "Infinity for Reddit (Patreon)",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#0D47A1",
+          "signatures": null,
+          "targets": [
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": [
+        {
+          "key": "client-id",
+          "title": "OAuth client ID",
+          "description": "The Reddit OAuth client ID of an 'installed app' created at https://www.reddit.com/prefs/apps.",
+          "required": true,
+          "type": "kotlin.String",
+          "default": null,
+          "values": null
+        },
+        {
+          "key": "redirect-uri",
+          "title": "Redirect URI",
+          "description": "The redirect URI configured on your Reddit app. Must match exactly. Leave as-is unless you entered something different on Reddit.",
+          "required": true,
+          "type": "kotlin.String",
+          "default": "infinity://localhost",
+          "values": null
+        },
+        {
+          "key": "user-agent",
+          "title": "User agent",
+          "description": "The user agent sent to Reddit. Leave blank to keep the app's own user agent, which is the safest choice.",
+          "required": false,
+          "type": "kotlin.String",
+          "default": null,
+          "values": null
+        }
+      ]
     },
     {
       "name": "Strip root detection (narrow)",

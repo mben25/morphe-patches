@@ -33,7 +33,7 @@ Click here to add these patches to Morphe: https://morphe.software/add-source?gi
 ## 🩹 Patches list
 
 <!-- PATCHES_START EXPANDED -->
-> **[v1.11.0](https://github.com/mben25/morphe-patches/releases/tag/v1.11.0)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;70 patches total
+> **[v1.12.0](https://github.com/mben25/morphe-patches/releases/tag/v1.12.0)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;72 patches total
 <details open>
 <summary>📦 Masareef&nbsp;&nbsp;•&nbsp;&nbsp;14 patches</summary>
 <br>
@@ -195,6 +195,26 @@ Click here to add these patches to Morphe: https://morphe.software/add-source?gi
 | [Disable All Telemetry](#disable-all-telemetry) | Comprehensive privacy patch: silences the Ookla DevMetrics dispatcher so no event reaches Firebase Analytics, Crashlytics or Logcat. Does not affect speed-test functionality. |  |
 | [Disable Logging (Analytics)](#disable-logging-analytics) | Stops Speedtest by Ookla's DevMetrics dispatcher (com.ookla.tools.logging) from forwarding info/watch/alarm events to Firebase Analytics, Crashlytics and Logcat. |  |
 | [Unlock Ad-Free](#unlock-ad-free) | Removes ads and unlocks ad-free status in Speedtest by Ookla. |  |
+
+</details>
+
+<details open>
+<summary>📦 Infinity for Reddit+&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
+<br>
+
+| 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
+|----------|----------------|-----------|
+| [Spoof client (Infinity)](#spoof-client-infinity) | Replaces the bundled Reddit OAuth credentials with your own, so the app keeps working after Reddit's API changes. Requires a client ID from https://www.reddit.com/prefs/apps (create an 'installed app'). | • OAuth client ID<br>• Redirect URI<br>• User agent |
+
+</details>
+
+<details open>
+<summary>📦 Infinity for Reddit (Patreon)&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
+<br>
+
+| 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
+|----------|----------------|-----------|
+| [Spoof client (Infinity)](#spoof-client-infinity) | Replaces the bundled Reddit OAuth credentials with your own, so the app keeps working after Reddit's API changes. Requires a client ID from https://www.reddit.com/prefs/apps (create an 'installed app'). | • OAuth client ID<br>• Redirect URI<br>• User agent |
 
 </details>
 

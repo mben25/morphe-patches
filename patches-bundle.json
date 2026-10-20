@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-10-20T15:21:56",
-  "description": "## [1.11.0](https://github.com/mben25/morphe-patches/compare/v1.10.3...v1.11.0) (2026-10-20)\n\n### ✨ New Features\n\n* block all telemetry in MT Capsule ([f44e68d](https://github.com/mben25/morphe-patches/commit/f44e68d9ecae3ab2d62002b3969b62e5b780261b))",
-  "download_url": "https://github.com/mben25/morphe-patches/releases/download/v1.11.0/patches-1.11.0.mpp",
+  "created_at": "2026-10-20T16:01:02",
+  "description": "## [1.12.0](https://github.com/mben25/morphe-patches/compare/v1.11.0...v1.12.0) (2026-10-20)\n\n### ✨ New Features\n\n* add Infinity for Reddit+ spoof client patch ([1edf607](https://github.com/mben25/morphe-patches/commit/1edf60710c0b903a15425e01352a373ac3e5d425))",
+  "download_url": "https://github.com/mben25/morphe-patches/releases/download/v1.12.0/patches-1.12.0.mpp",
   "signature_download_url": "",
-  "version": "1.11.0"
+  "version": "1.12.0"
 }

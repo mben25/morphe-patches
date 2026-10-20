@@ -1,3 +1,9 @@
+## [1.12.0](https://github.com/mben25/morphe-patches/compare/v1.11.0...v1.12.0) (2026-10-20)
+
+### ✨ New Features
+
+* add Infinity for Reddit+ spoof client patch ([1edf607](https://github.com/mben25/morphe-patches/commit/1edf60710c0b903a15425e01352a373ac3e5d425))
+
 ## [1.11.0](https://github.com/mben25/morphe-patches/compare/v1.10.3...v1.11.0) (2026-10-20)
 
 ### ✨ New Features
