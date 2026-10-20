@@ -13,7 +13,7 @@ object Constants {
         targets = listOf(
             // Version the patches were developed and verified against.
             AppTarget(
-                version = "15.9",
+                version = "17.3",
                 minSdk = 32
             ),
             // Any newer version, experimentally.
