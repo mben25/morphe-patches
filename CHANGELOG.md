@@ -1,3 +1,9 @@
+## [1.10.3](https://github.com/mben25/morphe-patches/compare/v1.10.2...v1.10.3) (2026-10-20)
+
+### 🐛 Bug Fixes
+
+* verify MT Capsule Unlock Pro against 17.3 ([57d0b81](https://github.com/mben25/morphe-patches/commit/57d0b811474a3490127ae427f43b4bb5ab27a02b))
+
 ## [1.10.2](https://github.com/mben25/morphe-patches/compare/v1.10.1...v1.10.2) (2026-10-17)
 
 ### 🐛 Bug Fixes
