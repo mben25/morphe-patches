@@ -3,7 +3,10 @@
  * it only applies the patches in this project to an APK on disk and prints the result,
  * so fingerprint regressions are caught without going through Manager or the CLI.
  *
- * Usage: ./gradlew :patches:applyToApk --args "<apk> [outputDexDir] [--patches=mtcapsule|masareef|deviceinfo|stayfree|salaat|windy|aliexpress|speedtest]"
+ * Usage: ./gradlew :patches:applyToApk --args "<apk> [outputDexDir] [--patches=mtcapsule|masareef|deviceinfo|stayfree|salaat|windy|aliexpress|speedtest|infinity]"
+ *
+ * The infinity set additionally accepts --client-id=, --redirect-uri= and --user-agent=
+ * to supply the patch options that Manager would otherwise prompt for.
  */
 
 package util
@@ -21,6 +24,7 @@ import app.aliexpress.patches.theme.amoledDarkModePatch
 import app.aliexpress.patches.tracking.removeAffiliateTrackingPatch
 import app.aliexpress.patches.updates.disableForcedUpdatesPatch
 import app.deviceinfo.patches.ads.removeAllAdsPatch
+import app.infinity.patches.api.spoofClientPatch as infinitySpoofClientPatch
 import app.deviceinfo.patches.ads.removeFacebookAudienceNetworkInitPatch
 import app.deviceinfo.patches.settings.hideSupportUsSectionPatch
 import app.deviceinfo.patches.telemetry.disableAllTelemetryPatch as deviceinfoDisableAllTelemetryPatch
@@ -153,6 +157,27 @@ fun main(args: Array<String>) {
                 disableAppRatingPatch,
                 ignoreRemoteConfigOverridesPatch,
             )
+
+            // The spoof patch requires an OAuth client ID. Manager prompts for it; here a
+            // syntactically valid placeholder is injected so the fingerprints still get
+            // exercised. Override with --client-id=<22 chars> to verify a real credential.
+            "infinity" -> {
+                val placeholderClientId = args
+                    .firstOrNull { it.startsWith("--client-id=") }
+                    ?.substringAfter('=')
+                    ?: "AAAAAAAAAAAAAAAAAAAAAA"
+                infinitySpoofClientPatch.options["client-id"] = placeholderClientId
+
+                // Optional, so the non-default branches of the patch can be exercised too.
+                args.firstOrNull { it.startsWith("--redirect-uri=") }?.let {
+                    infinitySpoofClientPatch.options["redirect-uri"] = it.substringAfter('=')
+                }
+                args.firstOrNull { it.startsWith("--user-agent=") }?.let {
+                    infinitySpoofClientPatch.options["user-agent"] = it.substringAfter('=')
+                }
+
+                setOf(infinitySpoofClientPatch)
+            }
 
             "windy" -> setOf(windyUnlockPremiumPatch)
 

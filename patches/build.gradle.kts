@@ -3,9 +3,9 @@ group = "app.mtcapsule"
 patches {
     about {
         name = "Mben Morphe Patches"
-        description = "Patches for MT Capsule (incl. universal spoof/strip patches), Device Info, Masareef (ads, telemetry, branding, pro unlock) and StayFree (telemetry, unlocks, login/Inbox Control removal) Windy (premium unlock) and AliExpress (AMOLED dark mode, ads/popups/sponsored removal, update and promo push blocking)"
+        description = "Patches for MT Capsule (incl. universal spoof/strip patches), Device Info, Masareef (ads, telemetry, branding, pro unlock) and StayFree (telemetry, unlocks, login/Inbox Control removal) Windy (premium unlock), AliExpress (AMOLED dark mode, ads/popups/sponsored removal, update and promo push blocking) and Infinity for Reddit+ (OAuth client spoofing, paywall removal)"
         source = "git@github.com:MorpheApp/morphe-patches-template.git"
-        author = "na"
+        author = "mbenanaya"
         contact = "na"
         website = "na"
         license = "GPLv3"
