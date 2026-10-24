@@ -13,13 +13,13 @@ private const val R_STRING = "Lcom/burockgames/R\$string;"
  * `h0`) have been stable, so only this one constant and [DEVICE_FLOW] move. Identify it after a
  * version bump as the single class declaring `static B0:Ljava/util/List;` alongside a `T` flow.
  */
-internal const val DEVICE_REPOSITORY = "Lyl2;"
+internal const val DEVICE_REPOSITORY = "Lem2;"
 
 /** The `MutableLiveData` subclass those flows are typed as (`Lq87;` in 20.16.1). */
-internal const val DEVICE_FLOW = "Lu87;"
+internal const val DEVICE_FLOW = "Lca7;"
 
 /** Its `postValue(Object)` declaring class (`Log6;` in 20.16.1). */
-internal const val DEVICE_FLOW_POST = "Lrg6;"
+internal const val DEVICE_FLOW_POST = "Lnh6;"
 
 /**
  * Retrofit `Builder.baseUrl(String)` (`Lvo9;->c(Ljava/lang/String;)V` in 20.14.1, merged by R8
@@ -129,7 +129,7 @@ object SyncPreconditionFingerprint : Fingerprint(
     returnType = "Ljava/lang/Object;",
     parameters = listOf("L"),
     filters = listOf(
-        methodCall(definingClass = "Lu38;", name = "<init>"),
+        methodCall(definingClass = "Lt48;", name = "<init>"),
     ),
 )
 
