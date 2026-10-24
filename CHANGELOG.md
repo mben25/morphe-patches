@@ -1,3 +1,9 @@
+## [1.16.0](https://github.com/mben25/morphe-patches/compare/v1.15.0...v1.16.0) (2026-10-24)
+
+### ✨ New Features
+
+* **Infinity for Reddit+:** retarget `Spoof client (Infinity)` to 8.3.4 and default to RedReader credentials ([47b2472](https://github.com/mben25/morphe-patches/commit/47b247221b9a087a47b7ec26368ba09e572b0c28))
+
 ## [1.15.0](https://github.com/mben25/morphe-patches/compare/v1.14.0...v1.15.0) (2026-10-24)
 
 ### ✨ New Features

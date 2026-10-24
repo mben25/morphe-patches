@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-10-24T22:13:53",
-  "description": "## [1.15.0](https://github.com/mben25/morphe-patches/compare/v1.14.0...v1.15.0) (2026-10-24)\n\n### ✨ New Features\n\n* **Google Contacts:** add `Add microG support` to sign in through microG ([53980f0](https://github.com/mben25/morphe-patches/commit/53980f0d20a61d5e3e9afe030b71c301fc8fe38c))",
-  "download_url": "https://github.com/mben25/morphe-patches/releases/download/v1.15.0/patches-1.15.0.mpp",
+  "created_at": "2026-10-24T22:24:00",
+  "description": "## [1.16.0](https://github.com/mben25/morphe-patches/compare/v1.15.0...v1.16.0) (2026-10-24)\n\n### ✨ New Features\n\n* **Infinity for Reddit+:** retarget `Spoof client (Infinity)` to 8.3.4 and default to RedReader credentials ([47b2472](https://github.com/mben25/morphe-patches/commit/47b247221b9a087a47b7ec26368ba09e572b0c28))",
+  "download_url": "https://github.com/mben25/morphe-patches/releases/download/v1.16.0/patches-1.16.0.mpp",
   "signature_download_url": "",
-  "version": "1.15.0"
+  "version": "1.16.0"
 }

@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.15.0",
+  "version": "1.16.0",
   "patches": [
     {
       "name": "AMOLED Dark Theme",
@@ -1957,16 +1957,16 @@
           "description": "The redirect URI configured on your Reddit app. Must match exactly. Leave as-is unless you entered something different on Reddit.",
           "required": true,
           "type": "kotlin.String",
-          "default": "infinity://localhost",
+          "default": "redreader://rr_oauth_redir",
           "values": null
         },
         {
           "key": "user-agent",
           "title": "User agent",
-          "description": "The user agent sent to Reddit. Leave blank to keep the app's own user agent, which is the safest choice.",
+          "description": "The user agent sent to Reddit. Leave blank to keep the app's own user agent.",
           "required": false,
           "type": "kotlin.String",
-          "default": null,
+          "default": "org.quantumbadger.redreader/1.25.1",
           "values": null
         }
       ]
