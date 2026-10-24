@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-10-24T11:45:00",
-  "description": "## [1.13.3](https://github.com/mben25/morphe-patches/compare/v1.13.2...v1.13.3) (2026-10-24)\n\n### 🐛 Bug Fixes\n\n* **Salaat First:** stop `Ignore Remote-Config Overrides` crashing the app on 6.4.1 ([1267bc9](https://github.com/mben25/morphe-patches/commit/1267bc916d918af3a5e59d064fbd20e278cfe7bd))",
-  "download_url": "https://github.com/mben25/morphe-patches/releases/download/v1.13.3/patches-1.13.3.mpp",
+  "created_at": "2026-10-24T12:16:39",
+  "description": "## [1.14.0](https://github.com/mben25/morphe-patches/compare/v1.13.3...v1.14.0) (2026-10-24)\n\n### ✨ New Features\n\n* **Salaat First:** add `Fix Location Detection on microG` so the setup wizard finds your location ([a1ee22f](https://github.com/mben25/morphe-patches/commit/a1ee22fa4ee77a42bd962e96720eb9d0b0a3fc31))",
+  "download_url": "https://github.com/mben25/morphe-patches/releases/download/v1.14.0/patches-1.14.0.mpp",
   "signature_download_url": "",
-  "version": "1.13.3"
+  "version": "1.14.0"
 }

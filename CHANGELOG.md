@@ -1,3 +1,9 @@
+## [1.14.0](https://github.com/mben25/morphe-patches/compare/v1.13.3...v1.14.0) (2026-10-24)
+
+### ✨ New Features
+
+* **Salaat First:** add `Fix Location Detection on microG` so the setup wizard finds your location ([a1ee22f](https://github.com/mben25/morphe-patches/commit/a1ee22fa4ee77a42bd962e96720eb9d0b0a3fc31))
+
 ## [1.13.3](https://github.com/mben25/morphe-patches/compare/v1.13.2...v1.13.3) (2026-10-24)
 
 ### 🐛 Bug Fixes
