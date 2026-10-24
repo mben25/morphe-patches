@@ -180,7 +180,8 @@ val microgSupportPatch = bytecodePatch(
                 }
             }
         }
-        // Measured on 4.90.16: 64 package, 67 account type, and the rest.
+        // Measured on 4.90.16: 147 sites -- 67 account type, 64 package, 3 content URIs,
+        // and the rest across chimera/phenotype/fonts/auth and the named permissions.
         if (rewritten < 130) throw PatchException("rewrote only $rewritten Play services names; Contacts changed shape")
     }
 }
