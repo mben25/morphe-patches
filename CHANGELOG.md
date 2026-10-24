@@ -1,3 +1,13 @@
+## [1.13.1](https://github.com/mben25/morphe-patches/compare/v1.13.0...v1.13.1) (2026-10-24)
+
+### 🚀 Updated App Support
+
+* **Masareef:** support 2.6.8 ([6d63ef4](https://github.com/mben25/morphe-patches/commit/6d63ef47d2cadd93613fca45cd9d24473096a3c9))
+* **Salaat First:** support 6.4.1 ([62fdc99](https://github.com/mben25/morphe-patches/commit/62fdc994a5714012a0c37beeff4bf93b5d5ca00e))
+* **Speedtest by Ookla:** support 7.1.2 ([f4af99c](https://github.com/mben25/morphe-patches/commit/f4af99ce13a9425d3184523e44612fc9a81687ce))
+* **StayFree:** support 20.18.1 ([51d4938](https://github.com/mben25/morphe-patches/commit/51d4938a44c6e2a39bb7788853898f76e64f3d14))
+* **Windy:** support 51.3.2 ([ee07007](https://github.com/mben25/morphe-patches/commit/ee07007ae412603c2974c7f34245b5da03f38a61))
+
 ## [1.13.0](https://github.com/mben25/morphe-patches/compare/v1.12.0...v1.13.0) (2026-10-20)
 
 ### ✨ New Features
