@@ -57,6 +57,7 @@ import app.masareef.patches.telemetry.removeFacebookServicesPatch
 import app.masareef.patches.telemetry.removeGoogleAnalyticsPatch
 import app.mtcapsule.patches.mtisland.unlockProPatch
 import app.salaat.patches.integrity.neutralizeSignatureCheckPatch
+import app.salaat.patches.location.fixMicrogLocationPatch
 import app.salaat.patches.rating.disableAppRatingPatch
 import app.salaat.patches.remoteconfig.ignoreRemoteConfigOverridesPatch
 import app.salaat.patches.telemetry.disableAllTelemetryPatch as salaatDisableAllTelemetryPatch
@@ -164,6 +165,7 @@ fun main(args: Array<String>) {
                 deactivateFirebaseTelemetryPatch,
                 disableAppRatingPatch,
                 ignoreRemoteConfigOverridesPatch,
+                fixMicrogLocationPatch,
             )
 
             // The spoof patch requires an OAuth client ID. Manager prompts for it; here a

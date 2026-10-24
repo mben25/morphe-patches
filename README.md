@@ -55,6 +55,7 @@ every release. Highlights:
 | Remove Donate Screen | DeviceInfo | Removes every entry into the Donate screen (Settings, overflow menu, About) and closes it if anything still opens it. |
 | Bypass License Check | Masareef | Stubs the pairip signature/license check that otherwise rejects the re-signed APK. |
 | Neutralize Signature Check | Salaat First | Stubs the anti-tamper check that `System.exit(0)`s a re-signed build. Required by every other Salaat patch. |
+| Fix Location Detection on microG | Salaat First | Asks for a quick high-accuracy fix so "locating" no longer hangs for 10 minutes on microG devices. Enabled by default. |
 | Disable All Telemetry | 6 apps | One switch per app that pulls in that app's full analytics/tracking removal. |
 
 Most telemetry and ad-removal patches ship **disabled by default** — enable the ones
