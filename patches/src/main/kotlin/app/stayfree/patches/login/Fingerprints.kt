@@ -4,25 +4,24 @@ import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.methodCall
 import com.android.tools.smali.dexlib2.AccessFlags
+import com.android.tools.smali.dexlib2.Opcode
 
 private const val R_STRING = "Lcom/burockgames/R\$string;"
 
-internal const val ONBOARDING_PAGE_TYPE = "Lcom/burockgames/timeclocker/common/enums/OnboardingPageType;"
-
 /**
- * Onboarding ViewModel constructor (`Lcr7;-><init>(Lds0;)V` in 20.14.1). When no page list is
- * cached yet it builds
- * `mutableListOf(IntroPage, TermsPage, OnboardingGoogleAccountPage, PermissionUsagePage)` and
- * then appends device-specific pages after a xiaomi/redmi/poco manufacturer check — those three
- * strings together in a constructor are unique to it.
+ * Onboarding page-list builder (`Lp07;->d(Z)Ljava/util/List;` in 20.18.1). 20.18 rewrote
+ * onboarding: the `OnboardingPageType` enum is gone, replaced by an obfuscated enum (`Lqs7;`)
+ * whose entry names survived. The builder returns
+ * `listOf(Welcome, Terms, GoogleSignIn, UsagePermission, Reveal, GoalPicker, Accessibility[Autostart])`;
+ * the `(Z)List` static shape plus the `GoogleSignIn` read is unique to it.
  */
-object OnboardingPagesConstructorFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
-    parameters = listOf("L"),
-    strings = listOf("xiaomi", "redmi", "poco"),
+object OnboardingPagesFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
+    returnType = "Ljava/util/List;",
+    parameters = listOf("Z"),
     filters = listOf(
-        fieldAccess(definingClass = ONBOARDING_PAGE_TYPE, name = "OnboardingGoogleAccountPage"),
-        methodCall(name = "mutableListOf"),
+        fieldAccess(name = "GoogleSignIn", opcode = Opcode.SGET_OBJECT),
+        methodCall(name = "listOf"),
     ),
 )
 

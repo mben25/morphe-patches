@@ -44,9 +44,10 @@ object OpenInboxControlFingerprint : Fingerprint(
  * `PermissionCategoryData(R.string.permissions_category_inbox_cleaning, listOf(gmailSignIn, imapWriteAccess))`.
  * Right after, the builder drops every category whose items are empty, so handing that
  * constructor an empty list removes the whole section without touching the category array.
+ * No method name: 20.18.1 R8 merged several coroutine bodies into one class, moving the builder
+ * out of `invokeSuspend` into a private dispatch target (`Lhn2;->j(Ljava/lang/Object;)Ljava/lang/Object;`).
  */
 object PermissionsListBuilderFingerprint : Fingerprint(
-    name = "invokeSuspend",
     returnType = "Ljava/lang/Object;",
     filters = listOf(
         fieldAccess(definingClass = "Lcom/burockgames/R\$string;", name = "permissions_category_inbox_cleaning"),
