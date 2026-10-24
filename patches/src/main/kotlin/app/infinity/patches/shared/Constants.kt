@@ -11,7 +11,7 @@ object Constants {
      * [AppTarget.version] is left null on purpose: the spoof patch resolves every anchor
      * either from a stable literal (the OAuth redirect URI, the `0x10008000` intent flag)
      * or from the version name read out of the APK at patch time, so it is not tied to a
-     * single release. Verified against 8.3.3 (versionCode 231).
+     * single release. Verified against 8.3.4 (versionCode 232).
      */
     val COMPATIBILITY_INFINITY_PLUS = Compatibility(
         name = "Infinity for Reddit+",

@@ -15,8 +15,8 @@ an in-app QR scanner).
 | AliExpress | `com.alibaba.aliexpresshd` | 8.162.8 | APKM (split bundle) |
 | DeviceInfo | `com.ytheekshana.deviceinfo` | 3.4.4.0 | APK |
 | Google Contacts | `com.google.android.contacts` | 4.90.16.998876676 | APK |
-| Infinity for Reddit+ | `ml.docilealligator.infinityforreddit.plus` | 8.3.3 | APK |
-| Infinity for Reddit (Patreon) | `ml.docilealligator.infinityforreddit.patreon` | 8.3.3 | APK |
+| Infinity for Reddit+ | `ml.docilealligator.infinityforreddit.plus` | 8.3.4 | APK |
+| Infinity for Reddit (Patreon) | `ml.docilealligator.infinityforreddit.patreon` | 8.3.4 | APK |
 | Masareef | `com.appsqueue.masareef` | 2.6.8 | APK |
 | MT Capsule | `com.pryshedko.mtisland` | 17.3 (minSdk 32) | APK |
 | Salaat First | `org.hicham.salaat` | 6.4.1 | APK |
@@ -35,7 +35,7 @@ A few targets need the right APK:
   patches are fingerprint based, so they may or may not resolve against a build they
   were not verified on; if one fails to apply, downgrade to 17.3.
 - **Infinity for Reddit** is not pinned to a version at all — every anchor resolves
-  from a stable literal rather than the version name — but only 8.3.3 is verified.
+  from a stable literal rather than the version name — but only 8.3.4 is verified.
 
 ### Notable patches
 
@@ -69,7 +69,11 @@ disabled by default.
 
 - **Spoof client (Infinity)** requires an OAuth **client ID** from
   [reddit.com/prefs/apps](https://www.reddit.com/prefs/apps) (create an *installed
-  app*). Without it the patch fails rather than shipping stock credentials.
+  app*). Without it the patch fails rather than shipping stock credentials. The
+  **redirect URI** defaults to `redreader://rr_oauth_redir` and the **user agent** to
+  `org.quantumbadger.redreader/1.25.1`; the redirect URI must match what you entered on
+  Reddit *exactly* or login fails at the callback, so change it there or here until the
+  two agree. Blank the user agent to keep the app's own.
 - **Local device sync** (StayFree) needs the patched browser extension on the other
   end; the app serves sync on port `8787`.
 - **Add microG support** (Google Contacts) needs **microG** already installed —

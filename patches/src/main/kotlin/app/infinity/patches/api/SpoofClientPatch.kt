@@ -65,7 +65,7 @@ val spoofClientPatch = bytecodePatch(
 
     val redirectUri by stringOption(
         key = "redirect-uri",
-        default = "infinity://localhost",
+        default = "redreader://rr_oauth_redir",
         title = "Redirect URI",
         description = "The redirect URI configured on your Reddit app. Must match exactly. " +
                 "Leave as-is unless you entered something different on Reddit.",
@@ -75,10 +75,10 @@ val spoofClientPatch = bytecodePatch(
 
     val userAgent by stringOption(
         key = "user-agent",
-        default = null,
+        default = "org.quantumbadger.redreader/1.25.1",
         title = "User agent",
         description = "The user agent sent to Reddit. Leave blank to keep the app's own " +
-                "user agent, which is the safest choice.",
+                "user agent.",
         required = false
     )
 
@@ -127,9 +127,10 @@ val spoofClientPatch = bytecodePatch(
             match.replaceStringLiterals(redirectUri!!) { it == STOCK_REDIRECT_URI }
         }
 
-        // Only rewrite the user agent when one was actually supplied. The app's own agent
-        // is already well-formed and accepted by Reddit, so overriding it by default would
-        // trade a working value for a user-supplied one that may be malformed.
+        // Only rewrite the user agent when one is set; blanking the option keeps the app's
+        // own agent. The default identifies as RedReader, which matches the redirect URI
+        // default -- Reddit ties rate limits to the agent, and the stock Infinity agent is
+        // the one its own (now dead) client ID was throttled under.
         userAgent?.takeIf { it.isNotBlank() }?.let { agent ->
             val userAgentMatches = anyUserAgentFingerprint.matchAllOrNull().orEmpty()
             if (userAgentMatches.isEmpty()) {
