@@ -5,7 +5,7 @@ import com.android.tools.smali.dexlib2.AccessFlags
 
 /**
  * Speedtest by Ookla gates ad display behind three independent boolean checks, verified
- * against obfuscated R8 output for v7.1.1. The ad-free status flows through:
+ * against obfuscated R8 output for v7.1.1 (unchanged in v7.1.2). The ad-free status flows through:
  *
  * `H` (implements `com.ookla.speedtest.purchase.j`) — the live purchase/billing manager —
  * which calls into `p0` (`@JvmName("GooglePurchaseDataCompat")`), a static Kotlin-file-class
