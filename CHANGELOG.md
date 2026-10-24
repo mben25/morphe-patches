@@ -1,3 +1,9 @@
+## [1.15.0](https://github.com/mben25/morphe-patches/compare/v1.14.0...v1.15.0) (2026-10-24)
+
+### ✨ New Features
+
+* **Google Contacts:** add `Add microG support` to sign in through microG ([53980f0](https://github.com/mben25/morphe-patches/commit/53980f0d20a61d5e3e9afe030b71c301fc8fe38c))
+
 ## [1.14.0](https://github.com/mben25/morphe-patches/compare/v1.13.3...v1.14.0) (2026-10-24)
 
 ### ✨ New Features
