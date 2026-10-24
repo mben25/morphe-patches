@@ -3,7 +3,7 @@
  * it only applies the patches in this project to an APK on disk and prints the result,
  * so fingerprint regressions are caught without going through Manager or the CLI.
  *
- * Usage: ./gradlew :patches:applyToApk --args "<apk> [outputDexDir] [--patches=mtcapsule|masareef|deviceinfo|stayfree|salaat|windy|aliexpress|speedtest|infinity]"
+ * Usage: ./gradlew :patches:applyToApk --args "<apk> [outputDexDir] [--patches=mtcapsule|masareef|deviceinfo|stayfree|salaat|windy|aliexpress|speedtest|infinity|gcontacts]"
  *
  * The infinity set additionally accepts --client-id=, --redirect-uri= and --user-agent=
  * to supply the patch options that Manager would otherwise prompt for.
@@ -24,6 +24,7 @@ import app.aliexpress.patches.theme.amoledDarkModePatch
 import app.aliexpress.patches.tracking.removeAffiliateTrackingPatch
 import app.aliexpress.patches.updates.disableForcedUpdatesPatch
 import app.deviceinfo.patches.ads.removeAllAdsPatch
+import app.gcontacts.patches.microg.microgSupportPatch as gcontactsMicrogSupportPatch
 import app.infinity.patches.api.spoofClientPatch as infinitySpoofClientPatch
 import app.deviceinfo.patches.ads.removeFacebookAudienceNetworkInitPatch
 import app.deviceinfo.patches.settings.hidePrivacyPolicyLinkPatch
@@ -188,6 +189,8 @@ fun main(args: Array<String>) {
 
                 setOf(infinitySpoofClientPatch)
             }
+
+            "gcontacts" -> setOf(gcontactsMicrogSupportPatch)
 
             "windy" -> setOf(windyUnlockPremiumPatch)
 

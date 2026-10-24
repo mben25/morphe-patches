@@ -14,6 +14,7 @@ an in-app QR scanner).
 | --- | --- | --- | --- |
 | AliExpress | `com.alibaba.aliexpresshd` | 8.162.8 | APKM (split bundle) |
 | DeviceInfo | `com.ytheekshana.deviceinfo` | 3.4.4.0 | APK |
+| Google Contacts | `com.google.android.contacts` | 4.90.16.998876676 | APK |
 | Infinity for Reddit+ | `ml.docilealligator.infinityforreddit.plus` | 8.3.3 | APK |
 | Infinity for Reddit (Patreon) | `ml.docilealligator.infinityforreddit.patreon` | 8.3.3 | APK |
 | Masareef | `com.appsqueue.masareef` | 2.6.8 | APK |
@@ -56,6 +57,7 @@ every release. Highlights:
 | Bypass License Check | Masareef | Stubs the pairip signature/license check that otherwise rejects the re-signed APK. |
 | Neutralize Signature Check | Salaat First | Stubs the anti-tamper check that `System.exit(0)`s a re-signed build. Required by every other Salaat patch. |
 | Fix Location Detection on microG | Salaat First | Asks for a quick high-accuracy fix so "locating" no longer hangs for 10 minutes on microG devices. Enabled by default. |
+| Add microG support | Google Contacts | Signs in to your Google account through microG instead of Play services, so contacts sync, Phenotype and push work on a de-Googled phone. Enabled by default; needs microG installed, and cannot be used with a root (mount) install. |
 | Disable All Telemetry | 6 apps | One switch per app that pulls in that app's full analytics/tracking removal. |
 
 Most telemetry and ad-removal patches ship **disabled by default** — enable the ones
@@ -70,6 +72,13 @@ disabled by default.
   app*). Without it the patch fails rather than shipping stock credentials.
 - **Local device sync** (StayFree) needs the patched browser extension on the other
   end; the app serves sync on port `8787`.
+- **Add microG support** (Google Contacts) needs **microG** already installed —
+  [MicroG-RE](https://github.com/WSTxda/MicroG-RE) or ReVanced GmsCore — and an account
+  added inside it. It is **unavailable for root (mount) installs**: a mount install keeps
+  stock Contacts' manifest, so microG never learns which app to vouch for. The patch
+  spoofs Contacts' rotated signing certificate (`e4cf6254…`, the one Android 13+ reports);
+  on an older device the platform uses the original `ee3e2b5d…` key instead and sign-in
+  will not be granted.
 
 ### How to use these patches
 
