@@ -4,6 +4,7 @@ import app.salaat.patches.integrity.neutralizeSignatureCheckPatch
 import app.salaat.patches.shared.Constants.COMPATIBILITY_SALAAT
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
+import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.bytecodePatch
 import com.android.tools.smali.dexlib2.AccessFlags
 
@@ -42,12 +43,15 @@ val ignoreRemoteConfigOverridesPatch = bytecodePatch(
 
     execute {
         // Return the firebaseRemoteConfigProvider field immediately, skipping the use_flagsmith
-        // branch. The field type is FirebaseRemoteConfigProvider, which implements the declared
-        // IRemoteConfigProvider return type, so the early return is type-safe.
+        // branch. Its declared type drifts between versions (FirebaseRemoteConfigProvider before
+        // 6.4.1, IRemoteConfigProvider since); a hardcoded type there is a NoSuchFieldError at
+        // runtime, not a patch failure, so it is read off the class. Both implement the return type.
+        val field = GetDelegateFingerprint.classDef.fields.firstOrNull { it.name == "firebaseRemoteConfigProvider" }
+            ?: throw PatchException("firebaseRemoteConfigProvider field not found")
         GetDelegateFingerprint.method.addInstructions(
             0,
             """
-                iget-object v0, p0, Lorg/hicham/salaat/remoteconfig/MobileRemoteConfigProvider;->firebaseRemoteConfigProvider:Lorg/hicham/salaat/remoteconfig/FirebaseRemoteConfigProvider;
+                iget-object v0, p0, ${field.definingClass}->${field.name}:${field.type}
                 return-object v0
             """,
         )
