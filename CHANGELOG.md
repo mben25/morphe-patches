@@ -1,3 +1,9 @@
+## [1.13.2](https://github.com/mben25/morphe-patches/compare/v1.13.1...v1.13.2) (2026-10-24)
+
+### 🐛 Bug Fixes
+
+* **StayFree:** restore `Remove Google login request` and `Remove Inbox Control` on 20.18.1 ([beb8074](https://github.com/mben25/morphe-patches/commit/beb80743313d943dc651bf8bb044d99c7b5bfd3c))
+
 ## [1.13.1](https://github.com/mben25/morphe-patches/compare/v1.13.0...v1.13.1) (2026-10-24)
 
 ### 🚀 Updated App Support
