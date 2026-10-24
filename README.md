@@ -16,7 +16,7 @@ an in-app QR scanner).
 | DeviceInfo | `com.ytheekshana.deviceinfo` | 3.4.4.0 | APK |
 | Infinity for Reddit+ | `ml.docilealligator.infinityforreddit.plus` | 8.3.3 | APK |
 | Infinity for Reddit (Patreon) | `ml.docilealligator.infinityforreddit.patreon` | 8.3.3 | APK |
-| Masareef | `com.appsqueue.masareef` | 2.6.4 | APK |
+| Masareef | `com.appsqueue.masareef` | 2.6.8 | APK |
 | MT Capsule | `com.pryshedko.mtisland` | 17.3 (minSdk 32) | APK |
 | Salaat First | `org.hicham.salaat` | 6.3.4 | APK |
 | Speedtest by Ookla | `org.zwanoo.android.speedtest` | 7.1.1 | APK |
