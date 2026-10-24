@@ -12,7 +12,8 @@ import app.windy.patches.shared.Constants.COMPATIBILITY_WINDY
 // lives in one minified ES-module bundle:
 //
 //   assets/public/v/<version>/mobile.js        (51.0.1 → "51.0.1.mob.0f9e",
-//                                               51.2.1 → "51.2.1.mob.683f")
+//                                               51.2.1 → "51.2.1.mob.683f",
+//                                               51.3.2 → "51.3.2.mob.3c81")
 //
 // Only the home-screen widgets have a native premium check (see Fingerprints.kt).
 //
@@ -180,7 +181,7 @@ val unlockPremiumPatch = bytecodePatch(
     dependsOn(unlockPremiumBundlePatch)
 
     execute {
-        // `.locals 2` in 51.0.1 (kr6.b) and 51.2.1 (ra6.b), so v0 is a plain local register.
+        // `.locals 2` in 51.0.1 (kr6.b), 51.2.1 (ra6.b) and 51.3.2 (nb6.b), so v0 is a plain local register.
         IsPremiumForWidgetFingerprint.method.addInstructions(
             0,
             """

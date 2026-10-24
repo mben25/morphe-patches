@@ -15,6 +15,9 @@ object Constants {
             // shape, not minified names, but a bundle rewrite can still break them, so no
             // experimental "any version" target.
             AppTarget(
+                version = "51.3.2"
+            ),
+            AppTarget(
                 version = "51.2.1"
             ),
             AppTarget(

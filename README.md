@@ -21,7 +21,7 @@ an in-app QR scanner).
 | Salaat First | `org.hicham.salaat` | 6.4.1 | APK |
 | Speedtest by Ookla | `org.zwanoo.android.speedtest` | 7.1.2, 7.1.1 | APK |
 | StayFree | `com.burockgames.timeclocker` | 20.18.1 | APK |
-| Windy | `com.windyty.android` | 51.2.1, 51.0.1 | APK |
+| Windy | `com.windyty.android` | 51.3.2, 51.2.1, 51.0.1 | APK |
 
 Any app not listed above is **not** supported by this bundle.
 
