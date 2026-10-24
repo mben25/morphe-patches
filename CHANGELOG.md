@@ -1,3 +1,9 @@
+## [1.13.3](https://github.com/mben25/morphe-patches/compare/v1.13.2...v1.13.3) (2026-10-24)
+
+### 🐛 Bug Fixes
+
+* **Salaat First:** stop `Ignore Remote-Config Overrides` crashing the app on 6.4.1 ([1267bc9](https://github.com/mben25/morphe-patches/commit/1267bc916d918af3a5e59d064fbd20e278cfe7bd))
+
 ## [1.13.2](https://github.com/mben25/morphe-patches/compare/v1.13.1...v1.13.2) (2026-10-24)
 
 ### 🐛 Bug Fixes
