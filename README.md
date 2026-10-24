@@ -18,7 +18,7 @@ an in-app QR scanner).
 | Infinity for Reddit (Patreon) | `ml.docilealligator.infinityforreddit.patreon` | 8.3.3 | APK |
 | Masareef | `com.appsqueue.masareef` | 2.6.8 | APK |
 | MT Capsule | `com.pryshedko.mtisland` | 17.3 (minSdk 32) | APK |
-| Salaat First | `org.hicham.salaat` | 6.3.4 | APK |
+| Salaat First | `org.hicham.salaat` | 6.4.1 | APK |
 | Speedtest by Ookla | `org.zwanoo.android.speedtest` | 7.1.1 | APK |
 | StayFree | `com.burockgames.timeclocker` | 20.17.0 | APK |
 | Windy | `com.windyty.android` | 51.2.1, 51.0.1 | APK |
