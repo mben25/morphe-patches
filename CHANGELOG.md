@@ -1,3 +1,9 @@
+## [1.17.0](https://github.com/mben25/morphe-patches/compare/v1.16.1...v1.17.0) (2026-10-25)
+
+### ✨ New Features
+
+* **Infinity for Reddit+:** add `Modify login WebView (Infinity)` so Reddit's login page loads with a Chrome user agent and JavaScript ([a019ff2](https://github.com/mben25/morphe-patches/commit/a019ff2b9a8b3c2b07d77de5e4f3b63522d36088))
+
 ## [1.16.1](https://github.com/mben25/morphe-patches/compare/v1.16.0...v1.16.1) (2026-10-25)
 
 ### 🐛 Bug Fixes
