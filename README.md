@@ -49,6 +49,7 @@ every release. Highlights:
 | Unlock Premium | Windy | Premium UI and features client-side (server-side data still needs a real subscription). |
 | Unlock Ad-Free | Speedtest | Removes ads and unlocks ad-free status. |
 | Spoof client (Infinity) | Infinity for Reddit | Swaps in your own Reddit OAuth credentials so the app keeps working. Needs a client ID. |
+| Modify login WebView (Infinity) | Infinity for Reddit | Gives Reddit's login page a Chrome user agent and JavaScript so in-app login stops failing (port of Patcheddit's). Enabled by default. |
 | Local data backup | StayFree | Export/restore usage history, limits and settings to a local zip — no Google account. |
 | Local device sync | StayFree | Pairs with the browser extension over your LAN, so nothing goes to StayFree/SensorTower. |
 | In-app QR scanner | StayFree | Scans the extension's pairing QR inside the app, via ZXing (no Play Services). |
@@ -73,9 +74,10 @@ disabled by default.
   **redirect URI** defaults to `redreader://rr_oauth_redir` and the **user agent** to
   `org.quantumbadger.redreader/1.25.1`; the redirect URI must match what you entered on
   Reddit *exactly* or login fails at the callback, so change it there or here until the
-  two agree. Blank the user agent to keep the app's own. Selecting Patcheddit's spoof
-  patch in the same run is not needed; if you do, whichever user agent it writes first
-  is the one that ships.
+  two agree. Blank the user agent to keep the app's own. Both Infinity patches here
+  replace Patcheddit's (`Spoof client` and `Modify login WebView`), so leave the
+  Patcheddit bundle unselected for Infinity: selecting both makes its patches rewrite
+  the same literals and `loadUrl` calls first.
 - **Local device sync** (StayFree) needs the patched browser extension on the other
   end; the app serves sync on port `8787`.
 - **Add microG support** (Google Contacts) needs **microG** already installed —
