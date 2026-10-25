@@ -31,6 +31,10 @@ A few targets need the right APK:
 - **AliExpress** and **StayFree** ship as Play split bundles. Patch the *merged
   universal* APK, never the bare base — StayFree's base alone fails to install on
   Android 14+ with `INSTALL_FAILED_NO_MATCHING_ABIS`.
+- **Salaat First** is often passed around as a merged APK that has lost its
+  `META-INF/services` files. Without them the online city search (the only one that
+  understands Arabic) and the official Moroccan timetable silently fail.
+  `Neutralize Signature Check` restores those files, so a merged APK is fine.
 - **MT Capsule** accepts versions newer than 17.3 as **experimental** targets. The
   patches are fingerprint based, so they may or may not resolve against a build they
   were not verified on; if one fails to apply, downgrade to 17.3.
@@ -56,7 +60,7 @@ every release. Highlights:
 | AMOLED dark mode | AliExpress, Masareef, DeviceInfo | Pure-black backgrounds; on AliExpress it also unblacklists Xiaomi devices, on DeviceInfo it covers every theme color and "Use system colors". |
 | Remove Donate Screen | DeviceInfo | Removes every entry into the Donate screen (Settings, overflow menu, About) and closes it if anything still opens it. |
 | Bypass License Check | Masareef | Stubs the pairip signature/license check that otherwise rejects the re-signed APK. |
-| Neutralize Signature Check | Salaat First | Stubs the anti-tamper check that `System.exit(0)`s a re-signed build. Required by every other Salaat patch. |
+| Neutralize Signature Check | Salaat First | Stubs the anti-tamper check that `System.exit(0)`s a re-signed build, and restores the `META-INF/services` files that merge tools strip. Required by every other Salaat patch. Enabled by default. |
 | Fix Location Detection on microG | Salaat First | Asks for a quick high-accuracy fix so "locating" no longer hangs for 10 minutes on microG devices. Enabled by default. |
 | Add microG support | Google Contacts | Signs in to your Google account through microG instead of Play services, so contacts sync, Phenotype and push work on a de-Googled phone. Enabled by default; needs microG installed, and cannot be used with a root (mount) install. |
 | Disable All Telemetry | 6 apps | One switch per app that pulls in that app's full analytics/tracking removal. |

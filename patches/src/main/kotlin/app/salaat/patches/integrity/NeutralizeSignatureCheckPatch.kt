@@ -10,11 +10,14 @@ val neutralizeSignatureCheckPatch = bytecodePatch(
     description = "Stubs the hidden anti-tamper check in LanguageCheckerKt that MD5-fingerprints " +
         "the signing certificate and calls System.exit(0) when it does not match the bundled " +
         "signature. A re-signed (patched) APK always mismatches, so without this the app kills " +
-        "itself on launch and no other patch can run. Required dependency of every other Salaat " +
-        "patch.",
+        "itself on launch and no other patch can run. Also restores the META-INF/services files " +
+        "that APK merge tools strip, without which city search and official timetables fail. " +
+        "Required dependency of every other Salaat patch.",
     default = true,
 ) {
     compatibleWith(COMPATIBILITY_SALAAT)
+
+    dependsOn(restoreServiceFilesPatch)
 
     execute {
         // access$b computes and stores the check/mis verdict; initLanguage is the exit path.
