@@ -12,6 +12,7 @@ import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.reference.StringReference
+import java.util.logging.Logger
 
 /**
  * Removes the paywall nag that Infinity+ shows on launch.
@@ -132,9 +133,13 @@ val spoofClientPatch = bytecodePatch(
         // default -- Reddit ties rate limits to the agent, and the stock Infinity agent is
         // the one its own (now dead) client ID was throttled under.
         userAgent?.takeIf { it.isNotBlank() }?.let { agent ->
+            // A miss is not fatal: another bundle's spoof patch (Patcheddit) applied in the
+            // same run rewrites these literals first, leaving nothing here to match.
             val userAgentMatches = anyUserAgentFingerprint.matchAllOrNull().orEmpty()
             if (userAgentMatches.isEmpty()) {
-                throw PatchException("Found no user agent literal to replace")
+                Logger.getLogger("SpoofClientPatch").warning(
+                    "Found no user agent literal to replace; keeping the current one"
+                )
             }
 
             userAgentMatches.forEach { match ->

@@ -73,7 +73,9 @@ disabled by default.
   **redirect URI** defaults to `redreader://rr_oauth_redir` and the **user agent** to
   `org.quantumbadger.redreader/1.25.1`; the redirect URI must match what you entered on
   Reddit *exactly* or login fails at the callback, so change it there or here until the
-  two agree. Blank the user agent to keep the app's own.
+  two agree. Blank the user agent to keep the app's own. Selecting Patcheddit's spoof
+  patch in the same run is not needed; if you do, whichever user agent it writes first
+  is the one that ships.
 - **Local device sync** (StayFree) needs the patched browser extension on the other
   end; the app serves sync on port `8787`.
 - **Add microG support** (Google Contacts) needs **microG** already installed —
