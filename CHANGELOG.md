@@ -1,3 +1,9 @@
+## [1.16.1](https://github.com/mben25/morphe-patches/compare/v1.16.0...v1.16.1) (2026-10-25)
+
+### 🐛 Bug Fixes
+
+* **Infinity for Reddit+:** stop `Spoof client (Infinity)` failing when another bundle already replaced the user agent ([73a07f6](https://github.com/mben25/morphe-patches/commit/73a07f66fcbf1a939bc11873e03ebf9708ef9471))
+
 ## [1.16.0](https://github.com/mben25/morphe-patches/compare/v1.15.0...v1.16.0) (2026-10-24)
 
 ### ✨ New Features
