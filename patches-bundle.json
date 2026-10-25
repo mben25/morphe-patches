@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-10-25T09:17:53",
-  "description": "## [1.17.0](https://github.com/mben25/morphe-patches/compare/v1.16.1...v1.17.0) (2026-10-25)\n\n### ✨ New Features\n\n* **Infinity for Reddit+:** add `Modify login WebView (Infinity)` so Reddit's login page loads with a Chrome user agent and JavaScript ([a019ff2](https://github.com/mben25/morphe-patches/commit/a019ff2b9a8b3c2b07d77de5e4f3b63522d36088))",
-  "download_url": "https://github.com/mben25/morphe-patches/releases/download/v1.17.0/patches-1.17.0.mpp",
+  "created_at": "2026-10-25T09:19:44",
+  "description": "## [1.17.1](https://github.com/mben25/morphe-patches/compare/v1.17.0...v1.17.1) (2026-10-25)\n\n### 🐛 Bug Fixes\n\n* **Salaat First:** restore stripped META-INF/services so Arabic city search and official timetables work again ([ee5f1b3](https://github.com/mben25/morphe-patches/commit/ee5f1b39469d7b65229289e47f482af64729ad3e))",
+  "download_url": "https://github.com/mben25/morphe-patches/releases/download/v1.17.1/patches-1.17.1.mpp",
   "signature_download_url": "",
-  "version": "1.17.0"
+  "version": "1.17.1"
 }

@@ -1,3 +1,9 @@
+## [1.17.1](https://github.com/mben25/morphe-patches/compare/v1.17.0...v1.17.1) (2026-10-25)
+
+### 🐛 Bug Fixes
+
+* **Salaat First:** restore stripped META-INF/services so Arabic city search and official timetables work again ([ee5f1b3](https://github.com/mben25/morphe-patches/commit/ee5f1b39469d7b65229289e47f482af64729ad3e))
+
 ## [1.17.0](https://github.com/mben25/morphe-patches/compare/v1.16.1...v1.17.0) (2026-10-25)
 
 ### ✨ New Features
