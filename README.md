@@ -57,7 +57,7 @@ every release. Highlights:
 | Local data backup | StayFree | Export/restore usage history, limits and settings to a local zip — no Google account. |
 | Local device sync | StayFree | Pairs with the browser extension over your LAN, so nothing goes to StayFree/SensorTower. |
 | In-app QR scanner | StayFree | Scans the extension's pairing QR inside the app, via ZXing (no Play Services). |
-| AMOLED dark mode | AliExpress, Masareef, DeviceInfo | Pure-black backgrounds; on AliExpress it also unblacklists Xiaomi devices, on DeviceInfo it covers every theme color and "Use system colors". |
+| AMOLED dark mode | AliExpress, Masareef, DeviceInfo, Google Contacts | Pure-black backgrounds; on AliExpress it also unblacklists Xiaomi devices, on DeviceInfo and Google Contacts it covers both the default palette and "Use system colors". |
 | Remove Donate Screen | DeviceInfo | Removes every entry into the Donate screen (Settings, overflow menu, About) and closes it if anything still opens it. |
 | Bypass License Check | Masareef | Stubs the pairip signature/license check that otherwise rejects the re-signed APK. |
 | Neutralize Signature Check | Salaat First | Stubs the anti-tamper check that `System.exit(0)`s a re-signed build, and restores the `META-INF/services` files that merge tools strip. Required by every other Salaat patch. Enabled by default. |
@@ -68,7 +68,8 @@ every release. Highlights:
 Most telemetry and ad-removal patches ship **disabled by default** — enable the ones
 you want in Morphe Manager. Every DeviceInfo patch (including `AMOLED Dark Theme`,
 `Hide Privacy Policy Link`, `Hide Remove Ads Button` and `Remove Donate Screen`) is
-disabled by default.
+disabled by default, as is Google Contacts' `AMOLED Dark Theme` (its `Add microG
+support` stays enabled).
 
 ### ⚠️ Patches that need setup
 

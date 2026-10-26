@@ -25,6 +25,7 @@ import app.aliexpress.patches.tracking.removeAffiliateTrackingPatch
 import app.aliexpress.patches.updates.disableForcedUpdatesPatch
 import app.deviceinfo.patches.ads.removeAllAdsPatch
 import app.gcontacts.patches.microg.microgSupportPatch as gcontactsMicrogSupportPatch
+import app.gcontacts.patches.theme.amoledDarkThemePatch as gcontactsAmoledDarkThemePatch
 import app.infinity.patches.api.modifyLoginWebViewPatch as infinityModifyLoginWebViewPatch
 import app.infinity.patches.api.spoofClientPatch as infinitySpoofClientPatch
 import app.deviceinfo.patches.ads.removeFacebookAudienceNetworkInitPatch
@@ -191,7 +192,7 @@ fun main(args: Array<String>) {
                 setOf(infinitySpoofClientPatch, infinityModifyLoginWebViewPatch)
             }
 
-            "gcontacts" -> setOf(gcontactsMicrogSupportPatch)
+            "gcontacts" -> setOf(gcontactsMicrogSupportPatch, gcontactsAmoledDarkThemePatch)
 
             "windy" -> setOf(windyUnlockPremiumPatch)
 
