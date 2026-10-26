@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-10-25T09:19:44",
-  "description": "## [1.17.1](https://github.com/mben25/morphe-patches/compare/v1.17.0...v1.17.1) (2026-10-25)\n\n### 🐛 Bug Fixes\n\n* **Salaat First:** restore stripped META-INF/services so Arabic city search and official timetables work again ([ee5f1b3](https://github.com/mben25/morphe-patches/commit/ee5f1b39469d7b65229289e47f482af64729ad3e))",
-  "download_url": "https://github.com/mben25/morphe-patches/releases/download/v1.17.1/patches-1.17.1.mpp",
+  "created_at": "2026-10-26T17:19:28",
+  "description": "## [1.18.0](https://github.com/mben25/morphe-patches/compare/v1.17.1...v1.18.0) (2026-10-26)\n\n### ✨ New Features\n\n* **Google Contacts:** add `AMOLED Dark Theme` patch ([c06383d](https://github.com/mben25/morphe-patches/commit/c06383d0791bd7b1263134545adbec8c48d61044))",
+  "download_url": "https://github.com/mben25/morphe-patches/releases/download/v1.18.0/patches-1.18.0.mpp",
   "signature_download_url": "",
-  "version": "1.17.1"
+  "version": "1.18.0"
 }

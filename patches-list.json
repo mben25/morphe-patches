@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.17.1",
+  "version": "1.18.0",
   "patches": [
     {
       "name": "AMOLED Dark Theme",
@@ -18,6 +18,32 @@
           "targets": [
             {
               "version": "3.4.4.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "AMOLED Dark Theme",
+      "description": "Makes the dark theme pure black: the window, contact lists and cards become #000000, while dialogs and menus stay near-black so they remain visible. Applies to both the default palette and \"Use system colors\". Turn on dark mode to see it.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.google.android.contacts",
+          "name": "Google Contacts",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#1A73E8",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "4.90.16.998876676",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,

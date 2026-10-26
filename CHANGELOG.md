@@ -1,3 +1,9 @@
+## [1.18.0](https://github.com/mben25/morphe-patches/compare/v1.17.1...v1.18.0) (2026-10-26)
+
+### ✨ New Features
+
+* **Google Contacts:** add `AMOLED Dark Theme` patch ([c06383d](https://github.com/mben25/morphe-patches/commit/c06383d0791bd7b1263134545adbec8c48d61044))
+
 ## [1.17.1](https://github.com/mben25/morphe-patches/compare/v1.17.0...v1.17.1) (2026-10-25)
 
 ### 🐛 Bug Fixes
