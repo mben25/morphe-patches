@@ -21,7 +21,7 @@ an in-app QR scanner).
 | MT Capsule | `com.pryshedko.mtisland` | 17.3 (minSdk 32) | APK |
 | Salaat First | `org.hicham.salaat` | 6.4.1 | APK |
 | Speedtest by Ookla | `org.zwanoo.android.speedtest` | 7.1.2, 7.1.1 | APK |
-| StayFree | `com.burockgames.timeclocker` | 20.18.1 | APK |
+| StayFree | `com.burockgames.timeclocker` | 20.18.2 | APK |
 | Windy | `com.windyty.android` | 51.3.2, 51.2.1, 51.0.1 | APK |
 
 Any app not listed above is **not** supported by this bundle.
@@ -30,7 +30,13 @@ A few targets need the right APK:
 
 - **AliExpress** and **StayFree** ship as Play split bundles. Patch the *merged
   universal* APK, never the bare base — StayFree's base alone fails to install on
-  Android 14+ with `INSTALL_FAILED_NO_MATCHING_ABIS`.
+  Android 14+ with `INSTALL_FAILED_NO_MATCHING_ABIS`. Merge with
+  [APKEditor](https://github.com/REAndroid/APKEditor) (`java -jar APKEditor.jar m -i
+  app.xapk -o merged.apk`), and make sure the **density** split is included, not only
+  the ABI one: 149 of StayFree's drawables live only in `config.xxhdpi`, and a merge
+  that drops them installs fine but then crashes with
+  `Resources$NotFoundException: Resource ID #0x7f080237` as soon as a screen needs one.
+  Online converters are the usual cause.
 - **Salaat First** is often passed around as a merged APK that has lost its
   `META-INF/services` files. Without them the online city search (the only one that
   understands Arabic) and the official Moroccan timetable silently fail.
