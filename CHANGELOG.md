@@ -1,3 +1,9 @@
+## [1.18.1](https://github.com/mben25/morphe-patches/compare/v1.18.0...v1.18.1) (2026-10-27)
+
+### 🚀 Updated App Support
+
+* **StayFree:** support 20.18.2 and require the density split when merging ([2b5b9bb](https://github.com/mben25/morphe-patches/commit/2b5b9bb5fd7a1b4155612e6352aa0df6cf58d765))
+
 ## [1.18.0](https://github.com/mben25/morphe-patches/compare/v1.17.1...v1.18.0) (2026-10-26)
 
 ### ✨ New Features
