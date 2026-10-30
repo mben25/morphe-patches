@@ -18,11 +18,14 @@ val bypassLicenseCheckPatch = bytecodePatch(
         // Both run from Application.attachBaseContext before any app code, so returning early
         // leaves the pairip VM (libpairipcore, which actually executes the app's protected
         // methods) untouched — only the tamper detection is removed.
+        //
+        // pairip was only added in 2.6.1; builds before it (e.g. the verified 2.5.2 target) have
+        // neither class, so runCatching makes this a no-op there instead of failing the apply.
         listOf(
             VerifyIntegrityFingerprint,
             CheckLicenseFingerprint,
         ).forEach { fingerprint ->
-            fingerprint.method.addInstructions(0, "return-void")
+            runCatching { fingerprint.method.addInstructions(0, "return-void") }
         }
     }
 }

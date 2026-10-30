@@ -17,7 +17,7 @@ an in-app QR scanner).
 | Google Contacts | `com.google.android.contacts` | 4.90.16.998876676 | APK |
 | Infinity for Reddit+ | `ml.docilealligator.infinityforreddit.plus` | 8.3.4 | APK |
 | Infinity for Reddit (Patreon) | `ml.docilealligator.infinityforreddit.patreon` | 8.3.4 | APK |
-| Masareef | `com.appsqueue.masareef` | 2.6.8 | APK |
+| Masareef | `com.appsqueue.masareef` | 2.5.2 | APK |
 | MT Capsule | `com.pryshedko.mtisland` | 17.3 (minSdk 32) | APK |
 | Salaat First | `org.hicham.salaat` | 6.4.1 | APK |
 | Speedtest by Ookla | `org.zwanoo.android.speedtest` | 7.1.2, 7.1.1 | APK |
@@ -65,7 +65,7 @@ every release. Highlights:
 | In-app QR scanner | StayFree | Scans the extension's pairing QR inside the app, via ZXing (no Play Services). |
 | AMOLED dark mode | AliExpress, Masareef, DeviceInfo, Google Contacts | Pure-black backgrounds; on AliExpress it also unblacklists Xiaomi devices, on DeviceInfo and Google Contacts it covers both the default palette and "Use system colors". |
 | Remove Donate Screen | DeviceInfo | Removes every entry into the Donate screen (Settings, overflow menu, About) and closes it if anything still opens it. |
-| Bypass License Check | Masareef | Stubs the pairip signature/license check that otherwise rejects the re-signed APK. |
+| Bypass License Check | Masareef | Stubs the pairip signature/license check that otherwise rejects the re-signed APK. No-op on the verified 2.5.2 target (pairip was added in 2.6.1); kept for later pairip builds. |
 | Neutralize Signature Check | Salaat First | Stubs the anti-tamper check that `System.exit(0)`s a re-signed build, and restores the `META-INF/services` files that merge tools strip. Required by every other Salaat patch. Enabled by default. |
 | Fix Location Detection on microG | Salaat First | Asks for a quick high-accuracy fix so "locating" no longer hangs for 10 minutes on microG devices. Enabled by default. |
 | Add microG support | Google Contacts | Signs in to your Google account through microG instead of Play services, so contacts sync, Phenotype and push work on a de-Googled phone. Enabled by default; needs microG installed, and cannot be used with a root (mount) install. |
