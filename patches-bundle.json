@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-10-27T18:42:13",
-  "description": "## [1.18.1](https://github.com/mben25/morphe-patches/compare/v1.18.0...v1.18.1) (2026-10-27)\n\n### 🚀 Updated App Support\n\n* **StayFree:** support 20.18.2 and require the density split when merging ([2b5b9bb](https://github.com/mben25/morphe-patches/commit/2b5b9bb5fd7a1b4155612e6352aa0df6cf58d765))",
-  "download_url": "https://github.com/mben25/morphe-patches/releases/download/v1.18.1/patches-1.18.1.mpp",
+  "created_at": "2026-10-30T09:27:57",
+  "description": "## [1.18.2](https://github.com/mben25/morphe-patches/compare/v1.18.1...v1.18.2) (2026-10-30)\n\n### 🚀 Updated App Support\n\n* **Masareef:** support app version 2.5.2 ([141acd2](https://github.com/mben25/morphe-patches/commit/141acd225a43a4ff77627b3aa8edb2da9cf98548))",
+  "download_url": "https://github.com/mben25/morphe-patches/releases/download/v1.18.2/patches-1.18.2.mpp",
   "signature_download_url": "",
-  "version": "1.18.1"
+  "version": "1.18.2"
 }

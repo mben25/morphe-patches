@@ -1,3 +1,9 @@
+## [1.18.2](https://github.com/mben25/morphe-patches/compare/v1.18.1...v1.18.2) (2026-10-30)
+
+### 🚀 Updated App Support
+
+* **Masareef:** support app version 2.5.2 ([141acd2](https://github.com/mben25/morphe-patches/commit/141acd225a43a4ff77627b3aa8edb2da9cf98548))
+
 ## [1.18.1](https://github.com/mben25/morphe-patches/compare/v1.18.0...v1.18.1) (2026-10-27)
 
 ### 🚀 Updated App Support
