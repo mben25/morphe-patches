@@ -3,7 +3,7 @@
  * it only applies the patches in this project to an APK on disk and prints the result,
  * so fingerprint regressions are caught without going through Manager or the CLI.
  *
- * Usage: ./gradlew :patches:applyToApk --args "<apk> [outputDexDir] [--patches=mtcapsule|masareef|deviceinfo|stayfree|salaat|windy|aliexpress|speedtest|infinity|gcontacts]"
+ * Usage: ./gradlew :patches:applyToApk --args "<apk> [outputDexDir] [--patches=mtcapsule|masareef|deviceinfo|stayfree|salaat|windy|aliexpress|speedtest|infinity|gcontacts|sigstick]"
  *
  * The infinity set additionally accepts --client-id=, --redirect-uri= and --user-agent=
  * to supply the patch options that Manager would otherwise prompt for.
@@ -84,6 +84,12 @@ import app.stayfree.patches.settings.removeGetHelpPatch
 import app.stayfree.patches.sync.assumeInternetConnectionPatch
 import app.stayfree.patches.sync.inAppQrScannerPatch
 import app.stayfree.patches.sync.localDeviceSyncPatch
+import app.sigstick.patches.login.removeGoogleLoginPatch
+import app.sigstick.patches.premium.unlockPremiumPatch as sigstickUnlockPremiumPatch
+import app.sigstick.patches.settings.disableSendLogsPatch
+import app.sigstick.patches.settings.removeSettingsLinksPatch
+import app.sigstick.patches.telemetry.disableAllTelemetryPatch as sigstickDisableAllTelemetryPatch
+import app.sigstick.patches.theme.amoledDarkThemePatch as sigstickAmoledDarkThemePatch
 import app.stayfree.patches.sync.miuiBackgroundPopupCheckPatch
 import app.stayfree.patches.sync.qrPairingProbePatch
 import app.stayfree.patches.sync.refreshPairedDevicesPatch
@@ -195,6 +201,15 @@ fun main(args: Array<String>) {
             "gcontacts" -> setOf(gcontactsMicrogSupportPatch, gcontactsAmoledDarkThemePatch)
 
             "windy" -> setOf(windyUnlockPremiumPatch)
+
+            "sigstick" -> setOf(
+                sigstickUnlockPremiumPatch,
+                removeGoogleLoginPatch,
+                disableSendLogsPatch,
+                removeSettingsLinksPatch,
+                sigstickAmoledDarkThemePatch,
+                sigstickDisableAllTelemetryPatch,
+            )
 
             "speedtest" -> setOf(
                 unlockAdFreePatch,
