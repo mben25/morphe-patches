@@ -20,6 +20,7 @@ an in-app QR scanner).
 | Masareef | `com.appsqueue.masareef` | 2.5.2 | APK |
 | MT Capsule | `com.pryshedko.mtisland` | 17.3 (minSdk 32) | APK |
 | Salaat First | `org.hicham.salaat` | 6.4.1 | APK |
+| SigStick | `com.sigstick.myapp` | 5.25.0 | APK |
 | Speedtest by Ookla | `org.zwanoo.android.speedtest` | 7.1.2, 7.1.1 | APK |
 | StayFree | `com.burockgames.timeclocker` | 20.18.2 | APK |
 | Windy | `com.windyty.android` | 51.3.2, 51.2.1, 51.0.1 | APK |
@@ -57,25 +58,30 @@ every release. Highlights:
 | Unlock Pro | MT Capsule | Unlocks all pro features without a purchase. |
 | Unlock all premium features | StayFree | Every theme and custom app icon, without levels, pairing or sign-up. |
 | Unlock Premium | Windy | Premium UI and features client-side (server-side data still needs a real subscription). |
+| Unlock Premium | SigStick | Premium client-side: no ads, 60 stickers per pack, unlimited packs. Server-enforced limits may still apply. Enabled by default. |
+| Remove Google Login | SigStick | Removes "Sign in with Google" everywhere; the app keeps its anonymous account. Disabled by default. |
+| Remove Settings Links / Disable Send Logs to Developer | SigStick | Drop Follow Us, Email Us, Terms of Service, Privacy Policy and Send Logs from Settings; the log export and in-memory log buffer are stubbed too. Enabled by default. |
 | Unlock Ad-Free | Speedtest | Removes ads and unlocks ad-free status. |
 | Spoof client (Infinity) | Infinity for Reddit | Swaps in your own Reddit OAuth credentials so the app keeps working. Needs a client ID. |
 | Modify login WebView (Infinity) | Infinity for Reddit | Gives Reddit's login page a Chrome user agent and JavaScript so in-app login stops failing (port of Patcheddit's). Enabled by default. |
 | Local data backup | StayFree | Export/restore usage history, limits and settings to a local zip — no Google account. |
 | Local device sync | StayFree | Pairs with the browser extension over your LAN, so nothing goes to StayFree/SensorTower. |
 | In-app QR scanner | StayFree | Scans the extension's pairing QR inside the app, via ZXing (no Play Services). |
-| AMOLED dark mode | AliExpress, Masareef, DeviceInfo, Google Contacts | Pure-black backgrounds; on AliExpress it also unblacklists Xiaomi devices, on DeviceInfo and Google Contacts it covers both the default palette and "Use system colors". |
+| AMOLED dark mode | AliExpress, Masareef, DeviceInfo, Google Contacts, SigStick | Pure-black backgrounds; on AliExpress it also unblacklists Xiaomi devices, on DeviceInfo and Google Contacts it covers both the default palette and "Use system colors". |
 | Remove Donate Screen | DeviceInfo | Removes every entry into the Donate screen (Settings, overflow menu, About) and closes it if anything still opens it. |
 | Bypass License Check | Masareef | Stubs the pairip signature/license check that otherwise rejects the re-signed APK. No-op on the verified 2.5.2 target (pairip was added in 2.6.1); kept for later pairip builds. |
 | Neutralize Signature Check | Salaat First | Stubs the anti-tamper check that `System.exit(0)`s a re-signed build, and restores the `META-INF/services` files that merge tools strip. Required by every other Salaat patch. Enabled by default. |
 | Fix Location Detection on microG | Salaat First | Asks for a quick high-accuracy fix so "locating" no longer hangs for 10 minutes on microG devices. Enabled by default. |
 | Add microG support | Google Contacts | Signs in to your Google account through microG instead of Play services, so contacts sync, Phenotype and push work on a de-Googled phone. Enabled by default; needs microG installed, and cannot be used with a root (mount) install. |
-| Disable All Telemetry | 6 apps | One switch per app that pulls in that app's full analytics/tracking removal. |
+| Disable All Telemetry | 7 apps | One switch per app that pulls in that app's full analytics/tracking removal. |
 
 Most telemetry and ad-removal patches ship **disabled by default** — enable the ones
 you want in Morphe Manager. Every DeviceInfo patch (including `AMOLED Dark Theme`,
 `Hide Privacy Policy Link`, `Hide Remove Ads Button` and `Remove Donate Screen`) is
 disabled by default, as is Google Contacts' `AMOLED Dark Theme` (its `Add microG
-support` stays enabled).
+support` stays enabled). SigStick's `Unlock Premium`, `Disable All Telemetry`,
+`Remove Settings Links` and `Disable Send Logs to Developer` are enabled by default;
+its `AMOLED Dark Theme` and `Remove Google Login` are disabled.
 
 ### ⚠️ Patches that need setup
 
