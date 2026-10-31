@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.18.2",
+  "version": "1.19.0",
   "patches": [
     {
       "name": "AMOLED Dark Theme",
@@ -70,6 +70,32 @@
           "targets": [
             {
               "version": "2.5.2",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "AMOLED Dark Theme",
+      "description": "Makes the dark theme pure black: background, cards and surfaces become #000000 instead of the stock #111111 / #222222 grays.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.sigstick.myapp",
+          "name": "SigStick",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#527AE9",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "5.25.0",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
@@ -461,6 +487,34 @@
     },
     {
       "name": "Disable All Telemetry",
+      "description": "Blocks Firebase / Google Analytics events, Crashlytics, Sessions, In-App Messaging and FCM delivery metrics, and removes the Advertising ID and AdServices attribution permissions. Sign-in, Remote Config and push keep working.",
+      "default": true,
+      "dependencies": [
+        "ResourcePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "com.sigstick.myapp",
+          "name": "SigStick",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#527AE9",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "5.25.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Disable All Telemetry",
       "description": "Comprehensive privacy patch: silences the Ookla DevMetrics dispatcher so no event reaches Firebase Analytics, Crashlytics or Logcat. Does not affect speed-test functionality.",
       "default": false,
       "dependencies": [
@@ -732,6 +786,32 @@
           "targets": [
             {
               "version": "6.4.1",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Disable Send Logs to Developer",
+      "description": "Removes \"Send Logs to Developer\" from Settings, stops the app from collecting its in-memory log buffer, and makes the log export a no-op.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.sigstick.myapp",
+          "name": "SigStick",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#527AE9",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "5.25.0",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
@@ -1695,6 +1775,32 @@
       "options": []
     },
     {
+      "name": "Remove Google Login",
+      "description": "Removes the \"Sign in with Google\" button everywhere it appears. The app keeps working with its anonymous account; anything that needs a Google account (publishing under your name, synced collections) is no longer reachable.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.sigstick.myapp",
+          "name": "SigStick",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#527AE9",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "5.25.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
       "name": "Remove Google login request",
       "description": "Removes the \"Sign in with Google\" page from onboarding and the \"Create StayFree profile\" step from the home setup checklist. Signing in manually from the drawer/pairing screens still works.",
       "default": true,
@@ -1767,6 +1873,32 @@
           "targets": [
             {
               "version": "20.18.2",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Remove Settings Links",
+      "description": "Removes Follow Us, Email Us, Terms of Service and Privacy Policy from Settings. Community and Version stay.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.sigstick.myapp",
+          "name": "SigStick",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#527AE9",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "5.25.0",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
@@ -2073,6 +2205,32 @@
             },
             {
               "version": "7.1.1",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Unlock Premium",
+      "description": "Unlocks SigStick Premium client-side: no ads, 60 stickers per pack, unlimited pack creation and the premium editor features.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.sigstick.myapp",
+          "name": "SigStick",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#527AE9",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "5.25.0",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,

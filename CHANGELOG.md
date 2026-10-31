@@ -1,3 +1,9 @@
+## [1.19.0](https://github.com/mben25/morphe-patches/compare/v1.18.2...v1.19.0) (2026-10-31)
+
+### ✨ New Features
+
+* **SigStick:** add premium unlock, telemetry removal, settings cleanup, google login removal and amoled theme ([f9d76f6](https://github.com/mben25/morphe-patches/commit/f9d76f6093de7b3fc0b72107897970be9b6e73c7))
+
 ## [1.18.2](https://github.com/mben25/morphe-patches/compare/v1.18.1...v1.18.2) (2026-10-30)
 
 ### 🚀 Updated App Support
