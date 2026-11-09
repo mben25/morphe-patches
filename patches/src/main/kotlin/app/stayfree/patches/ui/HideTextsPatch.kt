@@ -1,5 +1,6 @@
 package app.stayfree.patches.ui
 
+import app.stayfree.patches.shared.resource.restoreServiceFilesPatch
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.bytecodePatch
@@ -16,6 +17,7 @@ val hideTextsPatch = bytecodePatch(
     default = true,
 ) {
     compatibleWith(COMPATIBILITY_STAYFREE)
+    dependsOn(restoreServiceFilesPatch)
 
     execute {
         // "Select the app you want to pair …": drop the Text call and the Spacer call after it.

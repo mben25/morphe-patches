@@ -1,5 +1,6 @@
 package app.stayfree.patches.sync
 
+import app.stayfree.patches.shared.resource.restoreServiceFilesPatch
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.patch.PatchException
@@ -22,6 +23,7 @@ val assumeInternetConnectionPatch = bytecodePatch(
     default = true,
 ) {
     compatibleWith(COMPATIBILITY_STAYFREE)
+    dependsOn(restoreServiceFilesPatch)
 
     execute {
         // Every sync entry point starts with the same gate:

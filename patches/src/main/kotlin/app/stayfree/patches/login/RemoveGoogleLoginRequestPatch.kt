@@ -1,5 +1,6 @@
 package app.stayfree.patches.login
 
+import app.stayfree.patches.shared.resource.restoreServiceFilesPatch
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.PatchException
@@ -20,6 +21,7 @@ val removeGoogleLoginRequestPatch = bytecodePatch(
     default = true,
 ) {
     compatibleWith(COMPATIBILITY_STAYFREE)
+    dependsOn(restoreServiceFilesPatch)
 
     // The home "Complete StayFree setup" card treats the sign-in step as done when
     // `signedIn || hasUserEverLoggedInStayFresh`; that pref getter is forced true there.

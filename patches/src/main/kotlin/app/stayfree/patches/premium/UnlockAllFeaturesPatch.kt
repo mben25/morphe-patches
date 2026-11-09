@@ -1,5 +1,6 @@
 package app.stayfree.patches.premium
 
+import app.stayfree.patches.shared.resource.restoreServiceFilesPatch
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.bytecodePatch
@@ -38,6 +39,7 @@ val unlockAllFeaturesPatch = bytecodePatch(
     default = true,
 ) {
     compatibleWith(COMPATIBILITY_STAYFREE)
+    dependsOn(restoreServiceFilesPatch)
 
     // Custom app icons are gated only on hasUserEverLoggedInStayFresh.
     dependsOn(hasEverLoggedInStayFreshPatch)

@@ -1,5 +1,6 @@
 package app.stayfree.patches.drawer
 
+import app.stayfree.patches.shared.resource.restoreServiceFilesPatch
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
@@ -17,6 +18,7 @@ val removeMyFriendsPatch = bytecodePatch(
     default = true,
 ) {
     compatibleWith(COMPATIBILITY_STAYFREE)
+    dependsOn(restoreServiceFilesPatch)
 
     extendWith("extensions/extension.mpe")
 

@@ -1,5 +1,6 @@
 package app.stayfree.patches.sync
 
+import app.stayfree.patches.shared.resource.restoreServiceFilesPatch
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.literal
@@ -45,6 +46,7 @@ val miuiBackgroundPopupCheckPatch = bytecodePatch(
     default = true,
 ) {
     compatibleWith(COMPATIBILITY_STAYFREE)
+    dependsOn(restoreServiceFilesPatch)
 
     execute {
         // Report the MIUI background-pop-up op as granted without ever calling checkOpNoThrow(10021).

@@ -37,7 +37,9 @@ A few targets need the right APK:
   the ABI one: 149 of StayFree's drawables live only in `config.xxhdpi`, and a merge
   that drops them installs fine but then crashes with
   `Resources$NotFoundException: Resource ID #0x7f080237` as soon as a screen needs one.
-  Online converters are the usual cause.
+  Online converters are the usual cause. Some mergers also drop `META-INF/services`,
+  which crashes StayFree on launch with `Module with the Main dispatcher is missing`;
+  every StayFree patch now restores those files automatically.
 - **Salaat First** is often passed around as a merged APK that has lost its
   `META-INF/services` files. Without them the online city search (the only one that
   understands Arabic) and the official Moroccan timetable silently fail.

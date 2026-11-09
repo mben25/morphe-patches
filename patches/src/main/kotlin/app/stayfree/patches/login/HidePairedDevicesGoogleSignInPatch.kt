@@ -1,5 +1,6 @@
 package app.stayfree.patches.login
 
+import app.stayfree.patches.shared.resource.restoreServiceFilesPatch
 import app.morphe.patcher.extensions.InstructionExtensions.removeInstruction
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.bytecodePatch
@@ -16,6 +17,7 @@ val hidePairedDevicesGoogleSignInPatch = bytecodePatch(
     default = true,
 ) {
     compatibleWith(COMPATIBILITY_STAYFREE)
+    dependsOn(restoreServiceFilesPatch)
 
     execute {
         // Drop the button composable call. It sits alone inside its replace group

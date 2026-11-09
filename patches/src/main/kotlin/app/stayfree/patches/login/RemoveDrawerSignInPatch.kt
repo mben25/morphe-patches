@@ -1,5 +1,6 @@
 package app.stayfree.patches.login
 
+import app.stayfree.patches.shared.resource.restoreServiceFilesPatch
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.stayfree.patches.shared.Constants.COMPATIBILITY_STAYFREE
@@ -12,6 +13,7 @@ val removeDrawerSignInPatch = bytecodePatch(
     default = true,
 ) {
     compatibleWith(COMPATIBILITY_STAYFREE)
+    dependsOn(restoreServiceFilesPatch)
 
     execute {
         // Return before the composable starts its restart group: it then emits nothing, which

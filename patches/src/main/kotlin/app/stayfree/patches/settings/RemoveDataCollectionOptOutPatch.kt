@@ -1,5 +1,6 @@
 package app.stayfree.patches.settings
 
+import app.stayfree.patches.shared.resource.restoreServiceFilesPatch
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.stayfree.patches.shared.Constants.COMPATIBILITY_STAYFREE
@@ -15,6 +16,7 @@ val removeDataCollectionOptOutPatch = bytecodePatch(
     default = true,
 ) {
     compatibleWith(COMPATIBILITY_STAYFREE)
+    dependsOn(restoreServiceFilesPatch)
 
     // The switch only mirrors `usage-sdk-opt-out`; "Disable All Telemetry" pins that flag to
     // true (`kmb.a()`), which is what every SensorTower uploader checks before sending usage,
