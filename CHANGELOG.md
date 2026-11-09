@@ -1,3 +1,9 @@
+## [1.19.2](https://github.com/mben25/morphe-patches/compare/v1.19.1...v1.19.2) (2026-11-09)
+
+### 🐛 Bug Fixes
+
+* **StayFree:** restore the META-INF/services files merged APKs drop so the app no longer crashes on launch ([7ed9a4c](https://github.com/mben25/morphe-patches/commit/7ed9a4ce8707981dbad4f8fa6114e740e778f9c6))
+
 ## [1.19.1](https://github.com/mben25/morphe-patches/compare/v1.19.0...v1.19.1) (2026-11-09)
 
 ### 🐛 Bug Fixes

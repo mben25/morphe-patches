@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.19.1",
+  "version": "1.19.2",
   "patches": [
     {
       "name": "AMOLED Dark Theme",
@@ -166,7 +166,9 @@
       "name": "Assume device is online",
       "description": "Fixes \"Something went wrong, please try again…\" when pairing with the browser extension. StayFree gates all sync behind a precheck that must reach Google and that also refuses to sync while usage-data collection is opted out; local pairing is served from the phone itself and needs neither, so report the device as free to sync.",
       "default": true,
-      "dependencies": [],
+      "dependencies": [
+        "ResourcePatch"
+      ],
       "compatiblePackages": [
         {
           "packageName": "com.burockgames.timeclocker",
@@ -329,7 +331,9 @@
       "name": "Debug QR pairing path",
       "description": "Diagnostic only. Records why StayFree's QR pairing does or does not issue its pairing request — the two guards on the scanned code, and the device-group status the pairing coroutine checks before it reaches the network — to the same log as \"Local device sync\". Leave this off unless you are debugging a pairing failure.",
       "default": false,
-      "dependencies": [],
+      "dependencies": [
+        "ResourcePatch"
+      ],
       "compatiblePackages": [
         {
           "packageName": "com.burockgames.timeclocker",
@@ -553,6 +557,7 @@
       "description": "Removes and blocks all telemetry and analytics: SensorTower usage-data upload (app/web usage, browsing, shopping, AI prompts), Amplitude, Singular, Bugsnag, Firebase Analytics/Crashlytics/Performance/Sessions, Google App Measurement, Facebook app events and the advertising ID. Telemetry endpoints are also rewritten to localhost.",
       "default": true,
       "dependencies": [
+        "ResourcePatch",
         "ResourcePatch"
       ],
       "compatiblePackages": [
@@ -1010,7 +1015,9 @@
       "name": "Fix MIUI permission check crash",
       "description": "Stops the Xiaomi/Redmi/Poco \"background pop-up\" permission check from crashing on AOSP-based ROMs (\"Bad operation #10021\"), which otherwise aborts device pairing with \"Something went wrong\".",
       "default": true,
-      "dependencies": [],
+      "dependencies": [
+        "ResourcePatch"
+      ],
       "compatiblePackages": [
         {
           "packageName": "com.burockgames.timeclocker",
@@ -1044,7 +1051,9 @@
       "name": "Hide Google sign-in in Paired Devices",
       "description": "Hides the \"Sign in with Google\" button from the Paired Devices section in settings. Pairing with a code still works.",
       "default": true,
-      "dependencies": [],
+      "dependencies": [
+        "ResourcePatch"
+      ],
       "compatiblePackages": [
         {
           "packageName": "com.burockgames.timeclocker",
@@ -1148,7 +1157,9 @@
       "name": "Hide texts",
       "description": "Hides the instruction text on the \"Pair with code\" screen: \"Select the app you want to pair your Android app with:\".",
       "default": true,
-      "dependencies": [],
+      "dependencies": [
+        "ResourcePatch"
+      ],
       "compatiblePackages": [
         {
           "packageName": "com.burockgames.timeclocker",
@@ -1203,6 +1214,7 @@
       "description": "Scans the browser extension's pairing QR code inside StayFree, like Brave's built-in scanner, instead of asking you to open the camera app (whose link can't open a patched app). Opens on its own when you choose to pair with a browser extension or the desktop app, and from a \"Scan QR code\" shortcut on the app icon. Uses ZXing, so it works without Google Play Services.",
       "default": true,
       "dependencies": [
+        "ResourcePatch",
         "ResourcePatch"
       ],
       "compatiblePackages": [
@@ -1231,6 +1243,7 @@
       "description": "Replaces the Google Drive \"Usage Data Backup\" in Settings > Storage with a local backup: export your usage history, limits and settings to a zip file you pick, and restore them from one. Needs no Google account and no longer asks you to opt in to data collection.",
       "default": true,
       "dependencies": [
+        "ResourcePatch",
         "ResourcePatch"
       ],
       "compatiblePackages": [
@@ -1258,7 +1271,9 @@
       "name": "Local device sync",
       "description": "Pairs the phone with the StayFree browser extension over your local network without data collection. The app runs a small sync server on port 8787 and serves its usage straight from Android, so nothing goes to StayFree/SensorTower. Removes the \"Anonymous data collection must be enabled to pair devices\" prompt. Needs the patched browser extension.",
       "default": true,
-      "dependencies": [],
+      "dependencies": [
+        "ResourcePatch"
+      ],
       "compatiblePackages": [
         {
           "packageName": "com.burockgames.timeclocker",
@@ -1355,7 +1370,9 @@
       "name": "Refresh paired devices list",
       "description": "Fixes Settings > Paired Devices staying empty after a device pairs successfully. StayFree reloads the device list and announces it on a flow that nothing observes, while the screen waits on a flow that nothing ever updates, so it never recomposes. Announce the reload on the flow the screen actually watches.",
       "default": true,
-      "dependencies": [],
+      "dependencies": [
+        "ResourcePatch"
+      ],
       "compatiblePackages": [
         {
           "packageName": "com.burockgames.timeclocker",
@@ -1586,7 +1603,9 @@
       "name": "Remove App Info contents",
       "description": "Keeps the \"App Info\" row with the version number in Settings, but it no longer opens the App Info screen: Debug Usage Limit Problems, Data Privacy, StayFree Community, Support us, Credits & Open source libraries and the support App ID are gone. They are also removed from the settings search.",
       "default": true,
-      "dependencies": [],
+      "dependencies": [
+        "ResourcePatch"
+      ],
       "compatiblePackages": [
         {
           "packageName": "com.burockgames.timeclocker",
@@ -1726,7 +1745,9 @@
       "name": "Remove Follow us",
       "description": "Removes the \"• Follow us!\" link next to \"StayFree\" at the top of the side menu. Tapping the header no longer opens StayFree's social media page.",
       "default": true,
-      "dependencies": [],
+      "dependencies": [
+        "ResourcePatch"
+      ],
       "compatiblePackages": [
         {
           "packageName": "com.burockgames.timeclocker",
@@ -1752,7 +1773,9 @@
       "name": "Remove Get Help",
       "description": "Removes the \"Get Help\" row (HelpScout support chat) from Settings and from the settings search.",
       "default": true,
-      "dependencies": [],
+      "dependencies": [
+        "ResourcePatch"
+      ],
       "compatiblePackages": [
         {
           "packageName": "com.burockgames.timeclocker",
@@ -1805,6 +1828,7 @@
       "description": "Removes the \"Sign in with Google\" page from onboarding and the \"Create StayFree profile\" step from the home setup checklist. Signing in manually from the drawer/pairing screens still works.",
       "default": true,
       "dependencies": [
+        "ResourcePatch",
         "BytecodePatch"
       ],
       "compatiblePackages": [
@@ -1833,6 +1857,7 @@
       "description": "Removes the Inbox Control (Gmail cleaner) feature: its drawer entry, its permissions section and every screen that opens it. The Neon theme and custom app icons that were locked behind signing up for it are unlocked, and the Gmail sign-in no longer keeps the permission setup reminder on the home screen.",
       "default": true,
       "dependencies": [
+        "ResourcePatch",
         "BytecodePatch",
         "BytecodePatch"
       ],
@@ -1861,7 +1886,9 @@
       "name": "Remove My Friends",
       "description": "Removes \"My Friends\" (usage sharing with friends through StayFree's servers) from the side menu and from the settings search.",
       "default": true,
-      "dependencies": [],
+      "dependencies": [
+        "ResourcePatch"
+      ],
       "compatiblePackages": [
         {
           "packageName": "com.burockgames.timeclocker",
@@ -1992,6 +2019,7 @@
       "description": "Removes the \"Opt-Out of Data Collection\" switch from Settings > Data Privacy and locks data collection off: the opt-out can no longer be undone (the \"Opt-In\" buttons do nothing) and the opt-out status is never reported to StayFree. Includes \"Disable All Telemetry\".",
       "default": true,
       "dependencies": [
+        "ResourcePatch",
         "BytecodePatch"
       ],
       "compatiblePackages": [
@@ -2019,7 +2047,9 @@
       "name": "Remove drawer sign-in",
       "description": "Removes the \"Sign into StayFree\" account row from the bottom of the side menu.",
       "default": true,
-      "dependencies": [],
+      "dependencies": [
+        "ResourcePatch"
+      ],
       "compatiblePackages": [
         {
           "packageName": "com.burockgames.timeclocker",
@@ -2045,7 +2075,9 @@
       "name": "Remove pair devices banner",
       "description": "Removes the \"Tap to pair your devices for the best StayFree experience!\" banner from the dashboard and the \"Cross Platform is here\" sheet it opens (Google login on each device, \"Share Download Links\").",
       "default": true,
-      "dependencies": [],
+      "dependencies": [
+        "ResourcePatch"
+      ],
       "compatiblePackages": [
         {
           "packageName": "com.burockgames.timeclocker",
@@ -2347,6 +2379,7 @@
       "description": "Unlocks every theme (gamification-level, Black and Neon themes) and all custom app icons without earning levels, pairing a device or signing up for Inbox Control.",
       "default": true,
       "dependencies": [
+        "ResourcePatch",
         "BytecodePatch"
       ],
       "compatiblePackages": [
