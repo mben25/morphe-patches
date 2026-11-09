@@ -28,14 +28,23 @@ object Constants {
      * aapt2 dump resources merged.apk | grep -oE '^    resource 0x7f[0-9a-f]{6}' \
      *   | awk '{print $2}' | sort | uniq -d                          # must print nothing
      * ```
+     *
+     * Declared as XAPK so Morphe Manager asks for the bundle and merges it itself (ARSCLib
+     * `ApkBundle.mergeModules`, as kveld/HushFacebook rely on). Run on this xapk, that merge
+     * keeps all 896 drawables, `lib/arm64-v8a/` and every `META-INF/services` file, whereas a
+     * pre-merged APK picked by hand is saved by the Manager as the "original" and reused on
+     * every repatch, missing files and all.
      */
     val COMPATIBILITY_STAYFREE = Compatibility(
         name = "StayFree",
         packageName = "com.burockgames.timeclocker",
-        apkFileType = ApkFileType.APK,
+        apkFileType = ApkFileType.XAPK,
         appIconColor = 0x4E7CFF,
         targets = listOf(
-            AppTarget(version = "20.18.2"),
+            AppTarget(
+                version = "20.18.2",
+                description = "Download com.burockgames.timeclocker v20.18.2 (XAPK bundle) from APKPure",
+            ),
         ),
     )
 }

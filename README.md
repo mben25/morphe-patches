@@ -22,13 +22,18 @@ an in-app QR scanner).
 | Salaat First | `org.hicham.salaat` | 6.4.1 | APK |
 | SigStick | `com.sigstick.myapp` | 5.25.0 | APK |
 | Speedtest by Ookla | `org.zwanoo.android.speedtest` | 7.1.2, 7.1.1 | APK |
-| StayFree | `com.burockgames.timeclocker` | 20.18.2 | APK |
+| StayFree | `com.burockgames.timeclocker` | 20.18.2 | XAPK |
 | Windy | `com.windyty.android` | 51.3.2, 51.2.1, 51.0.1 | APK |
 
 Any app not listed above is **not** supported by this bundle.
 
 A few targets need the right APK:
 
+- **StayFree:** give Morphe Manager the original `.xapk` and let it merge the
+  splits. Don't pick a pre-merged APK: the Manager keeps the file you pick as the
+  saved original and reuses it on every repatch. If you already patched from a
+  merged APK, delete StayFree's saved original in the Manager's APK settings, then
+  pick the `.xapk`.
 - **AliExpress** and **StayFree** ship as Play split bundles. Patch the *merged
   universal* APK, never the bare base — StayFree's base alone fails to install on
   Android 14+ with `INSTALL_FAILED_NO_MATCHING_ABIS`. Merge with
