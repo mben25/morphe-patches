@@ -1,3 +1,9 @@
+## [1.19.1](https://github.com/mben25/morphe-patches/compare/v1.19.0...v1.19.1) (2026-11-09)
+
+### 🐛 Bug Fixes
+
+* **StayFree:** stop `Remove App Info contents` from crashing Settings on 20.18.2 ([9d911fa](https://github.com/mben25/morphe-patches/commit/9d911fa4b70e4e5eaf19564e98157555f7599e7e))
+
 ## [1.19.0](https://github.com/mben25/morphe-patches/compare/v1.18.2...v1.19.0) (2026-10-31)
 
 ### ✨ New Features
