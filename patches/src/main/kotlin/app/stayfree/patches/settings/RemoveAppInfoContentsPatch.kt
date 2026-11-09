@@ -26,7 +26,9 @@ val removeAppInfoContentsPatch = bytecodePatch(
         // `ee9.g`, built only on the App Info screen) are the only routes into either screen.
         val method = SettingsMoreSectionFingerprint.method
         val rowCall = method.indexOfSettingsRowCall(method.indexOfStringResource("app_info_title"))
-        val onClick = method.rangeArgumentRegister(rowCall, 14)
+        // onClick sits right before the Composer. A fixed index broke in 20.18.2 when the row
+        // lost a parameter: index 14 became the Composer and the null crashed Settings.
+        val onClick = method.rangeArgumentRegister(rowCall, method.composerArgument(rowCall) - 1)
         method.addInstruction(rowCall, "${if (onClick < 16) "const/4" else "const/16"} v$onClick, 0x0")
 
         // The search tree has App Info as a node whose children are the screen's rows; dropping

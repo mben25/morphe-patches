@@ -46,6 +46,11 @@ internal fun MutableMethod.indexOfSettingsRowCall(after: Int): Int {
 }
 
 /** Register holding argument [argument] of the range call at [index] (wide types take two). */
+/** A composable's Composer is its last non-int parameter (only `$changed`/`$default` ints follow). */
+internal fun MutableMethod.composerArgument(index: Int): Int =
+    ((implementation!!.instructions[index] as ReferenceInstruction).reference as MethodReference)
+        .parameterTypes.indexOfLast { it.toString() != "I" }
+
 internal fun MutableMethod.rangeArgumentRegister(index: Int, argument: Int): Int {
     val call = implementation!!.instructions[index]
     val parameters = ((call as ReferenceInstruction).reference as MethodReference).parameterTypes
