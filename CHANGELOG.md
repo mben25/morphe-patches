@@ -1,3 +1,9 @@
+## [1.19.3](https://github.com/mben25/morphe-patches/compare/v1.19.2...v1.19.3) (2026-11-09)
+
+### 🐛 Bug Fixes
+
+* **StayFree:** ask for the XAPK so Morphe Manager merges the splits itself instead of reusing a stripped pre-merged APK ([73deeb3](https://github.com/mben25/morphe-patches/commit/73deeb3c4cc9547e3420ee472d4e685bd9b1fb85))
+
 ## [1.19.2](https://github.com/mben25/morphe-patches/compare/v1.19.1...v1.19.2) (2026-11-09)
 
 ### 🐛 Bug Fixes

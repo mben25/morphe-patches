@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.19.2",
+  "version": "1.19.3",
   "patches": [
     {
       "name": "AMOLED Dark Theme",
@@ -174,7 +174,7 @@
           "packageName": "com.burockgames.timeclocker",
           "name": "StayFree",
           "description": null,
-          "apkFileType": "APK",
+          "apkFileType": "XAPK",
           "appIconColor": "#4E7CFF",
           "signatures": null,
           "targets": [
@@ -339,7 +339,7 @@
           "packageName": "com.burockgames.timeclocker",
           "name": "StayFree",
           "description": null,
-          "apkFileType": "APK",
+          "apkFileType": "XAPK",
           "appIconColor": "#4E7CFF",
           "signatures": null,
           "targets": [
@@ -565,7 +565,7 @@
           "packageName": "com.burockgames.timeclocker",
           "name": "StayFree",
           "description": null,
-          "apkFileType": "APK",
+          "apkFileType": "XAPK",
           "appIconColor": "#4E7CFF",
           "signatures": null,
           "targets": [
@@ -1023,7 +1023,7 @@
           "packageName": "com.burockgames.timeclocker",
           "name": "StayFree",
           "description": null,
-          "apkFileType": "APK",
+          "apkFileType": "XAPK",
           "appIconColor": "#4E7CFF",
           "signatures": null,
           "targets": [
@@ -1059,7 +1059,7 @@
           "packageName": "com.burockgames.timeclocker",
           "name": "StayFree",
           "description": null,
-          "apkFileType": "APK",
+          "apkFileType": "XAPK",
           "appIconColor": "#4E7CFF",
           "signatures": null,
           "targets": [
@@ -1165,7 +1165,7 @@
           "packageName": "com.burockgames.timeclocker",
           "name": "StayFree",
           "description": null,
-          "apkFileType": "APK",
+          "apkFileType": "XAPK",
           "appIconColor": "#4E7CFF",
           "signatures": null,
           "targets": [
@@ -1222,7 +1222,7 @@
           "packageName": "com.burockgames.timeclocker",
           "name": "StayFree",
           "description": null,
-          "apkFileType": "APK",
+          "apkFileType": "XAPK",
           "appIconColor": "#4E7CFF",
           "signatures": null,
           "targets": [
@@ -1251,7 +1251,7 @@
           "packageName": "com.burockgames.timeclocker",
           "name": "StayFree",
           "description": null,
-          "apkFileType": "APK",
+          "apkFileType": "XAPK",
           "appIconColor": "#4E7CFF",
           "signatures": null,
           "targets": [
@@ -1279,7 +1279,7 @@
           "packageName": "com.burockgames.timeclocker",
           "name": "StayFree",
           "description": null,
-          "apkFileType": "APK",
+          "apkFileType": "XAPK",
           "appIconColor": "#4E7CFF",
           "signatures": null,
           "targets": [
@@ -1378,7 +1378,7 @@
           "packageName": "com.burockgames.timeclocker",
           "name": "StayFree",
           "description": null,
-          "apkFileType": "APK",
+          "apkFileType": "XAPK",
           "appIconColor": "#4E7CFF",
           "signatures": null,
           "targets": [
@@ -1611,7 +1611,7 @@
           "packageName": "com.burockgames.timeclocker",
           "name": "StayFree",
           "description": null,
-          "apkFileType": "APK",
+          "apkFileType": "XAPK",
           "appIconColor": "#4E7CFF",
           "signatures": null,
           "targets": [
@@ -1753,7 +1753,7 @@
           "packageName": "com.burockgames.timeclocker",
           "name": "StayFree",
           "description": null,
-          "apkFileType": "APK",
+          "apkFileType": "XAPK",
           "appIconColor": "#4E7CFF",
           "signatures": null,
           "targets": [
@@ -1781,7 +1781,7 @@
           "packageName": "com.burockgames.timeclocker",
           "name": "StayFree",
           "description": null,
-          "apkFileType": "APK",
+          "apkFileType": "XAPK",
           "appIconColor": "#4E7CFF",
           "signatures": null,
           "targets": [
@@ -1836,7 +1836,7 @@
           "packageName": "com.burockgames.timeclocker",
           "name": "StayFree",
           "description": null,
-          "apkFileType": "APK",
+          "apkFileType": "XAPK",
           "appIconColor": "#4E7CFF",
           "signatures": null,
           "targets": [
@@ -1866,7 +1866,7 @@
           "packageName": "com.burockgames.timeclocker",
           "name": "StayFree",
           "description": null,
-          "apkFileType": "APK",
+          "apkFileType": "XAPK",
           "appIconColor": "#4E7CFF",
           "signatures": null,
           "targets": [
@@ -1894,7 +1894,7 @@
           "packageName": "com.burockgames.timeclocker",
           "name": "StayFree",
           "description": null,
-          "apkFileType": "APK",
+          "apkFileType": "XAPK",
           "appIconColor": "#4E7CFF",
           "signatures": null,
           "targets": [
@@ -2027,7 +2027,7 @@
           "packageName": "com.burockgames.timeclocker",
           "name": "StayFree",
           "description": null,
-          "apkFileType": "APK",
+          "apkFileType": "XAPK",
           "appIconColor": "#4E7CFF",
           "signatures": null,
           "targets": [
@@ -2055,7 +2055,7 @@
           "packageName": "com.burockgames.timeclocker",
           "name": "StayFree",
           "description": null,
-          "apkFileType": "APK",
+          "apkFileType": "XAPK",
           "appIconColor": "#4E7CFF",
           "signatures": null,
           "targets": [
@@ -2083,7 +2083,7 @@
           "packageName": "com.burockgames.timeclocker",
           "name": "StayFree",
           "description": null,
-          "apkFileType": "APK",
+          "apkFileType": "XAPK",
           "appIconColor": "#4E7CFF",
           "signatures": null,
           "targets": [
@@ -2387,7 +2387,7 @@
           "packageName": "com.burockgames.timeclocker",
           "name": "StayFree",
           "description": null,
-          "apkFileType": "APK",
+          "apkFileType": "XAPK",
           "appIconColor": "#4E7CFF",
           "signatures": null,
           "targets": [
