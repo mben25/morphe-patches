@@ -24,12 +24,13 @@ object DrawerHeaderFingerprint : Fingerprint(
 )
 
 /**
- * Side menu item composable (`Lez4;->c(DrawerScreenType;Le02;I)V` in 20.16.1). Each drawer entry
- * is its own lambda calling it with one `DrawerScreenType` constant; "My Friends" is
- * `USAGE_SHARING` (`nw1` default case). The only method with this signature.
+ * Side menu item composable (`Lez4;->c(DrawerScreenType;Le02;I)V` in 20.16.1,
+ * `Lp05;->c(DrawerScreenType;ZZLl02;II)V` in 20.20.0). Each drawer entry is its own lambda
+ * calling it with one `DrawerScreenType` constant; "My Friends" is `USAGE_SHARING`. The only
+ * static method taking a `DrawerScreenType` first, so the trailing Compose params may change.
  */
 object DrawerItemFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC, AccessFlags.FINAL),
     returnType = "V",
-    parameters = listOf(DRAWER_SCREEN_TYPE, "L", "I"),
+    custom = { method, _ -> method.parameterTypes.firstOrNull() == DRAWER_SCREEN_TYPE },
 )

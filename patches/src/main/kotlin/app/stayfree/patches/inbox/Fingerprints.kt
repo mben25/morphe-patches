@@ -9,14 +9,15 @@ internal const val DRAWER_SCREEN_TYPE = "Lcom/burockgames/timeclocker/common/enu
 private const val PERMISSION_CATEGORY_DATA = "Lcom/burockgames/timeclocker/common/data/PermissionCategoryData;"
 
 /**
- * Drawer row composable, `DrawerRow(type: DrawerScreenType, Composer, $changed: Int)`
- * (`Lky4;->c` in 20.14.1). Every drawer entry, including INBOX_CLEANING, is drawn through it and
- * it is the only method in the app with this signature.
+ * Drawer row composable, `DrawerRow(type: DrawerScreenType, …, Composer, $changed: Int)`
+ * (`Lky4;->c` in 20.14.1; `Lp05;->c(DrawerScreenType;ZZLl02;II)V` in 20.20.0, which added two
+ * flags). Every drawer entry, including INBOX_CLEANING, is drawn through it and it is the only
+ * static method taking a `DrawerScreenType` first, so match on that rather than the full list.
  */
 object DrawerRowComposableFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC, AccessFlags.FINAL),
     returnType = "V",
-    parameters = listOf(DRAWER_SCREEN_TYPE, "L", "I"),
+    custom = { method, _ -> method.parameterTypes.firstOrNull() == DRAWER_SCREEN_TYPE },
     filters = listOf(
         methodCall(definingClass = DRAWER_SCREEN_TYPE, name = "getTextResId"),
     ),

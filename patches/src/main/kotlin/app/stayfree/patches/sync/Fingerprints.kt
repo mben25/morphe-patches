@@ -9,18 +9,18 @@ private const val R_STRING = "Lcom/burockgames/R\$string;"
 
 /**
  * The repository holding the paired-device statics and their invalidation flows. R8 renumbers it
- * every release — `Lzl2;` in 20.16.1, `Lyl2;` in 20.17.0, `Lem2;` in 20.18.1 — but the field
+ * every release — `Lzl2;` in 20.16.1, `Lyl2;` in 20.17.0, `Lem2;` in 20.18.1, `Lfm2;` in 20.18.2 — but the field
  * names on it (`B0`, `T`, `h0`) have been stable, so only this one constant and [DEVICE_FLOW]
  * move. Identify it after a version bump as the single class declaring `static
  * B0:Ljava/util/List;` alongside a `T` flow.
  */
-internal const val DEVICE_REPOSITORY = "Lfm2;"
+internal const val DEVICE_REPOSITORY = "Lpm2;"
 
-/** The `MutableLiveData` subclass those flows are typed as (`Lq87;` in 20.16.1). */
-internal const val DEVICE_FLOW = "Lfa7;"
+/** The `MutableLiveData` subclass those flows are typed as (`Lq87;` in 20.16.1, `Lfa7;` in 20.18.2). */
+internal const val DEVICE_FLOW = "Ldb7;"
 
-/** Its `postValue(Object)` declaring class (`Log6;` in 20.16.1). */
-internal const val DEVICE_FLOW_POST = "Lqh6;"
+/** Its `postValue(Object)` declaring class (`Log6;` in 20.16.1, `Lqh6;` in 20.18.2). */
+internal const val DEVICE_FLOW_POST = "Lgi6;"
 
 /**
  * Retrofit `Builder.baseUrl(String)` (`Lvo9;->c(Ljava/lang/String;)V` in 20.14.1, merged by R8
@@ -122,7 +122,7 @@ object PairingStatusGateFingerprint : Fingerprint(
  * checks that build no coroutine body.
  *
  * Both names shift every release (20.16.1: `Lt38;->a` with body `Lr38;`; 20.18.2: `Ly48;->a`
- * with body `Lw48;`), so the body class is
+ * with body `Lw48;`; 20.20.0: `La68;->a` with body `Ly58;`), so the body class is
  * resolved by its single unobfuscated call — `NetworkUtils.hasInternetConnection()` — rather than
  * hardcoded; only the two R8-renumbered digits ever move.
  */
@@ -131,7 +131,7 @@ object SyncPreconditionFingerprint : Fingerprint(
     returnType = "Ljava/lang/Object;",
     parameters = listOf("L"),
     filters = listOf(
-        methodCall(definingClass = "Lw48;", name = "<init>"),
+        methodCall(definingClass = "Ly58;", name = "<init>"),
     ),
 )
 

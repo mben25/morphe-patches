@@ -6,8 +6,9 @@ import app.morphe.patcher.patch.Compatibility
 
 object Constants {
     /**
-     * Verified against `apps/stayfree/20.18.2.xapk` (versionCode 201802502) merged with
-     * APKEditor into a universal APK (base + `config.arm64_v8a` + `config.xxhdpi`).
+     * Verified against `stayfree/rea/android/StayFree_20.20.0.apk` (versionCode 202000504), a
+     * universal APK merged from the xapk. Notes below were measured on 20.18.2
+     * (`apps/stayfree/20.18.2.xapk`, base + `config.arm64_v8a` + `config.xxhdpi`).
      *
      * The Play/Aurora base APK alone will not install on Android 14+: it declares
      * `android:requiredSplitTypes="base__abi,base__density"` while shipping no native
@@ -42,8 +43,8 @@ object Constants {
         appIconColor = 0x4E7CFF,
         targets = listOf(
             AppTarget(
-                version = "20.18.2",
-                description = "Download com.burockgames.timeclocker v20.18.2 (XAPK bundle) from APKPure",
+                version = "20.20.0",
+                description = "Download com.burockgames.timeclocker v20.20.0 (XAPK bundle) from APKPure",
             ),
         ),
     )
