@@ -1,3 +1,13 @@
+## [1.20.0](https://github.com/mben25/morphe-patches/compare/v1.19.3...v1.20.0) (2026-11-13)
+
+### ✨ New Features
+
+* **Universal:** add `Change package name` to install any patched app under a package name you choose ([8a657ae](https://github.com/mben25/morphe-patches/commit/8a657ae5732dc89e6cd691614eae647c591a4b9d))
+
+### 🚀 Updated App Support
+
+* **StayFree:** support version 20.20.0 ([fcf7f01](https://github.com/mben25/morphe-patches/commit/fcf7f01dca3477f477b119398b3a3e35a0b51565))
+
 ## [1.19.3](https://github.com/mben25/morphe-patches/compare/v1.19.2...v1.19.3) (2026-11-09)
 
 ### 🐛 Bug Fixes
