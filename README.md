@@ -80,6 +80,7 @@ every release. Highlights:
 | Neutralize Signature Check | Salaat First | Stubs the anti-tamper check that `System.exit(0)`s a re-signed build, and restores the `META-INF/services` files that merge tools strip. Required by every other Salaat patch. Enabled by default. |
 | Fix Location Detection on microG | Salaat First | Asks for a quick high-accuracy fix so "locating" no longer hangs for 10 minutes on microG devices. Enabled by default. |
 | Add microG support | Google Contacts | Signs in to your Google account through microG instead of Play services, so contacts sync, Phenotype and push work on a de-Googled phone. Enabled by default; needs microG installed, and cannot be used with a root (mount) install. |
+| Change package name | All apps | Installs the patched app under a package name you choose (Clone app without the `.morphe` default). Disabled by default. |
 | Disable All Telemetry | 7 apps | One switch per app that pulls in that app's full analytics/tracking removal. |
 
 Most telemetry and ad-removal patches ship **disabled by default** — enable the ones
@@ -111,6 +112,11 @@ its `AMOLED Dark Theme` and `Remove Google Login` are disabled.
   spoofs Contacts' rotated signing certificate (`e4cf6254…`, the one Android 13+ reports);
   on an older device the platform uses the original `ee3e2b5d…` key instead and sign-in
   will not be granted.
+
+- **Change package name** (all apps) requires the **package name** to install as
+  (`com.example.app` form); it has no default and fails at apply time without one. The
+  app then installs as a separate app beside any copy under the original name. Its
+  custom permissions and provider authorities are renamed too (both toggles default on).
 
 ### How to use these patches
 

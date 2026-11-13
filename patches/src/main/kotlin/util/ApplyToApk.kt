@@ -3,7 +3,7 @@
  * it only applies the patches in this project to an APK on disk and prints the result,
  * so fingerprint regressions are caught without going through Manager or the CLI.
  *
- * Usage: ./gradlew :patches:applyToApk --args "<apk> [outputDexDir] [--patches=mtcapsule|masareef|deviceinfo|stayfree|salaat|windy|aliexpress|speedtest|infinity|gcontacts|sigstick]"
+ * Usage: ./gradlew :patches:applyToApk --args "<apk> [outputDexDir] [--patches=mtcapsule|masareef|deviceinfo|stayfree|salaat|windy|aliexpress|speedtest|infinity|gcontacts|sigstick|packagename]"
  *
  * The infinity set additionally accepts --client-id=, --redirect-uri= and --user-agent=
  * to supply the patch options that Manager would otherwise prompt for.
@@ -97,6 +97,7 @@ import app.stayfree.patches.telemetry.disableAllTelemetryPatch as stayfreeDisabl
 import app.stayfree.patches.ui.hideTextsPatch
 import app.windy.patches.premium.unlockPremiumPatch as windyUnlockPremiumPatch
 import kotlinx.coroutines.flow.collect
+import app.universal.patches.packagename.changePackageNamePatch
 import kotlinx.coroutines.runBlocking
 import java.io.File
 import kotlin.system.exitProcess
@@ -196,6 +197,15 @@ fun main(args: Array<String>) {
                 }
 
                 setOf(infinitySpoofClientPatch, infinityModifyLoginWebViewPatch)
+            }
+
+            // Universal; Manager prompts for the name. Override with --package-name=<name>.
+            "packagename" -> {
+                changePackageNamePatch.options["packageName"] = args
+                    .firstOrNull { it.startsWith("--package-name=") }
+                    ?.substringAfter('=')
+                    ?: "com.example.renamed"
+                setOf(changePackageNamePatch)
             }
 
             "gcontacts" -> setOf(gcontactsMicrogSupportPatch, gcontactsAmoledDarkThemePatch)
