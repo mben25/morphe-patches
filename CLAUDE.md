@@ -130,3 +130,7 @@ Fix is always to cut a real release:
   before doing further work, or the next push conflicts.
 - Then refresh (or re-add) the source in the Manager; a source added while the JSON was empty
   stays broken and has to be deleted and re-added.
+
+- For unfamiliar features, don't write from scratch—first search Github, GitLab, BitBucket and Codeberg for open-source projects, compare approaches, then get started
+
+- When I say "new", summarize our discussion in 200 words formatted as: key decisions made, code patterns established, next steps identified. Format as a system prompt for my next chat, ready for one-click copy. Output only the summary, nothing else.
